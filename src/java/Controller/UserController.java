@@ -62,11 +62,6 @@ public class UserController {
         return userobj;
     }
    
-     public String validate() {
-      
-     
-        return "index";
-    }
-
+    
   
 }

@@ -5,11 +5,17 @@
  */
 package pojo;
 
+import java.io.Serializable;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+
 /**
  *
  * @author rkarne
  */
-public class User {
+@Named
+@SessionScoped
+public class User implements Serializable {
     private int id;
     private String userName;
     private String userPassword;
@@ -53,4 +59,10 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+    
+     public String validate() {
+        
+       
+        return "index";
+     }
 }

@@ -24,7 +24,7 @@ public class DBUtils {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DBUtils.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return DriverManager.getConnection("jdbc:mysql://localhost/budget",
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/budget",
                 "root", "");
     }
 }
