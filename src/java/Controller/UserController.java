@@ -16,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ApplicationScoped;
 import javax.inject.Named;
-import pojo.User;
+import pojo.Userdetails;
 
 /**
  *
@@ -26,47 +26,45 @@ import pojo.User;
 @Named
 @ApplicationScoped
 public class UserController {
-    private List<User> users;
-    private User userobj;
+    private List<Userdetails> users;
+    private static UserController userobj;
     
    public UserController(){
-        userobj = new User(-1, "", "", "");
-        getData();
+        
    }
    
-   private void getData(){
+   public void getData(){
+       //userobj = this;
         try {
             users = new ArrayList<>();
             Connection con = DBUtils.getConnection();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM userlogin");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM users");
+            
             while(rs.next()){
-                User us = new User(
-                 rs.getInt("id"),
-                 rs.getString("username"),
-                 rs.getString("userpass"),
-                 rs.getString("name")
-                );
+               Userdetails us = new Userdetails(
+                       rs.getInt("UId"),
+                       rs.getString("Username"),
+                       rs.getString("Password"),
+                       rs.getString("Name")
+               );
                 users.add(us);
+                
             }
+            
         } catch (SQLException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+             users = new ArrayList<>();
         }
    }
 
-    public List<User> getUsers() {
+    public List<Userdetails> getUsers() {
         return users;
     }
 
-    public User getUserobj() {
+    public static UserController getUserobj() {
         return userobj;
     }
-   
-     public String validate() {
-      
-     
-        return "index";
-    }
-
+    
   
 }

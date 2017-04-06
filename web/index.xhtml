@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <meta charset="utf-8"></meta>
             <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
@@ -17,35 +18,21 @@
   </script>
     </h:head>
     <h:body>
-        <div id="tabs">
-  <ul>
-    <li><a href="#tabs-1">Home</a></li>
-    <li><a href="#tabs-2">Monthly</a></li>
-    <li><a href="#tabs-3">Annual</a></li>
-  </ul>
-            <div id="tabs-1">
+ 
+            <div >
                  <h:form>
-		<h3> Login </h3>
-		<h:outputText value="Username : " />
-                <h:inputText id="username" value="#{userController.userobj.userName}"></h:inputText>
-		<h:message for="username"></h:message>
-		<br></br><br></br>
 		
-		<h:outputText value="Password : " />
-                <h:inputSecret id="password" value="#{userController.userobj.userPassword}"></h:inputSecret>
-		<h:message for="password"></h:message>
-		<br></br><br></br>
-		
-                <h:commandButton action="#{userController.validate()}" value="Login"/>
+                     <p>Username: <h:inputText value="#{userLogin.userName}" /></p>
+                     <p>Password: <h:inputSecret value="#{userLogin.userPassword}" /></p>
+                     <!-- <c:if test="#.status}"> -->
+                     <h:commandButton value="Login" action="#{userLogin.validate()}" />
+                  <!--   </c:if>
+                     <c:if test="{!.status}"> 
+                     <h:button value="Login" outcome="Records" />
+                    </c:if> -->
                 </h:form>
             </div>
-            <div id="tabs-2">
-                
-            </div>
-            <div id="tabs-3">
-                
-            </div>
-        </div>
+           
     </h:body>
 </html>
 
