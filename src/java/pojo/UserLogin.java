@@ -30,15 +30,12 @@ import javax.inject.Named;
 public class UserLogin  implements Serializable{
     private String userName;
     private String userPassword;
- 
-    private Userdetails currentUser;
    
     
     public UserLogin(){
        userName= null;
        userPassword = null;
-      
-       currentUser = null;
+       
     }
 
     public String getUserName() {
@@ -50,11 +47,6 @@ public class UserLogin  implements Serializable{
     }
 
   
-
-    public Userdetails getCurrentUser() {
-        return currentUser;
-    }
-
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -64,11 +56,14 @@ public class UserLogin  implements Serializable{
     }
 
       public String validate() {
+         
+          Userdetails currentUser = new Userdetails(-1, "", "", "");
+          currentUser.setUserName(this.userName);
+          currentUser.setUserPassword(this.userPassword);
+          UserController us = new UserController(currentUser);
+          return us.doLogin(); 
           
-          String uname = null;
-          String upass= null;
-          
-        try {
+       /* try {
             // String pass = HashCredentials.hashPassword(password);
             Connection con = DBUtils.getConnection();
             PreparedStatement pstm = con.prepareCall("SELECT * FROM users where Username=? and Password=?");
@@ -88,7 +83,9 @@ public class UserLogin  implements Serializable{
         } catch (SQLException ex) {
             Logger.getLogger(UserLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-      return "index";
-    }
+      return "index"; */
+        
+        
+    } 
 
 }

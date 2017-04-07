@@ -7,6 +7,7 @@ package Controller;
 
 import Connection.DBUtils;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,8 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.faces.bean.ApplicationScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
+import pojo.UserLogin;
 import pojo.Userdetails;
 
 /**
@@ -27,13 +29,14 @@ import pojo.Userdetails;
 @ApplicationScoped
 public class UserController {
     private List<Userdetails> users;
-    private static UserController userobj;
+    private  Userdetails userobj;
     
-   public UserController(){
+   public UserController(Userdetails userde){
+       this.userobj = userde;
         
    }
    
-   public void getData(){
+   private void getData(){
        //userobj = this;
         try {
             users = new ArrayList<>();
@@ -49,7 +52,6 @@ public class UserController {
                        rs.getString("Name")
                );
                 users.add(us);
-                
             }
             
         } catch (SQLException ex) {
@@ -62,8 +64,38 @@ public class UserController {
         return users;
     }
 
-    public static UserController getUserobj() {
+    public  Userdetails getUserobj() {
         return userobj;
+    }
+    
+ 
+    public String doLogin(){
+        
+        String dbuser =null;
+        String dbpass =null;
+        try {
+            // String pass = HashCredentials.hashPassword(password);
+            Connection con = DBUtils.getConnection();
+            PreparedStatement pstm = con.prepareCall("SELECT * FROM users where Username=? and Password=?");
+            pstm.setString(1, userobj.getUserName());
+            pstm.setString(2, userobj.getUserPassword());
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                dbuser = rs.getString("Username");
+                dbpass = rs.getString("Password");
+            }
+          
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(UserLogin.class.getName()).log(Level.SEVERE, null, ex);
+           
+        }
+        if(dbuser.equals(userobj.getUserName()) && dbpass.equals(userobj.getUserPassword())){
+              return "Template";
+          } 
+        else{
+             return "index";
+        }
     }
     
   
