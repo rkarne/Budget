@@ -14,11 +14,12 @@
             <h:column>
                 <f:facet name="header">User_ID</f:facet>
                     
-                <h:commandLink action="#{userController.view(p)}">  #{p.id} </h:commandLink>
+               <f:facet name="header">User ID</f:facet>
+                    #{p.id}
             </h:column>
             <h:column>
-                <f:facet name="header">User_FullName</f:facet>
-                    #{p.name}
+               
+                <h:commandLink action="#{userController.view(p)}">  #{p.name} </h:commandLink>
             </h:column>            
             <h:column>
                 <f:facet name="header">UserName</f:facet>
@@ -26,7 +27,7 @@
             </h:column>
              <h:column>
                 
-                    <h:commandButton class="btn btn-success" value="Delete" action="#{userController.delete()}" />
+                 <h:commandButton class="btn btn-success" value="Delete" action="#{userController.delete(p)}" />
                 </h:column>
         </h:dataTable>
             </h:form>
