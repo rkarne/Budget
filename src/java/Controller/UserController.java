@@ -116,8 +116,23 @@ public class UserController {
         return "edit";
     }
     
-    public String view(){
+    public String view(Userdetails us){
+        userobj =us;
+        return "edit";
+    }
+   public String delete(){
+        try (Connection conn = DBUtils.getConnection()) {
+            System.out.println(userobj.getId());
+            if (userobj.getId() > 0) {
+                String sql = "DELETE FROM users WHERE id = ?";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setInt(1, userobj.getId());
+                pstmt.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        getData();  
         return "index";
     }
-  
 }
