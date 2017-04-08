@@ -7,18 +7,34 @@ package pojo;
 
 /**
  *
- * @author rkarne
+ * @author c0689497
  */
-public class User {
+public class Userdetails {
     private int id;
     private String userName;
     private String userPassword;
     private String name;
     
-    public User(int id, String usname, String uspass, String name){
+    public Userdetails(int id, String usname, String uspass, String name ){
         this.id = id;
         this.userName = usname;
         this.userPassword = uspass;
+        this.name = name;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -37,20 +53,6 @@ public class User {
     public String getName() {
         return name;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    
+    
 }
