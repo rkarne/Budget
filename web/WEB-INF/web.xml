@@ -19,6 +19,10 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
+<<<<<<< HEAD
         <welcome-file>faces/Admin.xhtml</welcome-file>
+=======
+        <welcome-file>faces/index.xhtml</welcome-file>
+>>>>>>> a52e9efc504edc39c9b898a2dd92e6b522c7eb59
     </welcome-file-list>
 </web-app>
