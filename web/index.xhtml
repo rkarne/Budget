@@ -21,21 +21,11 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'></link>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'></link>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'></link>
-
-    <!-- Theme CSS -->
     <link href="css/agency.min.css" rel="stylesheet"></link>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
-    <![endif]-->
-
     </h:head>
     <h:body id="page-top" class="index">
 
-        <h:form>
+
 
 
     <!-- Navigation -->
@@ -82,9 +72,11 @@
     <header>
         <div class="container">
             <div class="intro-text">
+
                 <div class="intro-lead-in">Maintain budget,become more Richer!</div>
                 <div class="intro-heading"><br/><br/></div>
                 <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
+
                 
             </div>
         </div>
@@ -107,21 +99,23 @@
             <div class="row">
                 <div class="col-md-4 col-sm-6 portfolio-item">
                             <div class="clearfix"></div>
+                            
                             <div class="col-lg-12">
+                                <h:form> 
 			 <div class="form-group"> 
-                             <p>Username:   <h:inputText  class="form class" required="required" id="username" validatorMessage="Please enter your username"></h:inputText></p>
+                             <p>Username:   <h:inputText  class="form class" value="#{userLogin.userName}" required="required" id="username" validatorMessage="Please enter your username" /></p>
                              
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <p>Password:  <h:inputText  class="form class" required="required" id="password" validatorMessage="Please enter your password"></h:inputText></p>
+                                    <p>Password:  <h:inputSecret  class="form class" value="#{userLogin.userPassword}" required="required" id="password" validatorMessage="Please enter your password" /></p>
                                 
                                     <p class="help-block text-danger"></p>
                                 </div>
                                
                                 <div id="success"></div>
-                                <h:commandButton value="Login" class="btn btn-xl"></h:commandButton>
-                               
+                                <h:commandButton value="Login" action="#{userLogin.validate()}" class="btn btn-xl"></h:commandButton>
+                                </h:form>
                             </div>
 							 
                             <div class="clearfix"></div>
@@ -229,7 +223,8 @@
                 <div class="col-sm-4">
                     <div class="team-member">
                         <img src="img/team/1.jpg" class="img-responsive img-circle" alt=""></img>
-                        <h4>Roja jayshree</h4>
+
+                        <h4>Roja jayashree</h4>
                         <p class="text-muted">Lead programmer</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
@@ -553,7 +548,5 @@
 
     <!-- Theme JavaScript -->
     <script src="js/agency.min.js"></script>
-    </h:form>
-            
       </h:body>
 </html>

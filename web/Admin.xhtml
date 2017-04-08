@@ -13,7 +13,7 @@
            cellspacing="2" cellpadding="2"  style="background-color: white">
             <h:column>
                 <f:facet name="header">User_ID</f:facet>
-                    #{p.id}
+                    
                 <h:commandLink action="#{userController.view(p)}">  #{p.id} </h:commandLink>
             </h:column>
             <h:column>
@@ -25,9 +25,8 @@
                     #{p.userName}
             </h:column>
              <h:column>
-                <h:commandButton class="btn btn-primary" value="Edit" action="#{userController.edit()}" />
-                <span>&nbsp; &nbsp;</span>
-                    <h:commandButton class="btn btn-success" value="Delete" action="#{productController.delete()}" />
+                
+                    <h:commandButton class="btn btn-success" value="Delete" action="#{userController.delete()}" />
                 </h:column>
         </h:dataTable>
             </h:form>

@@ -25,12 +25,14 @@ public class UserLogin  implements Serializable{
     private String userPassword;
    
     
-    public UserLogin(){
-       userName= null;
-       userPassword = null;
-       
+    public UserLogin(){       
     }
 
+    public UserLogin(String user, String pass){
+        this.userName = user;
+        this.userPassword = pass;
+    }
+    
     public String getUserName() {
         return userName;
     }
