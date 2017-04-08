@@ -5,62 +5,85 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-         <meta charset="utf-8"></meta>
+    <meta charset="utf-8"></meta>
+<meta charset="utf-8"></meta>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
     <meta name="description" content=""></meta>
     <meta name="author" content=""></meta>
 
-    <title>Budget Application</title>
+    <title>Bare - Start Bootstrap Template</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+  
+    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
 
-    <!-- Custom Fonts -->
-    <link href="css/template.css" rel="stylesheet" type="text/css"></link>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"></link>
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'></link>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'></link>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'></link>
+   
+    <style>
+    body {
+        padding-top: 70px;
+       
+    </style>
 
-    <!-- Theme CSS -->
-    <link href="css/agency.min.css" rel="stylesheet"></link>
+   
 
    
 
     </h:head>
-     <h:body>
-
-
-<h:form id="form">
-    <div id="page">
-
-        <div id="header" style="background-color: black" >
-            <ui:insert name="header" >
-              
-            </ui:insert>
-            <f:ajax render="ContentLoader">
-                <div id="links">
-                 <h:commandLink actionListener="#{contentPage.setPage('/web Pages/index.xhtml')}" value="Home" />
-                  <h:commandLink actionListener="#{contentPage.setPage('montlyExpenditure.xhtml')}" value="Monthy Expenditure" />
-                  <h:commandLink actionListener="#{contentPage.setPage('AnnualExpenditure.xhtml')}" value="Annual Expenditure" />
-                  <h:commandLink actionListener="#{contentPage.setPage('Records.xhtml')}" value="View records"/>
-                </div>
-               </f:ajax>
-        </div>
-        <h:panelGroup id="ContentLoader" >
-        <div id="content">
-            <ui:insert name="content" >
-                <ui:include src="#{Template.xhtml}" />
-            </ui:insert>
-        </div>
-        </h:panelGroup>
-    </div>
-    </h:form>
-
-     </h:body>
+     
    
 
-    
-            
+    <h:body>
+        <h:form>
+        
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+           
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.xhtml">Home</a>
+            </div>
+  
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="MontlyExpenditure.xhtml">Monthly Expenditure</a>
+                    </li>
+                    <li>
+                        <a href="AnnualExpenditure.xhtml">Annual Expenditure</a>
+                    </li>
+                    <li>
+                        <a href="Records.xhtml">View records</a>
+                    </li>
+                </ul>
+            </div>
+      
+        </div>
+      
+    </nav>
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+             
+             
+            </div>
+        </div>
+ 
+
+    </div>
+  
+
+
+    <script src="js/jquery.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>  
+    </h:form>
+    </h:body>      
 </html>
