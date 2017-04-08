@@ -143,4 +143,9 @@ public class UserController {
         getData();  
         return "Admin";
     }
+   
+   public String addUser(){
+       return "Admin";
+   }
 }
+
