@@ -6,7 +6,14 @@
         <title>Welcome into a budget tool</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h:form>
+         <p>date and time: <h:inputText value="#{user}" /></p>
+         <p>Place        : <h:inputSecret value="#{userLogin}" /></p> 
+         <p>Amount       :<h:inputText value="#{user}" />&nbsp; Total: <h:inputText value="#{user}" /></p>
+         <p> <input type="radio" name="Deposit" id="radio1" value="deposit" />Deposit</p>
+         <p> <input type="radio" name="withdrawal" id="radio2" value="withdrawal" />Withdrawal</p><br/>
+         <h:commandButton value="save" action="#{user}"/>
+           </h:form> 
     </h:body>
 </html>
 

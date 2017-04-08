@@ -33,9 +33,13 @@ public class UserController {
     
    public UserController(Userdetails userde){
        this.userobj = userde;
-        
+      
    }
    
+ public UserController(){
+     getData();
+ }
+  
    private void getData(){
        //userobj = this;
         try {
@@ -90,12 +94,20 @@ public class UserController {
             Logger.getLogger(UserLogin.class.getName()).log(Level.SEVERE, null, ex);
            
         }
+       if(dbuser == null || dbpass == null){
+            return "index"; 
+       }
         if(dbuser.equals(userobj.getUserName()) && dbpass.equals(userobj.getUserPassword())){
-              return "Template";
+            if(dbuser.equals("admin") ){
+                return "Admin";
+            }
+                 return "Template";
           } 
         else{
-             return "index";
+          return "index";  
         }
+         
+        
     }
     
   
