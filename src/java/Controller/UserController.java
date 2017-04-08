@@ -56,7 +56,12 @@ public class UserController {
                        rs.getString("Password"),
                        rs.getString("Name")
                );
-                users.add(us);
+               if(rs.getString("Username").equals("admin")){
+                   
+               }
+               else{
+                   users.add(us);
+               }
             }
             
         } catch (SQLException ex) {
@@ -99,6 +104,7 @@ public class UserController {
             return "index"; 
        }
         if(dbuser.equals(userobj.getUserName()) && dbpass.equals(userobj.getUserPassword())){
+            getData();  
             String pass = HashCredentials.hashPassword(userobj.getUserPassword());
             userobj.setUserPassword(pass);
             if(dbuser.equals("admin") ){
@@ -137,4 +143,9 @@ public class UserController {
         getData();  
         return "Admin";
     }
+   
+   public String addUser(){
+       return "Admin";
+   }
 }
+
