@@ -120,19 +120,21 @@ public class UserController {
         userobj =us;
         return "edit";
     }
-   public String delete(){
-        try (Connection conn = DBUtils.getConnection()) {
-            System.out.println(userobj.getId());
-            if (userobj.getId() > 0) {
-                String sql = "DELETE FROM users WHERE id = ?";
+   public String delete(Userdetails us){
+        try {
+            Connection conn = DBUtils.getConnection();
+            System.out.println(us.getId());
+            if (us.getId() > 0) {
+                String sql = "DELETE FROM users WHERE UId = ?";
                 PreparedStatement pstmt = conn.prepareStatement(sql);
-                pstmt.setInt(1, userobj.getId());
+                pstmt.setInt(1, us.getId());
                 pstmt.executeUpdate();
             }
-        } catch (SQLException ex) {
+        } catch (SQLException | NullPointerException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+            return "Records";
         }
         getData();  
-        return "index";
+        return "Admin";
     }
 }
