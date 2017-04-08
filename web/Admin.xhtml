@@ -12,13 +12,12 @@
            border="3"
            cellspacing="2" cellpadding="2"  style="background-color: white">
             <h:column>
-                <f:facet name="header">User_ID</f:facet>
-                    
+
                <f:facet name="header">User ID</f:facet>
                     #{p.id}
             </h:column>
             <h:column>
-               
+                <f:facet name="header">Name</f:facet>
                 <h:commandLink action="#{userController.view(p)}">  #{p.name} </h:commandLink>
             </h:column>            
             <h:column>
@@ -37,8 +36,7 @@
            cellspacing="2" cellpadding="2"  style="background-color: white">
             <h:column>
                 <f:facet name="header">User_ID</f:facet>
-                    
-                <h:commandLink action="#{dataController.view(p)}">  #{p.id} </h:commandLink>
+                  #{p.id} 
             </h:column>
             <h:column>
                 <f:facet name="header">Balance</f:facet>
@@ -62,7 +60,7 @@
             </h:column>
              <h:column>
                 
-                    <h:commandButton class="btn btn-success" value="Delete" action="#{dataController.delete()}" />
+                    <h:commandButton class="btn btn-success" value="Delete" action="#{dataController.delete(p)}" />
                 </h:column>
         </h:dataTable>
             </h:form>
