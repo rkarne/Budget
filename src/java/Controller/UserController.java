@@ -88,8 +88,9 @@ public class UserController {
             while(rs.next()){
                 dbuser = rs.getString("Username");
                 dbpass = rs.getString("Password");
+                userobj.setName(rs.getString("Name"));
             }
-             String pass = HashCredentials.hashPassword(userobj.getUserPassword());
+             
         } catch (SQLException ex) {
             Logger.getLogger(UserLogin.class.getName()).log(Level.SEVERE, null, ex);
            
@@ -108,9 +109,15 @@ public class UserController {
         else{
           return "index";  
         }
-         
-        
     }
     
+    public String edit(){
+        
+        return "edit";
+    }
+    
+    public String view(){
+        return "index";
+    }
   
 }

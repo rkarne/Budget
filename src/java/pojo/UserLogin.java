@@ -7,16 +7,9 @@ package pojo;
 
 
 
-import Connection.DBUtils;
+
 import Controller.UserController;
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -59,7 +52,6 @@ public class UserLogin  implements Serializable{
          
           Userdetails currentUser = new Userdetails(-1, "", "", "");
           currentUser.setUserName(this.userName);
-         
           currentUser.setUserPassword(this.userPassword);
           UserController us = new UserController(currentUser);
           return us.doLogin(); 
