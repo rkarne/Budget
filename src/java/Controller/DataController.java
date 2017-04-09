@@ -26,19 +26,21 @@ import pojo.Data;
 @Named
 @ApplicationScoped
 public class DataController {
-    private List<Data> userdata;
-    private Data userobj;
+    private List<Data> userdata = new ArrayList<>();
+    private Data userobj = new Data();
+    
     
        public DataController(Data userde){
-           this.userobj = userde;
+           userobj = userde;
        }
     public DataController(){
      getData();
  }
        private void getData(){
-       //userobj = this;
+        userdata.clear();
+        userobj = new Data();
         try {
-            userdata = new ArrayList<>();
+            
             Connection con = DBUtils.getConnection();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM userdata");
@@ -49,7 +51,7 @@ public class DataController {
                        rs.getDouble("Balance"),
                        rs.getString("Place"),
                        rs.getDouble("Amount"),
-                       rs.getDate("Tdate"),
+                       rs.getString("Tdate"),
                        rs.getInt("UId")
                );
                 userdata.add(us);
@@ -85,17 +87,24 @@ public class DataController {
     }
     
     public String add() {
+        double trans;
+        if ("+".equals(userobj.getRadio())){
+            trans = userobj.getAmount();
+        }
+        else{
+            trans = -(userobj.getAmount());
+        }
         try {
             Connection conn = DBUtils.getConnection();
             //Statement stmt = conn.createStatement();
            // stmt.executeUpdate("INSERT INTO products VALUES (" + thisProduct.getProductId() + ",'" + thisProduct.getName() + "','" + thisProduct.getVendorId() + "')");
-            String sql = "INSERT INTO Products (Balance, Place, Amount, Date, UId) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO userdata (Balance, Place, Amount, Tdate, UId) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setDouble(1, (userobj.getBal()));
+            pstmt.setDouble(1, (userobj.getBal()+trans));
             pstmt.setString(2, userobj.getPlace());
             pstmt.setDouble(3, userobj.getAmount());
-            pstmt.setDate(4, userobj.getDate());
-            pstmt.setInt(5, userobj.getId());
+            pstmt.setString(4, userobj.getDate());
+            pstmt.setInt(5, 3);
             pstmt.executeUpdate();
             getData();
         } catch (SQLException ex) {

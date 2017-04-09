@@ -6,6 +6,10 @@
 package pojo;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 
 /**
  *
@@ -16,16 +20,22 @@ public class Data {
     private double bal;
     private String place;
     private double amount;
-    private Date date;
+    private String date;
     private int UId;
+    private String radio;
+    DateFormat formatter = new SimpleDateFormat("YYYY-MM-DD");
     
-    public Data(int id, double bal, String place, double amount, Date date, int UId) {
+    public Data(int id, double bal, String place, double amount, String date, int UId){
         this.id = id;
         this.bal = bal;
         this.place = place;
         this.amount = amount;
         this.date = date;
         this.UId = UId;
+    }
+
+    public Data() {
+        
     }
 
     public int getId() {
@@ -60,11 +70,11 @@ public class Data {
         this.amount = amount;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date){
         this.date = date;
     }
 
@@ -74,6 +84,14 @@ public class Data {
 
     public void setUId(int UId) {
         this.UId = UId;
+    }
+
+    public String getRadio() {
+        return radio;
+    }
+
+    public void setRadio(String radio) {
+        this.radio = radio;
     }
     
     
