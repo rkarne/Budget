@@ -67,20 +67,21 @@ public class DataController {
     public Data getUserobj() {
         return userobj;
     }
-    public String delete(){
+    
+    public String delete(Data d){
         try (Connection conn = DBUtils.getConnection()) {
-            System.out.println(userobj.getId());
-            if (userobj.getId() > 0) {
-                String sql = "DELETE FROM userdata WHERE id = ?";
+            
+            if (d.getId() > 0) {
+                String sql = "DELETE FROM userdata WHERE TransId = ?";
                 PreparedStatement pstmt = conn.prepareStatement(sql);
-                pstmt.setInt(1, userobj.getId());
+                pstmt.setInt(1, d.getId());
                 pstmt.executeUpdate();
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
         getData();  
-        return "index";
+        return "Admin";
     }
     
     public String add() {
@@ -100,7 +101,7 @@ public class DataController {
         } catch (SQLException ex) {
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "index";
+        return "Admin";
         
     }
 }
