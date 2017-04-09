@@ -121,10 +121,10 @@
   <div class="form">
        
     <form class="register-form">
-      <input type="text" required="required" placeholder="name"/>
-      <input type="password" required="required" placeholder="password"/>
-      <input type="text" required="required" placeholder="email address"/>
-      <button>create</button>
+      <h:inputText  required="required"  value="#{userLogin.userName}"  id="username" validatorMessage="Please enter your username" p:placeholder="Username" />
+       <h:inputSecret  required="required" value="#{userLogin.userPassword}"  id="password" validatorMessage="Please enter your password" p:placeholder="Password"/>
+       <h:inputText  required="required"  value="#{userLogin.userName}"  id="email" validatorMessage="Please enter your email" p:placeholder="Email" />
+       <h:commandButton style=" background: #fed136;" value="Create"  class="btn btn-xl"></h:commandButton>
       <p class="message">Already registered? <a href="#">Sign In</a></p>
     </form>
     <form class="login-form">
