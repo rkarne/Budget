@@ -56,7 +56,12 @@ public class UserController {
                        rs.getString("Password"),
                        rs.getString("Name")
                );
-                users.add(us);
+               if(rs.getString("Username").equals("admin")){
+                   
+               }
+               else{
+                   users.add(us);
+               }
             }
             
         } catch (SQLException ex) {
@@ -99,6 +104,7 @@ public class UserController {
             return "index"; 
        }
         if(dbuser.equals(userobj.getUserName()) && dbpass.equals(userobj.getUserPassword())){
+            getData();  
             String pass = HashCredentials.hashPassword(userobj.getUserPassword());
             userobj.setUserPassword(pass);
             if(dbuser.equals("admin") ){
@@ -112,7 +118,6 @@ public class UserController {
     }
     
     public String edit(){
-        
         return "edit";
     }
     
@@ -137,4 +142,31 @@ public class UserController {
         getData();  
         return "Admin";
     }
+   
+   public String addUser(){
+       return "Admin";
+   }
+   
+   public String saveUser(){
+       try  {
+           Connection conn = DBUtils.getConnection();
+            if (userobj.getId() >= 0) {
+                String sql = "UPDATE users SET Name = ?, Username = ? WHERE UId = ?";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, userobj.getName());
+                pstmt.setString(2, userobj.getUserName());
+                pstmt.setInt(3, userobj.getId());
+                pstmt.executeUpdate();
+            }
+          } catch (SQLException ex) {
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        getData();
+        return "Admin";
+   }
+   
+   public String cancel(){
+       return "Admin";
+   }
 }
+
