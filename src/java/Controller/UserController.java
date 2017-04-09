@@ -118,7 +118,6 @@ public class UserController {
     }
     
     public String edit(){
-        
         return "edit";
     }
     
@@ -143,4 +142,31 @@ public class UserController {
         getData();  
         return "Admin";
     }
+   
+   public String addUser(){
+       return "Admin";
+   }
+   
+   public String saveUser(){
+       try  {
+           Connection conn = DBUtils.getConnection();
+            if (userobj.getId() >= 0) {
+                String sql = "UPDATE users SET Name = ?, Username = ? WHERE UId = ?";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, userobj.getName());
+                pstmt.setString(2, userobj.getUserName());
+                pstmt.setInt(3, userobj.getId());
+                pstmt.executeUpdate();
+            }
+          } catch (SQLException ex) {
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        getData();
+        return "Admin";
+   }
+   
+   public String cancel(){
+       return "Admin";
+   }
 }
+

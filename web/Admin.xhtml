@@ -29,7 +29,10 @@
                  <h:commandButton class="btn btn-success" value="Delete" action="#{userController.delete(p)}" />
                 </h:column>
         </h:dataTable>
+           <h:commandButton value="Add Vendor"  action="index" /> <span>&nbsp;</span>
        </h:form><br><br></br></br>
+       
+       
         <h:form>
            <h:dataTable value="#{dataController.userdata}" var="p"
            border="3"
