@@ -21,11 +21,13 @@ and open the template in the editor.
                 <label>amount
                     <h:inputText value="#{dataController.userobj.amount}" />
                 </label>
-                <h:selectOneRadio value="#{userData.data}">
+
+                <h:selectOneRadio value="#{dataController.userobj.radio}">
                     <f:selectItem itemValue="+" itemLabel="Deposit" />
                     <f:selectItem itemValue="-" itemLabel="Withdraw" />           
                 </h:selectOneRadio><br><br><br></br></br></br>
-                <label>Date of transaction
+                <label>Date of transaction (YYYY-MM-DD)
+
                     <h:inputText value="#{dataController.userobj.date}" />
                 </label>
                 <h:commandButton value="Add Transaction" action="#{dataController.add()}" />

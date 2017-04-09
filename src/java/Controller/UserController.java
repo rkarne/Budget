@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
+
 import pojo.HashCredentials;
 import pojo.UserLogin;
 import pojo.Userdetails;
@@ -31,6 +32,7 @@ import pojo.Userdetails;
 public class UserController {
     private List<Userdetails> users;
     private  Userdetails userobj;
+    
     
    public UserController(Userdetails userde){
        this.userobj = userde;
@@ -104,15 +106,18 @@ public class UserController {
             return "index"; 
        }
         if(dbuser.equals(userobj.getUserName()) && dbpass.equals(userobj.getUserPassword())){
+            
             getData();  
             String pass = HashCredentials.hashPassword(userobj.getUserPassword());
             userobj.setUserPassword(pass);
             if(dbuser.equals("admin") ){
                 return "Admin";
             }
-                 return "Template";
+                
+                 return "trans";
           } 
         else{
+            
           return "index";  
         }
     }
