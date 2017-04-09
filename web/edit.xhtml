@@ -21,9 +21,9 @@
                     <f:selectItems value="{vendorController.vendors}" var="v"  itemLabel="{vendorController.getVendorByID(v.vendorId)}" />
                 </h:selectOneMenu>
             </p>-->
-                <h:commandButton  class="btn btn-success" value="Save"  />                
+             <h:commandButton  class="btn btn-success" action="#{userController.saveUser()}" value="Save"  />                
             <span>&nbsp;</span><span>&nbsp;</span>
-                <h:commandButton class="btn btn-primary" value="Cancel"  />
+            <h:commandButton class="btn btn-primary" action="#{userController.cancel()}"  value="Cancel"  />
         </h:form>
     </h:body>
 </html>
