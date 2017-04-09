@@ -23,7 +23,7 @@ public class Data {
     private String date;
     private int UId;
     private String radio;
-    DateFormat formatter = new SimpleDateFormat("YYYY-MM-DD");
+    private String user;
     
     public Data(int id, double bal, String place, double amount, String date, int UId){
         this.id = id;
@@ -92,6 +92,14 @@ public class Data {
 
     public void setRadio(String radio) {
         this.radio = radio;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
     
     

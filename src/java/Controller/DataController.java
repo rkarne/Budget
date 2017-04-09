@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Controller;
-
+import Controller.UserController;
 import Connection.DBUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,6 +19,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import pojo.Data;
 
+
 /**
  *
  * @author c0681010
@@ -28,6 +29,7 @@ import pojo.Data;
 public class DataController {
     private List<Data> userdata = new ArrayList<>();
     private Data userobj = new Data();
+    
     
     
        public DataController(Data userde){
@@ -58,7 +60,7 @@ public class DataController {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
              userdata = new ArrayList<>();
         }
    }
@@ -80,13 +82,17 @@ public class DataController {
                 pstmt.executeUpdate();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
         }
         getData();  
         return "Admin";
     }
     
     public String add() {
+        //UserController us = new UserController();
+//        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXX");
+       // System.out.println(us.getUserName());
+       
         double trans;
         if ("+".equals(userobj.getRadio())){
             trans = userobj.getAmount();
@@ -95,16 +101,21 @@ public class DataController {
             trans = -(userobj.getAmount());
         }
         try {
+            double g = 0;
             Connection conn = DBUtils.getConnection();
-            //Statement stmt = conn.createStatement();
-           // stmt.executeUpdate("INSERT INTO products VALUES (" + thisProduct.getProductId() + ",'" + thisProduct.getName() + "','" + thisProduct.getVendorId() + "')");
+            Statement stmt = conn.createStatement();
+            ResultSet r = stmt.executeQuery("SELECT Balance FROM userdata WHERE TransId=( SELECT max(TransId) FROM userdata)");
+            while(r.next()){
+                g = r.getDouble("Balance");
+            }
             String sql = "INSERT INTO userdata (Balance, Place, Amount, Tdate, UId) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setDouble(1, (userobj.getBal()+trans));
+            pstmt.setDouble(1, (g +trans));
             pstmt.setString(2, userobj.getPlace());
             pstmt.setDouble(3, userobj.getAmount());
             pstmt.setString(4, userobj.getDate());
             pstmt.setInt(5, 3);
+            System.out.println();
             pstmt.executeUpdate();
             getData();
         } catch (SQLException ex) {
