@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Controller;
-import Controller.UserController;
 import Connection.DBUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +18,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import pojo.Data;
 
-
 /**
  *
  * @author c0681010
@@ -27,22 +25,24 @@ import pojo.Data;
 @Named
 @ApplicationScoped
 public class DataController {
-    private List<Data> userdata = new ArrayList<>();
-    private Data userobj = new Data();
-    
-    
+
+    private List<Data> userdata;
+    private Data userobj;
     
        public DataController(Data userde){
-           userobj = userde;
+           this.userobj = userde;
        }
     public DataController(){
      getData();
  }
        private void getData(){
-        userdata.clear();
+
         userobj = new Data();
+
+       //userobj = this;
         try {
-            
+            userdata = new ArrayList<>();
+
             Connection con = DBUtils.getConnection();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM userdata");
@@ -60,7 +60,9 @@ public class DataController {
             }
             
         } catch (SQLException ex) {
+
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
+
              userdata = new ArrayList<>();
         }
    }
@@ -89,6 +91,7 @@ public class DataController {
     }
     
     public String add() {
+
         //UserController us = new UserController();
 //        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXX");
        // System.out.println(us.getUserName());
