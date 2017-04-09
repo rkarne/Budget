@@ -124,7 +124,7 @@ public class DataController {
         } catch (SQLException ex) {
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "Admin";
+        return "Records";
         
     }
 }

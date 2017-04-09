@@ -114,7 +114,7 @@ public class UserController {
                 return "Admin";
             }
                 
-                 return "trans";
+                 return "Template";
           } 
         else{
             
