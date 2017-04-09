@@ -15,7 +15,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 import pojo.Data;
 
 /**
@@ -95,7 +97,11 @@ public class DataController {
         //UserController us = new UserController();
 //        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXX");
        // System.out.println(us.getUserName());
-       
+        int userID=0;
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+				.getExternalContext().getSession(false);
+        
+        String uname =  session.getAttribute("username").toString();
         double trans;
         if ("+".equals(userobj.getRadio())){
             trans = userobj.getAmount();
@@ -111,13 +117,20 @@ public class DataController {
             while(r.next()){
                 g = r.getDouble("Balance");
             }
+            String get = "SELECT UId from users where Username=?";
+            PreparedStatement pstmtget = conn.prepareStatement(get);
+            pstmtget.setString(1, uname);
+            ResultSet rs = pstmtget.executeQuery();
+            while(rs.next()){
+                userID = rs.getInt("UId");
+            }
             String sql = "INSERT INTO userdata (Balance, Place, Amount, Tdate, UId) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setDouble(1, (g +trans));
             pstmt.setString(2, userobj.getPlace());
             pstmt.setDouble(3, userobj.getAmount());
             pstmt.setString(4, userobj.getDate());
-            pstmt.setInt(5, 3);
+            pstmt.setInt(5,  userID);
             System.out.println();
             pstmt.executeUpdate();
             getData();
@@ -127,4 +140,6 @@ public class DataController {
         return "Records";
         
     }
+    
+    
 }

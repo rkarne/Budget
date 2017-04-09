@@ -10,8 +10,11 @@ package pojo;
 
 import Controller.UserController;
 import java.io.Serializable;
+import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -19,6 +22,7 @@ import javax.inject.Named;
  */
 @Named
 @SessionScoped
+@ManagedBean
 
 public class UserLogin  implements Serializable{
     private String userName;
@@ -56,6 +60,9 @@ public class UserLogin  implements Serializable{
           currentUser.setUserName(this.userName);
           currentUser.setUserPassword(this.userPassword);
           UserController us = new UserController(currentUser);
+           HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+				.getExternalContext().getSession(false);
+           session.setAttribute("username", userName);
           return us.doLogin(); 
           
        /* try {
