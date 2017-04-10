@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Controller;
+import pojo.Datab;
 import Connection.DBUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,21 +31,26 @@ public class DataController {
 
     private List<Data> userdata;
     private Data userobj;
+    private List<Datab> usedata;
+    private Datab useobj;
     
        public DataController(Data userde){
            this.userobj = userde;
        }
+       
     public DataController(){
      getData();
+     getDatab();
  }
+    
        private void getData(){
 
         userobj = new Data();
+        
 
        //userobj = this;
         try {
             userdata = new ArrayList<>();
-
             Connection con = DBUtils.getConnection();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM userdata");
@@ -66,6 +72,7 @@ public class DataController {
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
 
              userdata = new ArrayList<>();
+             usedata = new ArrayList<>();
         }
    }
        public List<Data> getUserdata() {
@@ -74,6 +81,15 @@ public class DataController {
 
     public Data getUserobj() {
         return userobj;
+    }
+
+
+    public List<Datab> getUsedata() {
+        return usedata;
+    }
+
+    public Datab getUseobj() {
+        return useobj;
     }
     
     public String delete(Data d){
@@ -112,11 +128,6 @@ public class DataController {
         try {
             double g = 0;
             Connection conn = DBUtils.getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet r = stmt.executeQuery("SELECT Balance FROM userdata WHERE TransId=( SELECT max(TransId) FROM userdata)");
-            while(r.next()){
-                g = r.getDouble("Balance");
-            }
             String get = "SELECT UId from users where Username=?";
             PreparedStatement pstmtget = conn.prepareStatement(get);
             pstmtget.setString(1, uname);
@@ -124,6 +135,17 @@ public class DataController {
             while(rs.next()){
                 userID = rs.getInt("UId");
             }
+            
+         
+            String h = ("SELECT Balance FROM userdata WHERE TransId=( SELECT max(TransId) FROM userdata) AND UId = ?");
+            PreparedStatement stmt = conn.prepareStatement(h);
+            stmt.setInt(1 ,userID);
+            ResultSet r = stmt.executeQuery();
+            
+            while(r.next()){
+                g = r.getDouble("Balance");
+            }
+            
             String sql = "INSERT INTO userdata (Balance, Place, Amount, Tdate, UId) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setDouble(1, (g +trans));
@@ -134,12 +156,53 @@ public class DataController {
             System.out.println();
             pstmt.executeUpdate();
             getData();
+
         } catch (SQLException ex) {
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "Records";
         
     }
+    private void getDatab(){
+        useobj = new Datab();
+         try {
+             int userID=0;
+             HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+				.getExternalContext().getSession(false);
+        
+            String uname =  session.getAttribute("username").toString();
+            usedata = new ArrayList<>();
+            Connection conn = DBUtils.getConnection();
+            String get = "SELECT UId from users where Username=?";
+            PreparedStatement pstmtget = conn.prepareStatement(get);
+            pstmtget.setString(1, uname);
+            ResultSet rs = pstmtget.executeQuery();
+            while(rs.next()){
+                userID = rs.getInt("UId");
+            }
+             
+            
+            String l = ("SELECT * FROM userdata WHERE UId = ?");
+            PreparedStatement stmtt = conn.prepareStatement(l);
+            stmtt.setInt(1 ,userID);
+            ResultSet gr = stmtt.executeQuery();
+            while(gr.next()){
+               Datab us = new Datab(
+                       gr.getInt("TransId"),
+                       gr.getDouble("Balance"),
+                       gr.getString("Place"),
+                       gr.getDouble("Amount"),
+                       gr.getString("Tdate")
+               );
+                usedata.add(us);
+         }
+         } catch (SQLException ex) {
+
+            Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
+
+             
+             usedata = new ArrayList<>();
+        }
     
-    
+}
 }
