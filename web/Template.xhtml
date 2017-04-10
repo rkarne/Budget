@@ -2,39 +2,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-    <meta charset="utf-8"></meta>
-<meta charset="utf-8"></meta>
+      <meta charset="utf-8"></meta>
+     <meta charset="utf-8"></meta>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
     <meta name="description" content=""></meta>
     <meta name="author" content=""></meta>
 
-    <title>Bare - Start Bootstrap Template</title>
+    <title>Budget Application</title>
 
   
     <link href="css/bootstrap.min.css" rel="stylesheet"></link>
-
-   
-    <style>
+  
+        <link href="css/templ.css" rel="stylesheet"></link>
+           <style>
     body {
         padding-top: 70px;
        
     </style>
 
-   
-
-   
-
+  
     </h:head>
-     
-   
-
     <h:body>
-        <h:form>
-        
+             
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
            
@@ -50,32 +42,66 @@
   
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="MontlyExpenditure.xhtml">Monthly Expenditure</a>
+                 <li>
+                       <a href="MontlyExpenditure.xhtml">Monthly Expenditure</a>
                     </li>
                     <li>
                         <a href="AnnualExpenditure.xhtml">Annual Expenditure</a>
                     </li>
                     <li>
                         <a href="Records.xhtml">View records</a>
-                    </li>
+                    </li> 
                 </ul>
             </div>
       
         </div>
       
     </nav>
+        <h:form>
+   
 
-
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-12 text-center">
-             
-             
-            </div>
-        </div>
+    <div class="container1">
+    
+  <form>
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Place  : </label>
+      
+          <h:inputText  value="#{dataController.userobj.place}" class="form-control" id="inputEmail3" ></h:inputText>
+      
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label" >Amount : </label>
+      
+          <h:inputText value="#{dataController.userobj.amount}" class="form-control" id="inputPassword3" ></h:inputText>
+      
+     
+    </div>
+     
+    <fieldset class="form-group row">
+              <h:selectOneRadio value="#{userData.data}">
+                  <f:selectItem itemValue="+" itemLabel="Deposit" />
+                  <f:selectItem itemValue="-" itemLabel="Withdraw" />           
+                </h:selectOneRadio>
+        
+        </fieldset>
+     <br/>
+      
+      <div class="form-group row">
+      <label for="inputDate" class="col-sm-2 col-form-label">Date : </label>
+      
+          <h:inputText value="#{dataController.userobj.date}" class="form-control" id="inputDate" ></h:inputText>
+      
+    </div>
  
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+          <h:commandButton  class="btn btn-primary" value="Add Transaction" action="#{dataController.add()}" />
+      </div>
+    </div>
+       
+
+  </form>
+
 
     </div>
   

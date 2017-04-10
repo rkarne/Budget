@@ -5,26 +5,87 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Budget- EditUser</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+           <meta charset="utf-8"></meta>
+     <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
+
+    <title>Budget Application</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+  
+        <link href="css/templ.css" rel="stylesheet"></link>
+           <style>
+    body {
+        padding-top: 70px;
+       
+    </style>
+
+
     </h:head>
-    <h:body>        
-        
-        
-        <h:form>
-            <p>Name: <h:inputText value="#{userController.userobj.name}" /></p>
-            <p>UserName: <h:inputText value="#{userController.userobj.userName}" /></p>
+         
+         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+           
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.xhtml">Home</a>
+            </div>
+  
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                   <li>
+                       <a href="Admin.xhtml">Admin Panel</a>
+                    </li>
+                   <!-- <li>
+                        <a href="AnnualExpenditure.xhtml">Annual Expenditure</a>
+                    </li>
+                    <li>
+                        <a href="Records.xhtml">View records</a>
+                    </li> -->
+                </ul>
+                
+            </div>
+      
+        </div>
+      
+    </nav>
+  <h:body> 
+      <div class ="form-group">
+          <div id="bord">
+          <h:form>
+               <div class="form-group row">
+            <p>Name : <h:inputText value="#{userController.userobj.name}" /></p>
+               </div>
+               <div class="form-group row">
+                  
+                    <p>Username : <h:inputText value="#{userController.userobj.userName}" /></p>
+               </div>
              <!--   <p>Vendor_ID  <h:inputText value="{productController.thisProduct.vendorId}" /> 
              <h:selectOneMenu >
                     <f:selectItems value="{vendorController.vendors}" var="v"  itemLabel="{vendorController.getVendorByID(v.vendorId)}" />
                 </h:selectOneMenu>
             </p>-->
+             <div class="form-group row">
+                 <p>
              <h:commandButton  class="btn btn-success" action="#{userController.saveUser()}" value="Save"  />                
             <span>&nbsp;</span><span>&nbsp;</span>
             <h:commandButton class="btn btn-primary" action="#{userController.cancel()}"  value="Cancel"  />
+                 </p>
+             </div>
         </h:form>
+          </div>
+          </div> 
     </h:body>
 </html>
 
