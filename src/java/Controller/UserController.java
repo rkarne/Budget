@@ -16,7 +16,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
+
 import pojo.HashCredentials;
 import pojo.UserLogin;
 import pojo.Userdetails;
@@ -31,6 +34,7 @@ import pojo.Userdetails;
 public class UserController {
     private List<Userdetails> users;
     private  Userdetails userobj;
+    
     
    public UserController(Userdetails userde){
        this.userobj = userde;
@@ -95,7 +99,6 @@ public class UserController {
                 dbpass = rs.getString("Password");
                 userobj.setName(rs.getString("Name"));
             }
-             
         } catch (SQLException ex) {
             Logger.getLogger(UserLogin.class.getName()).log(Level.SEVERE, null, ex);
            
@@ -113,6 +116,7 @@ public class UserController {
                  return "Template";
           } 
         else{
+            
           return "index";  
         }
     }

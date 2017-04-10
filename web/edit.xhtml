@@ -5,6 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Budget- EditUser</title>
+
            <meta charset="utf-8"></meta>
      <meta charset="utf-8"></meta>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
@@ -71,11 +72,13 @@
                   
                     <p>Username : <h:inputText value="#{userController.userobj.userName}" /></p>
                </div>
+
              <!--   <p>Vendor_ID  <h:inputText value="{productController.thisProduct.vendorId}" /> 
              <h:selectOneMenu >
                     <f:selectItems value="{vendorController.vendors}" var="v"  itemLabel="{vendorController.getVendorByID(v.vendorId)}" />
                 </h:selectOneMenu>
             </p>-->
+
              <div class="form-group row">
                  <p>
              <h:commandButton  class="btn btn-success" action="#{userController.saveUser()}" value="Save"  />                
@@ -86,6 +89,7 @@
         </h:form>
           </div>
           </div> 
+
     </h:body>
 </html>
 

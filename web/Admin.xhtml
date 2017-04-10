@@ -77,16 +77,20 @@
                     #{p.userName}
             </h:column>
              <h:column>
+
                  <h:commandButton style=" background-color:orange;" class="btn btn-success" value="Delete" action="#{userController.delete(p)}" />
              </h:column>
         </h:dataTable><br/>
            <h:commandButton style=" background-color:orange;" value="Add Vendor"  action="index" /> <span>&nbsp;</span>
+
        </h:form><br><br></br></br>
        
        
         <h:form>
+
            <h:dataTable id = "panel"  border = "1"
                          cellpadding = "10" cellspacing = "1" bgcolor="#F0E68C"  value="#{dataController.userdata}" var="p">
+
             <h:column>
                 <f:facet name="header">User_ID</f:facet>
                   #{p.id} 
@@ -113,10 +117,12 @@
             </h:column>
              <h:column>
                 
+
                     <h:commandButton style=" background-color:orange;" class="btn btn-success" value="Delete" action="#{dataController.delete(p)}" />
                 </h:column>
         </h:dataTable>
       
+
             </h:form>
     </h:body>
 </html>
