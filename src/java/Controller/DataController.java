@@ -93,15 +93,8 @@ public class DataController {
     }
     
     public String add() {
-
-        //UserController us = new UserController();
-//        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXX");
-       // System.out.println(us.getUserName());
-        int userID=0;
-        HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-				.getExternalContext().getSession(false);
-        
-        String uname =  session.getAttribute("username").toString();
+        int userID=getUserId();
+        double g = 0;
         double trans;
         if ("+".equals(userobj.getRadio())){
             trans = userobj.getAmount();
@@ -110,19 +103,11 @@ public class DataController {
             trans = -(userobj.getAmount());
         }
         try {
-            double g = 0;
             Connection conn = DBUtils.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet r = stmt.executeQuery("SELECT Balance FROM userdata WHERE TransId=( SELECT max(TransId) FROM userdata)");
             while(r.next()){
                 g = r.getDouble("Balance");
-            }
-            String get = "SELECT UId from users where Username=?";
-            PreparedStatement pstmtget = conn.prepareStatement(get);
-            pstmtget.setString(1, uname);
-            ResultSet rs = pstmtget.executeQuery();
-            while(rs.next()){
-                userID = rs.getInt("UId");
             }
             String sql = "INSERT INTO userdata (Balance, Place, Amount, Tdate, UId) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -131,9 +116,10 @@ public class DataController {
             pstmt.setDouble(3, userobj.getAmount());
             pstmt.setString(4, userobj.getDate());
             pstmt.setInt(5,  userID);
-            System.out.println();
             pstmt.executeUpdate();
             getData();
+            RecordController rc = new RecordController();
+            rc.getRecord();
         } catch (SQLException ex) {
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -141,5 +127,25 @@ public class DataController {
         
     }
     
+    public int getUserId(){
+        int userID=0;
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+				.getExternalContext().getSession(false);
+        String uname =  session.getAttribute("username").toString();
+         try {
+            Connection conn = DBUtils.getConnection();
+            String get = "SELECT UId from users where Username=?";
+            PreparedStatement pstmtget = conn.prepareStatement(get);
+            pstmtget.setString(1, uname);
+            ResultSet rs = pstmtget.executeQuery();
+            while(rs.next()){
+                userID = rs.getInt("UId");
+            }
+         }
+           catch (SQLException ex) {
+            Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return userID;
+    }
     
 }
