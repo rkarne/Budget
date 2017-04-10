@@ -6,11 +6,38 @@
     <h:head>
         <title>Admin Panel</title>
         <link rel="icon" href="img/icon.png"></link>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+   <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+   <script language="javascript" src="scripts.js"></script>
+   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+    
+  <script>
+      function initDialog() {
+ $("#idOfDialogPlaceHolder").dialog({
+     modal: true,
+     buttons: {
+            Submit: function () {
+                $("#justAButton").click();
+            },
+            Close: function () {
+                $(this).dialog("close");
+            }
+     },
+ });
+}
+
+  </script>
     </h:head>
     <h:body>
-        <p>Heloooooooooooooooooooo</p>
+       
         <p>#{userLogin.userName}</p>
+        
+        
        <h:form>
+             <h:commandLink action="index">  Home </h:commandLink>
            <h:dataTable value="#{userController.users}" var="p"
            border="3"
            cellspacing="2" cellpadding="2"  style="background-color: white">
@@ -32,9 +59,14 @@
                  <h:commandButton class="btn btn-success" value="Delete" action="#{userController.delete(p)}" />
                 </h:column>
         </h:dataTable>
-       <!--    <h:commandButton value="Add User"  action="index" /> <span>&nbsp;</span> -->
-           
+           <br/> <br/>
+       <!--    <h:commandButton value="Add User"  action="index" /> <span>&nbsp;</span> 
+           <h:commandButton class="btn btn-success" value="Add User" action="{userController.saveUser()}" /> -->
+               <h:commandButton id="dialogClickBtn"  class="btn btn-success" value="Add User" onclick="initDialog(); return false;"></h:commandButton>
+             
+            
        </h:form><br><br></br></br>
+       
        
        
         <h:form>
@@ -42,7 +74,7 @@
            border="3"
            cellspacing="2" cellpadding="2"  style="background-color: white">
             <h:column>
-                <f:facet name="header">User_ID</f:facet>
+                <f:facet name="header">Transaction ID</f:facet>
                   #{p.id} 
             </h:column>
             <h:column>
@@ -54,15 +86,15 @@
                     #{p.place}
             </h:column>
             <h:column>
-                <f:facet name="header">amount</f:facet>
+                <f:facet name="header">Amount</f:facet>
                     #{p.amount}
             </h:column>
             <h:column>
-                <f:facet name="header">date</f:facet>
+                <f:facet name="header">Date</f:facet>
                     #{p.date}
             </h:column>
             <h:column>
-                <f:facet name="header">UId</f:facet>
+                <f:facet name="header">User Id</f:facet>
                     #{p.UId}
             </h:column>
              <h:column>
@@ -71,6 +103,22 @@
                 </h:column>
         </h:dataTable>
             </h:form>
+       
+       
+       
+       <h:panelGroup id="idOfDialogPlaceHolder" style="display:none">
+            <h:form prependId="false">
+               
+                <p>Name: <h:inputText value="#{userController.userobj.name}" required="Please enter"/></p>
+                <p>Email: <h:inputText value="#{userController.userobj.email}" required="Please enter"/></p>
+                <p>UserName: <h:inputText value="#{userController.userobj.userName}"  required="Please enter"/></p>
+                <p>Password: <h:inputText value="#{userController.userobj.userPassword}" required="Please enter"/></p>
+                <p>Date: <h:inputText value="#{userController.userobj.date}" required="Please enter"/></p>
+                <h:commandButton id="justAButton" onclick="alert('wow')"  style="display:none"></h:commandButton>
+            </h:form>
+        </h:panelGroup>
+        
+     
     </h:body>
 </html>
 

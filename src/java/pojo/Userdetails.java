@@ -14,12 +14,16 @@ public class Userdetails {
     private String userName;
     private String userPassword;
     private String name;
+    private String email;
+    private String date;
     
-    public Userdetails(int id, String usname, String uspass, String name ){
+    public Userdetails(int id, String usname, String uspass, String name, String email, String date){
         this.id = id;
         this.userName = usname;
         this.userPassword = uspass;
         this.name = name;
+        this.email=email;
+        this.date = date;
     }
 
     public void setId(int id) {
@@ -52,6 +56,22 @@ public class Userdetails {
 
     public String getName() {
         return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
     
     

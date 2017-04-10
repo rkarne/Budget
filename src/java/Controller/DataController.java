@@ -104,8 +104,11 @@ public class DataController {
         }
         try {
             Connection conn = DBUtils.getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet r = stmt.executeQuery("SELECT Balance FROM userdata WHERE TransId=( SELECT max(TransId) FROM userdata)");
+           // Statement stmt = conn.createStatement();
+            String sqlh=("SELECT Balance FROM userdata WHERE TransId=( SELECT max(TransId) FROM userdata) AND UId = ?");
+            PreparedStatement stmt = conn.prepareStatement(sqlh);
+            stmt.setInt(1 ,userID);
+            ResultSet r = stmt.executeQuery();
             while(r.next()){
                 g = r.getDouble("Balance");
             }
