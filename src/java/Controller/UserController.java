@@ -16,7 +16,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import pojo.HashCredentials;
 import pojo.UserLogin;
@@ -97,7 +99,6 @@ public class UserController {
                 dbpass = rs.getString("Password");
                 userobj.setName(rs.getString("Name"));
             }
-             
         } catch (SQLException ex) {
             Logger.getLogger(UserLogin.class.getName()).log(Level.SEVERE, null, ex);
            
@@ -106,15 +107,13 @@ public class UserController {
             return "index"; 
        }
         if(dbuser.equals(userobj.getUserName()) && dbpass.equals(userobj.getUserPassword())){
-            
             getData();  
             String pass = HashCredentials.hashPassword(userobj.getUserPassword());
             userobj.setUserPassword(pass);
             if(dbuser.equals("admin") ){
                 return "Admin";
             }
-                
-                 return "trans";
+                 return "Template";
           } 
         else{
             
