@@ -58,7 +58,9 @@ public class UserController {
                        rs.getInt("UId"),
                        rs.getString("Username"),
                        rs.getString("Password"),
-                       rs.getString("Name")
+                       rs.getString("Name"),
+                       rs.getString("Email"),
+                       rs.getString("Date")
                );
                if(rs.getString("Username").equals("admin")){
                    
@@ -141,7 +143,7 @@ public class UserController {
             }
         } catch (SQLException | NullPointerException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-            return "Records";
+           
         }
         getData();  
         return "Admin";

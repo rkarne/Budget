@@ -12,7 +12,9 @@
     <meta name="author" content=""></meta>
 
     <title>Budget Application</title>
+
     <link rel="icon" href="img/icon.png"></link>
+
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
 
@@ -27,7 +29,9 @@
     
     <link rel="stylesheet" href="css/style.css"></link>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src="js/index.js"></script>
+
+    
+
     
     </h:head>
     <h:body id="page-top" class="index">
@@ -62,9 +66,13 @@
                     <li>
                         <a class="page-scroll" href="#team">Team</a>
                     </li>
-                    <li>
+
+                    
+
+                  <!--  <li>
                         <a class="page-scroll" href="#contact">Contact Us</a>
-                    </li>
+                    </li> -->
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -128,25 +136,27 @@
                 </div> -->
 <div class="login-page">
   <div class="form">
+
        
-    <form class="register-form">
+   <!-- <form class="register-form">
          <h:form>
       <h:inputText  required="required"  value="#{userLogin.userName}"  id="username" validatorMessage="Please enter your username" p:placeholder="Username" />
        <h:inputSecret  required="required" value="#{userLogin.userPassword}"  id="password" validatorMessage="Please enter your password" p:placeholder="Password"/>
        <h:inputText  required="required"  value="#{userLogin.userName}"  id="email" validatorMessage="Please enter your email" p:placeholder="Email" />
        <h:commandButton style=" background: #fed136;" value="Create"  class="btn btn-xl"></h:commandButton>
       <p class="message">Already registered? <a href="#">Sign In</a></p>
-       </h:form>
-    </form>
-    <form class="login-form">
+       </h:form> 
+    </form>-->
+   <form class="login-form">
         <h:form>
             <h:inputText  required="required"  value="#{userLogin.userName}"  id="username" validatorMessage="Please enter your username" p:placeholder="Username" />
        <h:inputSecret  required="required" value="#{userLogin.userPassword}"  id="password" validatorMessage="Please enter your password" p:placeholder="Password"/>
        <h:commandButton style=" background: #fed136;" value="Sign In" action="#{userLogin.validate()}" class="btn btn-xl"></h:commandButton>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    <!--  <p class="message">Not registered? <a href="#">Create an account</a></p> -->
         </h:form>
-    </form>
+    </form> 
   
+
   </div>
 </div>
 
@@ -253,21 +263,27 @@
 
                         <h4>Roja jayashree</h4>
                         <p class="text-muted">Lead programmer</p>
-                        <ul class="list-inline social-buttons">
+
+                     <!--   <ul class="list-inline social-buttons">
                             <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
                             </li>
                             <li><a href="https://www.linkedin.com/uas/login"><i class="fa fa-linkedin"></i></a>
                             </li>
-                        </ul>
+                        </ul> -->
+
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="team-member">
                         <img src="img/team/2.jpg" class="img-responsive img-circle" alt=""></img>
                         <h4>Ivor lobo</h4>
-                        <p class="text-muted">Lead designer</p>
+
+                        <p class="text-muted">Database developer</p>
+                       
+
+                    <!--    <p class="text-muted">Lead designer</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
                             </li>
@@ -275,14 +291,19 @@
                             </li>
                             <li><a href="https://www.linkedin.com/uas/login"><i class="fa fa-linkedin"></i></a>
                             </li>
-                        </ul>
+                        </ul> -->
+
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="team-member">
                         <img src="img/team/3.jpg" class="img-responsive img-circle" alt=""></img>
                         <h4>Amandeep kaur</h4>
-                        <p class="text-muted">Lead Developer</p>
+
+                        <p class="text-muted">Website developer</p>
+                       
+
+                      <!--  <p class="text-muted">Lead Developer</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
                             </li>
@@ -290,7 +311,8 @@
                             </li>
                             <li><a href="https://www.linkedin.com/uas/login"><i class="fa fa-linkedin"></i></a>
                             </li>
-                        </ul>
+                        </ul> -->
+
                     </div>
                 </div>
             </div>
@@ -305,7 +327,10 @@
     <!-- Clients Aside -->
     
     <!-- Contact Section -->
-    <section id="contact">
+
+    
+
+  <!--  <section id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -348,7 +373,8 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
+
 
     <footer>
         <div class="container">
@@ -366,14 +392,16 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-4">
+
+              <!--  <div class="col-md-4">
                     <ul class="list-inline quicklinks">
                         <li><a href="#"></a>
                         </li>
                         <li><a href="#"></a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
+
             </div>
         </div>
     </footer>
