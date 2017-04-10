@@ -138,7 +138,7 @@
   <div class="form">
 
        
-    <form class="register-form">
+  <!--  <form class="register-form">
          <h:form>
       <h:inputText  required="required"  value="#{userLogin.userName}"  id="username" validatorMessage="Please enter your username" p:placeholder="Username" />
        <h:inputSecret  required="required" value="#{userLogin.userPassword}"  id="password" validatorMessage="Please enter your password" p:placeholder="Password"/>
@@ -146,15 +146,15 @@
        <h:commandButton style=" background: #fed136;" value="Create"  class="btn btn-xl"></h:commandButton>
       <p class="message">Already registered? <a href="#">Sign In</a></p>
        </h:form>
-    </form>
-   <!-- <form class="login-form">
+    </form>-->
+   <form class="login-form">
         <h:form>
             <h:inputText  required="required"  value="#{userLogin.userName}"  id="username" validatorMessage="Please enter your username" p:placeholder="Username" />
        <h:inputSecret  required="required" value="#{userLogin.userPassword}"  id="password" validatorMessage="Please enter your password" p:placeholder="Password"/>
        <h:commandButton style=" background: #fed136;" value="Sign In" action="#{userLogin.validate()}" class="btn btn-xl"></h:commandButton>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
+     
         </h:form>
-    </form> -->
+    </form> 
   
 
   </div>

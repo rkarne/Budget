@@ -65,14 +65,13 @@
 
 
     <div class="container">
-
+        
         <div class="row">
             <div class="col-lg-12 text-center">
 
               
-           <h:dataTable value="#{dataController.userdata}" var="p"
-           border="3"
-           cellspacing="2" cellpadding="2"  style="background-color: white">
+           <h:dataTable  id = "panel"  border = "1"
+                         cellpadding = "10" cellspacing = "1" bgcolor="#F0E68C" value="#{dataController.userdata}" var="p">
             <h:column>
                 <f:facet name="header">Transaction_ID</f:facet>
                   #{p.id} 
