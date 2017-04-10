@@ -2,18 +2,67 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <title>Admin Panel</title>
-        <link rel="icon" href="img/icon.png"></link>
+         <meta charset="utf-8"></meta>
+     <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
+
+    <title>Budget Application</title>
+
+  
+    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+  
+        <link href="css/templ.css" rel="stylesheet"></link>
+           <style>
+    body {
+        padding-top: 70px;
+       
+    </style>
+
     </h:head>
-    <h:body>
-        <p>Heloooooooooooooooooooo</p>
-        <p>#{userLogin.userName}</p>
+           
+        
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+           
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.xhtml">Home</a>
+            </div>
+  
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                 <!--   <li>
+                        <a href="MontlyExpenditure.xhtml">Monthly Expenditure</a>
+                    </li>
+                    <li>
+                        <a href="AnnualExpenditure.xhtml">Annual Expenditure</a>
+                    </li>
+                    <li>
+                        <a href="Records.xhtml">View records</a>
+                    </li> -->
+                </ul>
+            </div>
+      
+        </div>
+      
+    </nav>
+
+    <h:body id="admin">
        <h:form>
-           <h:dataTable value="#{userController.users}" var="p"
-           border="3"
-           cellspacing="2" cellpadding="2"  style="background-color: white">
+         
+           <h:dataTable id = "panel"  border = "1"
+                         cellpadding = "10" cellspacing = "1" bgcolor="#F0E68C" value="#{userController.users}" var="p">
             <h:column>
 
                <f:facet name="header">User ID</f:facet>
@@ -28,19 +77,20 @@
                     #{p.userName}
             </h:column>
              <h:column>
-                
-                 <h:commandButton class="btn btn-success" value="Delete" action="#{userController.delete(p)}" />
-                </h:column>
-        </h:dataTable>
-       <!--    <h:commandButton value="Add User"  action="index" /> <span>&nbsp;</span> -->
-           
+
+                 <h:commandButton style=" background-color:orange;" class="btn btn-success" value="Delete" action="#{userController.delete(p)}" />
+             </h:column>
+        </h:dataTable><br/>
+           <h:commandButton style=" background-color:orange;" value="Add Vendor"  action="index" /> <span>&nbsp;</span>
+
        </h:form><br><br></br></br>
        
        
         <h:form>
-           <h:dataTable value="#{dataController.userdata}" var="p"
-           border="3"
-           cellspacing="2" cellpadding="2"  style="background-color: white">
+
+           <h:dataTable id = "panel"  border = "1"
+                         cellpadding = "10" cellspacing = "1" bgcolor="#F0E68C"  value="#{dataController.userdata}" var="p">
+
             <h:column>
                 <f:facet name="header">User_ID</f:facet>
                   #{p.id} 
@@ -67,9 +117,12 @@
             </h:column>
              <h:column>
                 
-                    <h:commandButton class="btn btn-success" value="Delete" action="#{dataController.delete(p)}" />
+
+                    <h:commandButton style=" background-color:orange;" class="btn btn-success" value="Delete" action="#{dataController.delete(p)}" />
                 </h:column>
         </h:dataTable>
+      
+
             </h:form>
     </h:body>
 </html>
