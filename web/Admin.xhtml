@@ -30,6 +30,8 @@
 }
 
   </script>
+
+  
     </h:head>
     <h:body>
        
@@ -37,7 +39,7 @@
         
         
        <h:form>
-             <h:commandLink action="index">  Home </h:commandLink>
+         <h:commandLink action="index">  Home </h:commandLink>
            <h:dataTable value="#{userController.users}" var="p"
            border="3"
            cellspacing="2" cellpadding="2"  style="background-color: white">
@@ -55,7 +57,7 @@
                     #{p.userName}
             </h:column>
              <h:column>
-                
+
                  <h:commandButton class="btn btn-success" value="Delete" action="#{userController.delete(p)}" />
                 </h:column>
         </h:dataTable>
