@@ -48,6 +48,18 @@
                   
                     <p>Username : <h:inputText value="#{userController.userobj.userName}" /></p>
                </div>
+              <div class="form-group row">
+                  
+                  <p>Password : <h:inputText value="#{userController.userobj.userPassword}" /></p>
+               </div>
+              <div class="form-group row">
+                  
+                  <p>Email : <h:inputText value="#{userController.userobj.email}" /></p>
+               </div>
+              <div class="form-group row">
+                  
+                  <p>Date : <h:inputText value="#{userController.userobj.date}" /></p>
+               </div>
              <h:commandButton  class="btn btn-success" action="#{userController.saveUser()}" value="Save"  />                
             <span>&nbsp;</span><span>&nbsp;</span>
             <h:commandButton class="btn btn-primary" action="#{userController.cancel()}"  value="Cancel"  />

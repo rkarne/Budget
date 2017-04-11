@@ -158,26 +158,36 @@ public class UserController {
    public String saveUser(){
        try  {
            Connection conn = DBUtils.getConnection();
-            if (userobj.getId() >= 0) {
-                String sql = "UPDATE users SET Name = ?, Username = ? WHERE UId = ?";
+           
+                String sql = "UPDATE users SET Name = ?, Username = ? , Password=?, Email=?, Date=? WHERE UId = ?";
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, userobj.getName());
                 pstmt.setString(2, userobj.getUserName());
-                pstmt.setInt(3, userobj.getId());
-                pstmt.executeUpdate();
-            }
-            else{                
-                String sql = "INSERT INTO users (Name, Email, Password, Username, Date) VALUES(?, ?, ?, ?, ?)";
-                PreparedStatement pstmt = conn.prepareStatement(sql);
-                pstmt.setString(1, userobj.getName());
-                pstmt.setString(2, userobj.getEmail());
                 pstmt.setString(3, userobj.getUserPassword());
-                pstmt.setString(4, userobj.getUserName());
+                pstmt.setString(4, userobj.getEmail());
                 pstmt.setString(5, userobj.getDate());
+                pstmt.setInt(6, userobj.getId());
                 pstmt.executeUpdate();
-                 
-            }
+            
           } catch (SQLException ex) {
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        getData();
+        return "Admin";
+   }
+   
+   public String insert(){
+        try {
+            Connection conn = DBUtils.getConnection();
+            String sql = "INSERT INTO users (Name, Email, Password, Username, Date) VALUES(?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, userobj.getName());
+            pstmt.setString(2, userobj.getEmail());
+            pstmt.setString(3, userobj.getUserPassword());
+            pstmt.setString(4, userobj.getUserName());
+            pstmt.setString(5, userobj.getDate());
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
         getData();

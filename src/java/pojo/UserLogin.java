@@ -4,16 +4,10 @@
  * and open the template in the editor.
  */
 package pojo;
-
-
-
-
 import Controller.SessionController;
 import Controller.UserController;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -33,14 +27,19 @@ import javax.servlet.http.HttpSession;
 public class UserLogin  implements Serializable{
     private String userName;
     private String userPassword;
-   
+    private String email;
+    private String name;
+    private String date;
     
     public UserLogin(){       
     }
 
-    public UserLogin(String user, String pass){
+    public UserLogin(String user, String pass, String email, String name, String date){
         this.userName = user;
         this.userPassword = pass;
+        this.email=email;
+        this.name = name;
+        this.date=date;
     }
     
     public String getUserName() {
@@ -58,6 +57,30 @@ public class UserLogin  implements Serializable{
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
       public String validate() {

@@ -114,12 +114,12 @@
        <h:panelGroup id="idOfDialogPlaceHolder"  style="display:none">
           
             <h:form prependId="false">     
-                <p>Name: <h:inputText value="#{userController.userobj.name}" required="Please enter"/></p>
-                <p>Email: <h:inputText value="#{userController.userobj.email}" required="Please enter"/></p>
-                <p>UserName: <h:inputText value="#{userController.userobj.userName}"  required="Please enter"/></p>
-                <p>Password: <h:inputText value="#{userController.userobj.userPassword}" required="Please enter"/></p>
-                <p>Date: <h:inputText value="#{userController.userobj.date}" required="Please enter"/></p>
-                <h:commandButton id="justAButton" action="#{userController.saveUser()}"  style="display:none"></h:commandButton>
+                <p>Name: <h:inputText value="#{userLogin.name}" required="Please enter"/></p>
+                <p>Email: <h:inputText value="#{userLogin.email}" required="Please enter"/></p>
+                <p>UserName: <h:inputText value="#{userLogin.userName}"  required="Please enter"/></p>
+                <p>Password: <h:inputText value="#{userLogin.userPassword}" required="Please enter"/></p>
+                <p>Date: <h:inputText value="#{userLogin.date}" required="Please enter"/></p>
+                <h:commandButton id="justAButton" action="#{userController.insert()}"  style="display:none"></h:commandButton>
             </h:form>
         </h:panelGroup>
         
