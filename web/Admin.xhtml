@@ -6,14 +6,17 @@
     <h:head>
         <title>Admin Panel</title>
         <link rel="icon" href="img/icon.png"></link>
-         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-   <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-   <script language="javascript" src="scripts.js"></script>
-   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
-    
+        <meta charset="utf-8"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+         <!--Show table -->
+         <link rel="stylesheet" href="css/bootstrap.min.css" ></link>
+         <!-- Popup dialog -->
+         <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+         <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+         <script language="javascript" src="scripts.js"></script>
+         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" /> 
+         <link href="css/templ.css" rel="stylesheet" />
   <script>
       function initDialog() {
  $("#idOfDialogPlaceHolder").dialog({
@@ -31,18 +34,11 @@
 
   </script>
     </h:head>
-    <h:body>
-    <p>#{userLogin.userName}</p>   
+  
+      
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
-           
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <a class="navbar-brand" href="index.xhtml">Home</a>
             </div>
   
@@ -54,14 +50,11 @@
         </div>
       
     </nav>
-
-    <h:body class="layout">
-
+ <h:body class="layout">
        <h:form>
-         <h:commandLink action="index">  Home </h:commandLink>
-           <h:dataTable value="#{userController.users}" var="p"
-           border="3"
-           cellspacing="2" cellpadding="2"  style="background-color: white">
+            <p>#{userLogin.userName}</p>
+           <h:dataTable id="panel" border="1"
+           cellspacing="1" cellpadding="10"  bgcolor="ghostwhite" value="#{userController.users}" var="p">
             <h:column>
 
                <f:facet name="header">User ID</f:facet>
@@ -77,16 +70,16 @@
             </h:column>
              <h:column>
 
-                 <h:commandButton class="btn btn-success" value="Delete" action="#{userController.delete(p)}" />
+                 <h:commandButton class="btn btn-warning" value="Delete" action="#{userController.delete(p)}" />
                 </h:column>
         </h:dataTable>
            <br/> <br/>
-               <h:commandButton id="dialogClickBtn"  class="btn btn-success" value="Add User" onclick="initDialog(); return false;"></h:commandButton>  
+               <h:commandButton id="dialogClickBtn" class="btn btn-primary btn-lg" value="Add User" onclick="initDialog(); return false;"></h:commandButton>  
        </h:form><br><br></br></br>
 <h:form>
-           <h:dataTable value="#{dataController.userdata}" var="p"
-           border="3"
-           cellspacing="2" cellpadding="2"  style="background-color: white">
+           <h:dataTable id="panel" value="#{dataController.userdata}" var="p"
+           border="1"
+           cellspacing="1" cellpadding="10"  style="background-color: white">
             <h:column>
                 <f:facet name="header">Transaction ID</f:facet>
                   #{p.id} 
@@ -112,7 +105,7 @@
                     #{p.UId}
             </h:column>
              <h:column>
-                    <h:commandButton class="btn btn-success" value="Delete" action="#{dataController.delete(p)}" />
+                    <h:commandButton class="btn btn-warning" value="Delete" action="#{dataController.delete(p)}" />
                 </h:column>
         </h:dataTable>
             </h:form>
