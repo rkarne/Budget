@@ -66,15 +66,18 @@
     <!-- Head2Q er -->
     <header>
         <div class="container">
+            
             <div class="intro-text">
+                <h:messages style="color: red; font-size: 25px"  id="messages" globalOnly="true" />
                 <div class="intro-lead-in">Maintain budget,become more Richer!</div>
                 <div class="intro-heading"><br/><br/></div>
-                <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
+                <a href="#about" class="page-scroll btn btn-xl">Tell Me More</a>
             </div>
         </div>
     </header>
 
     <!--Login Section -->
+ 
     <section id="portfolio" class="bg-light-gray">
         <div class="container">
 		<div class="row">
@@ -88,10 +91,11 @@
   <div class="form">
    <form class="login-form">
         <h:form>
+            
             <h:inputText value="#{userLogin.userName}"  id="username" p:placeholder="Username"  />
-            <h:message for="username"></h:message>
+            
             <h:inputSecret value="#{userLogin.userPassword}" id="password" p:placeholder="Password" />
-            <h:message for="password"></h:message>
+          
             <h:commandButton style=" background: #fed136;" value="Sign In" action="#{userLogin.validate()}" class="btn btn-xl"></h:commandButton>
         </h:form>
     </form> 

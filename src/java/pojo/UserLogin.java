@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
@@ -69,15 +70,21 @@ public class UserLogin  implements Serializable{
           return us.doLogin();       
     } 
       
-       public void logout(){
+       public void logout() throws IOException{
         HttpSession session = SessionController.getSession();
 	session.invalidate();
-       // FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+       /* FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
         } catch (IOException ex) {
             Logger.getLogger(UserLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } */
+       FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("logged out successfully"));
+        ExternalContext externalContext = context.getExternalContext();
+        externalContext.getFlash().setKeepMessages(true);
+        externalContext.invalidateSession();
+        externalContext.redirect("index.xhtml");
    }
       
 }

@@ -55,6 +55,7 @@
             <div class="col-lg-12 text-center">
             <p>#{userLogin.userName}</p>  
           <h:commandLink action="Template">  Template </h:commandLink>
+           <h:commandLink action="#{userLogin.logout()}">  Logout </h:commandLink><br/>
            <h:dataTable  id = "panel"  border = "1"
                          cellpadding = "10" cellspacing = "1" bgcolor="#F0E68C" value="#{dataController.userdata}" var="p">
             <h:column>
