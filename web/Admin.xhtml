@@ -111,15 +111,15 @@
         </h:dataTable>
             </h:form>
   
-       <h:panelGroup id="idOfDialogPlaceHolder" style="display:none">
-            <h:form prependId="false">
-               
+       <h:panelGroup id="idOfDialogPlaceHolder"  style="display:none">
+          
+            <h:form prependId="false">     
                 <p>Name: <h:inputText value="#{userController.userobj.name}" required="Please enter"/></p>
                 <p>Email: <h:inputText value="#{userController.userobj.email}" required="Please enter"/></p>
                 <p>UserName: <h:inputText value="#{userController.userobj.userName}"  required="Please enter"/></p>
                 <p>Password: <h:inputText value="#{userController.userobj.userPassword}" required="Please enter"/></p>
                 <p>Date: <h:inputText value="#{userController.userobj.date}" required="Please enter"/></p>
-                <h:commandButton id="justAButton" onclick="alert('wow')"  style="display:none"></h:commandButton>
+                <h:commandButton id="justAButton" action="#{userController.saveUser()}"  style="display:none"></h:commandButton>
             </h:form>
         </h:panelGroup>
         

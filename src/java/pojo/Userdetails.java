@@ -5,10 +5,16 @@
  */
 package pojo;
 
+
+import javax.inject.Named;
+
 /**
  *
  * @author c0689497
  */
+@Named
+
+
 public class Userdetails {
     private int id;
     private String userName;
