@@ -66,11 +66,25 @@
 
         <div class="row">
             <div class="col-lg-12 text-center">
-             <label>Start Date(YYYY-MM-DD)
-                 <h:inputText value="#{dataController.usobj.udate}"/>
-             </label>
-             <br/><br/><br/>
-             <h:commandButton value="Get Transactions for 30 days" action="#{dataController.getMonthly()}" />
+             <h:dataTable value="#{dataController.usdata}" var="p" border="3" cellspacing="2" cellpadding="5"  style="background-color: white">
+            <h:column>
+                <f:facet name="header">Balance</f:facet>
+                  #{p.bal} 
+            </h:column>           
+            <h:column>
+                <f:facet name="header">Place</f:facet>
+                    #{p.place}
+            </h:column>
+            <h:column>
+                <f:facet name="header">amount</f:facet>
+                    #{p.amount}
+            </h:column>
+            <h:column>
+                <f:facet name="header">date</f:facet>
+                    #{p.date}
+            </h:column>
+            
+        </h:dataTable>
             </div>
         </div>
  

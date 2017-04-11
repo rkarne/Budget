@@ -19,7 +19,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
+import pojo.Annual;
 import pojo.Data;
+import pojo.Monthly;
 
 /**
  *
@@ -33,6 +35,10 @@ public class DataController {
     private Data userobj;
     private List<Datab> usedata;
     private Datab useobj;
+    private List<Monthly> usdata;
+    private Monthly usobj;
+    private List<Annual> udata;
+    private Annual uobj;
     
        public DataController(Data userde){
            this.userobj = userde;
@@ -41,6 +47,7 @@ public class DataController {
     public DataController(){
      getData();
      getDatab();
+     
  }
     
        private void getData(){
@@ -90,6 +97,20 @@ public class DataController {
 
     public Datab getUseobj() {
         return useobj;
+    }
+    public List<Monthly> getUsdata() {
+        return usdata;
+    }
+
+    public Monthly getUsobj() {
+        return usobj;
+    }
+    public List<Annual> getUdata() {
+        return udata;
+    }
+
+    public Annual getUobj() {
+        return uobj;
     }
     
     public String delete(Data d){
@@ -211,6 +232,74 @@ public class DataController {
         }
         return userID;
     }
+
+    public String getMonthly() {
+        usobj = new Monthly();
+         try {
+              
+            Connection conn = DBUtils.getConnection();
+            String l = ("SELECT Balance, Place, Amount, Tdate from userdata where (CAST(? as DATE) >= CAST(Tdate as DATE) AND CAST(? as DATE) <= DATE_ADD(CAST(Tdate as DATE), INTERVAL 30 DAY)) AND UId = ?;");
+            PreparedStatement stmtt = conn.prepareStatement(l);
+            stmtt.setString(1 ,usobj.getUdate());
+            System.out.println("xxxxxxxxxxxxxxx");
+             
+             System.out.println(getUserId());
+            stmtt.setString(2 ,usobj.getUdate());
+            stmtt.setInt(3 ,getUserId());
+            ResultSet gr = stmtt.executeQuery();
+            while(gr.next()){
+               Monthly us = new Monthly();
+                       us.setBal(gr.getDouble("Balance"));
+                       
+                       us.setPlace(gr.getString("Place"));
+                       
+                       us.setAmount(gr.getDouble("Amount"));
+                       
+                       us.setDate(gr.getString("Tdate"));
+               
+                usdata.add(us);
+         }
+         } catch (SQLException ex) {
+
+            Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
+
+             
+             usdata = new ArrayList<>();
+    }
+         return "monthly";
     
 
 }
+
+    public String getAnnual() {
+        uobj = new Annual();
+         try {
+              
+            Connection conn = DBUtils.getConnection();
+            String l = ("SELECT Balance, Place, Amount, Tdate from userdata where (CAST(? as DATE) >= CAST(Tdate as DATE) AND CAST(? as DATE) <= DATE_ADD(CAST(Tdate as DATE), INTERVAL 365 DAY)) AND UId = ?;");
+            PreparedStatement stmtt = conn.prepareStatement(l);
+            stmtt.setString(1 ,uobj.getUdate());
+             
+            stmtt.setString(2 ,uobj.getUdate());
+            stmtt.setInt(3 ,getUserId());
+            ResultSet gr = stmtt.executeQuery();
+            while(gr.next()){
+               Annual us = new Annual(
+                       gr.getDouble("Balance"),
+                       gr.getString("Place"),
+                       gr.getDouble("Amount"),
+                       gr.getString("Tdate")
+               );
+                udata.add(us);
+         }
+         } catch (SQLException ex) {
+
+            Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
+
+             
+             udata = new ArrayList<>();
+    }
+         return "annual";
+    }
+}
+
