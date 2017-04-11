@@ -30,14 +30,33 @@
 }
 
   </script>
-
-  
     </h:head>
     <h:body>
-       
-        <p>#{userLogin.userName}</p>
-        
-        
+    <p>#{userLogin.userName}</p>   
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+           
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.xhtml">Home</a>
+            </div>
+  
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                </ul>
+            </div>
+      
+        </div>
+      
+    </nav>
+
+    <h:body class="layout">
+
        <h:form>
          <h:commandLink action="index">  Home </h:commandLink>
            <h:dataTable value="#{userController.users}" var="p"
@@ -62,16 +81,9 @@
                 </h:column>
         </h:dataTable>
            <br/> <br/>
-       <!--    <h:commandButton value="Add User"  action="index" /> <span>&nbsp;</span> 
-           <h:commandButton class="btn btn-success" value="Add User" action="{userController.saveUser()}" /> -->
-               <h:commandButton id="dialogClickBtn"  class="btn btn-success" value="Add User" onclick="initDialog(); return false;"></h:commandButton>
-             
-            
+               <h:commandButton id="dialogClickBtn"  class="btn btn-success" value="Add User" onclick="initDialog(); return false;"></h:commandButton>  
        </h:form><br><br></br></br>
-       
-       
-       
-        <h:form>
+<h:form>
            <h:dataTable value="#{dataController.userdata}" var="p"
            border="3"
            cellspacing="2" cellpadding="2"  style="background-color: white">
@@ -100,14 +112,11 @@
                     #{p.UId}
             </h:column>
              <h:column>
-                
                     <h:commandButton class="btn btn-success" value="Delete" action="#{dataController.delete(p)}" />
                 </h:column>
         </h:dataTable>
             </h:form>
-       
-       
-       
+  
        <h:panelGroup id="idOfDialogPlaceHolder" style="display:none">
             <h:form prependId="false">
                

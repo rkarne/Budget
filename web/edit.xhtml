@@ -11,31 +11,36 @@
   <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  
-  
-
     </h:head>
     <h:body>        
-        
-        
-        <h:form>
-            <p>Name: <h:inputText value="#{userController.userobj.name}" /></p>
-            <p>UserName: <h:inputText value="#{userController.userobj.userName}" /></p>
-           
-             <!--   <p>Vendor_ID  <h:inputText value="{productController.thisProduct.vendorId}" /> 
-             <h:selectOneMenu >
-                    <f:selectItems value="{vendorController.vendors}" var="v"  itemLabel="{vendorController.getVendorByID(v.vendorId)}" />
-                </h:selectOneMenu>
-            </p>-->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.xhtml">Home</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                   <li>
+                       <a href="Admin.xhtml">Admin Panel</a>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+  <h:body> 
+      <div class ="form-group1">
+          <div id="bord1">
+          <h:form>
+               <div class="form-group row">
+            <p>Name : <h:inputText value="#{userController.userobj.name}" /></p>
+               </div>
+               <div class="form-group row">
+                  
+                    <p>Username : <h:inputText value="#{userController.userobj.userName}" /></p>
+               </div>
              <h:commandButton  class="btn btn-success" action="#{userController.saveUser()}" value="Save"  />                
             <span>&nbsp;</span><span>&nbsp;</span>
             <h:commandButton class="btn btn-primary" action="#{userController.cancel()}"  value="Cancel"  />
         </h:form>
-        
-        
-           
-         
-           
     </h:body>
     </f:view>
 </html>
