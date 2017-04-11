@@ -56,7 +56,7 @@ public class UserLogin  implements Serializable{
 
       public String validate() {
          
-          Userdetails currentUser = new Userdetails(-1, "", "", "");
+          Userdetails currentUser = new Userdetails(-1, "", "", "", "", "");
           currentUser.setUserName(this.userName);
           currentUser.setUserPassword(this.userPassword);
           UserController us = new UserController(currentUser);
