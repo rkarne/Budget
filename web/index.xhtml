@@ -7,8 +7,7 @@
     <meta charset="utf-8"></meta>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-    <meta name="description" content=""></meta>
-    <meta name="author" content=""></meta>
+    
     <title>Budget Application</title>
     <link rel="icon" href="img/icon.png"></link>
 
@@ -16,6 +15,9 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
 
     <!-- Custom Fonts -->
+    <link rel="stylesheet" href="css/main.css"></link> 
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="js/slide_show.js"></script>
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"></link>
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'></link>
@@ -86,10 +88,10 @@
 <div class="login-page">
   <div class="form">
    <form class="login-form">
-        <h:form>
-            <h:inputText  required="required"  value="#{userLogin.userName}"  id="username" validatorMessage="Please enter your username" p:placeholder="Username" />
+        <h:form id="login_form">
+        <h:inputText  required="required"  value="#{userLogin.userName}"  id="username" validatorMessage="Please enter your username" p:placeholder="Username" />
        <h:inputSecret  required="required" value="#{userLogin.userPassword}"  id="password" validatorMessage="Please enter your password" p:placeholder="Password"/>
-       <h:commandButton style=" background: #fed136;" value="Sign In" action="#{userLogin.validate()}" class="btn btn-xl"></h:commandButton>
+       <h:commandButton id="login_in" style=" background: #fed136;" value="Sign In" onclick="function()" action="#{userLogin.validate()}" class="btn btn-xl"></h:commandButton>
         </h:form>
     </form> 
   </div>
@@ -188,7 +190,31 @@
                     <h2 class="section-heading">Our Amazing Team</h2>
                     <h3 class="section-subheading text-muted">Maintain budget,become more Richer!</h3>
                 </div>
-            </div>
+        </div>
+     <div id ="body">
+    <img  class="img-circle" id="slide" src="img/team/1.jpg" alt="Roja Jayashree karne"></img><br/><br/>
+    <h2 id="caption" style="text-align: center">Roja jayashree karne</h2> 
+    <div id="slides"> 
+        
+        <img src="img/team/1.jpg" alt="Roja Jayashree karne"></img>
+        <img src="img/team/2.jpg" alt="Ivor Lobo"></img>
+        <img src="img/team/3.jpg" alt="Amandeep kaur"></img>
+    </div>
+        
+        </div>
+        </div>
+    </section>
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <!--
             <div class="row">
                 <div class="col-sm-4">
                     <div class="team-member">
@@ -217,8 +243,7 @@
                     <p class="large text-muted"></p>
                 </div>
             </div>
-        </div>
-    </section>
+        </div>-->
     <footer>
         <div class="container">
             <div class="row">
