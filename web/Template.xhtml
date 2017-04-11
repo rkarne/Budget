@@ -23,12 +23,7 @@
         <div class="container">
            
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+               
                 <a class="navbar-brand" href="index.xhtml">Home</a>
             </div>
   
@@ -52,6 +47,7 @@
     <p>#{userLogin.userName}</p>
               <h:commandLink action="Records">  Records </h:commandLink>
                <h:commandLink action="index">  Home </h:commandLink><br/>
+               <h:commandLink action="#{userLogin.logout()}">  Logout </h:commandLink><br/>
                <br/>
  
       <div id="admin">

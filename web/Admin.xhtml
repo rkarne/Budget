@@ -53,6 +53,7 @@
  <h:body class="layout">
        <h:form>
             <p>#{userLogin.userName}</p>
+              <h:commandLink action="#{userLogin.logout()}">  Logout </h:commandLink><br/>
            <h:dataTable id="panel" border="1"
            cellspacing="1" cellpadding="10"  bgcolor="ghostwhite" value="#{userController.users}" var="p">
             <h:column>

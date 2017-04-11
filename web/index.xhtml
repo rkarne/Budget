@@ -47,6 +47,7 @@
                     <li>
                         <a class="page-scroll" href="#page-top">Home</a>
                     </li>
+                    
                     <li>
                         <a class="page-scroll" href="#portfolio">Login</a>
                     </li>
@@ -87,9 +88,11 @@
   <div class="form">
    <form class="login-form">
         <h:form>
-            <h:inputText  required="required"  value="#{userLogin.userName}"  id="username" validatorMessage="Please enter your username" p:placeholder="Username" />
-       <h:inputSecret  required="required" value="#{userLogin.userPassword}"  id="password" validatorMessage="Please enter your password" p:placeholder="Password"/>
-       <h:commandButton style=" background: #fed136;" value="Sign In" action="#{userLogin.validate()}" class="btn btn-xl"></h:commandButton>
+            <h:inputText value="#{userLogin.userName}"  id="username" p:placeholder="Username"  />
+            <h:message for="username"></h:message>
+            <h:inputSecret value="#{userLogin.userPassword}" id="password" p:placeholder="Password" />
+            <h:message for="password"></h:message>
+            <h:commandButton style=" background: #fed136;" value="Sign In" action="#{userLogin.validate()}" class="btn btn-xl"></h:commandButton>
         </h:form>
     </form> 
   </div>
@@ -223,7 +226,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; Your Website 2016</span>
+                    <span class="copyright">Copyright &copy; Budget 2017</span>
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline social-buttons">

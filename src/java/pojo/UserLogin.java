@@ -8,10 +8,15 @@ package pojo;
 
 
 
+import Controller.SessionController;
 import Controller.UserController;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
@@ -55,39 +60,24 @@ public class UserLogin  implements Serializable{
     }
 
       public String validate() {
-         
           Userdetails currentUser = new Userdetails(-1, "", "", "", "", "");
           currentUser.setUserName(this.userName);
           currentUser.setUserPassword(this.userPassword);
           UserController us = new UserController(currentUser);
-           HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-				.getExternalContext().getSession(false);
-           session.setAttribute("username", userName);
-          return us.doLogin(); 
-          
-       /* try {
-            // String pass = HashCredentials.hashPassword(password);
-            Connection con = DBUtils.getConnection();
-            PreparedStatement pstm = con.prepareCall("SELECT * FROM users where Username=? and Password=?");
-            pstm.setString(1, userName);
-            pstm.setString(2, userPassword);
-            ResultSet rs = pstm.executeQuery();
-            while(rs.next()){
-                 uname = rs.getString("Username");
-                 upass = rs.getString("Password");
-                System.out.println("User: "+uname);
-                System.out.println("Password: "+upass);
-            }
-            if(uname.equals(userName) && upass.equals(upass)){
-                return "Template";
-            }
-           
-        } catch (SQLException ex) {
+          HttpSession session = SessionController.getSession();
+          session.setAttribute("username", userName);
+          return us.doLogin();       
+    } 
+      
+       public void logout(){
+        HttpSession session = SessionController.getSession();
+	session.invalidate();
+       // FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+        } catch (IOException ex) {
             Logger.getLogger(UserLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-      return "index"; */
-        
-        
-    } 
-
+   }
+      
 }

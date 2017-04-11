@@ -44,11 +44,7 @@ public class DataController {
  }
     
        private void getData(){
-
         userobj = new Data();
-        
-
-       //userobj = this;
         try {
             userdata = new ArrayList<>();
             Connection con = DBUtils.getConnection();
@@ -151,11 +147,8 @@ public class DataController {
     private void getDatab(){
         useobj = new Datab();
          try {
-             int userID=0;
-             HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-				.getExternalContext().getSession(false);
-        
-            String uname =  session.getAttribute("username").toString();
+             int userID=0;   
+            String uname = SessionController.getUserName();
             usedata = new ArrayList<>();
             Connection conn = DBUtils.getConnection();
             String get = "SELECT UId from users where Username=?";
@@ -165,8 +158,6 @@ public class DataController {
             while(rs.next()){
                 userID = rs.getInt("UId");
             }
-             
-            
             String l = ("SELECT * FROM userdata WHERE UId = ?");
             PreparedStatement stmtt = conn.prepareStatement(l);
             stmtt.setInt(1 ,userID);
@@ -179,13 +170,10 @@ public class DataController {
                        gr.getDouble("Amount"),
                        gr.getString("Tdate")
                );
-                usedata.add(us);
+               usedata.add(us);
          }
          } catch (SQLException ex) {
-
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
-
-             
              usedata = new ArrayList<>();
         }
     }
@@ -193,9 +181,7 @@ public class DataController {
 
     public int getUserId(){
         int userID=0;
-        HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-				.getExternalContext().getSession(false);
-        String uname =  session.getAttribute("username").toString();
+        String uname =  SessionController.getUserName();
          try {
             Connection conn = DBUtils.getConnection();
             String get = "SELECT UId from users where Username=?";

@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
@@ -106,6 +107,7 @@ public class UserController {
            
         }
        if(dbuser == null || dbpass == null){
+          
             return "index"; 
        }
         if(dbuser.equals(userobj.getUserName()) && dbpass.equals(userobj.getUserPassword())){
@@ -115,10 +117,9 @@ public class UserController {
             if(dbuser.equals("admin") ){
                 return "Admin";
             }
-                 return "Template";
+           return "Template";
           } 
         else{
-            
           return "index";  
         }
     }
@@ -174,5 +175,7 @@ public class UserController {
    public String cancel(){
        return "Admin";
    }
+   
+  
 }
 
