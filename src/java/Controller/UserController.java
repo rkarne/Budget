@@ -30,64 +30,88 @@ import pojo.Userdetails;
  *
  * @author rkarne
  */
-
 @Named
 @ApplicationScoped
 public class UserController {
+
     private List<Userdetails> users;
-    private  Userdetails userobj;
-    
-    
-   public UserController(Userdetails userde){
-       this.userobj = userde;
-      
-   }
-   
- public UserController(){
-     getData();
- }
-  
-   private void getData(){
-       //userobj = this;
+    private Userdetails userobj;
+
+    /**
+     * user controller
+     *
+     * @param userde
+     */
+    public UserController(Userdetails userde) {
+        this.userobj = userde;
+
+    }
+
+    /**
+     * To get data
+     */
+    public UserController() {
+        getData();
+    }
+
+    /**
+     * Get data from users
+     */
+    private void getData() {
+        //userobj = this;
         try {
             users = new ArrayList<>();
             Connection con = DBUtils.getConnection();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM users");
-            
-            while(rs.next()){
-               Userdetails us = new Userdetails(
-                       rs.getInt("UId"),
-                       rs.getString("Username"),
-                       rs.getString("Password"),
-                       rs.getString("Name"),
-                       rs.getString("Email"),
-                       rs.getString("Date")
-               );
-               if(rs.getString("Username").equals("admin")){
-                   
-               }
-               else{
-                   users.add(us);
-               }
+
+            while (rs.next()) {
+                Userdetails us = new Userdetails(
+                        rs.getInt("UId"),
+                        rs.getString("Username"),
+                        rs.getString("Password"),
+                        rs.getString("Name"),
+                        rs.getString("Email"),
+                        rs.getString("Date")
+                );
+                if (rs.getString("Username").equals("admin")) {
+
+                } else {
+                    users.add(us);
+                }
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-             users = new ArrayList<>();
+            users = new ArrayList<>();
         }
-   }
+    }
 
+    /**
+     * Get users
+     *
+     * @return users
+     */
     public List<Userdetails> getUsers() {
         return users;
     }
 
-    public  Userdetails getUserobj() {
+    /**
+     * get user object
+     *
+     * @return userobj
+     *
+     */
+    public Userdetails getUserobj() {
         return userobj;
     }
-    
- 
-    public String doLogin(){
+
+    /**
+     * login
+     *
+     * @return index
+     */
+    public String doLogin() {
         //String pass = HashCredentials.hashPassword(password);
         String dbuser = null;
         String dbpass = null;
@@ -98,42 +122,59 @@ public class UserController {
             pstm.setString(1, userobj.getUserName());
             pstm.setString(2, userobj.getUserPassword());
             ResultSet rs = pstm.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 dbuser = rs.getString("Username");
                 dbpass = rs.getString("Password");
                 userobj.setName(rs.getString("Name"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserLogin.class.getName()).log(Level.SEVERE, null, ex);
-           
+
         }
-       if(dbuser == null || dbpass == null){
-          
-            return "index"; 
-       }
-        if(dbuser.equals(userobj.getUserName()) && dbpass.equals(userobj.getUserPassword())){
-            getData();  
+        if (dbuser == null || dbpass == null) {
+
+            return "index";
+        }
+        if (dbuser.equals(userobj.getUserName()) && dbpass.equals(userobj.getUserPassword())) {
+            getData();
             String pass = HashCredentials.hashPassword(userobj.getUserPassword());
             userobj.setUserPassword(pass);
-            if(dbuser.equals("admin") ){
+            if (dbuser.equals("admin")) {
                 return "Admin";
             }
-           return "Template";
-          } 
-        else{
-          return "index";  
+            return "Template";
+        } else {
+            return "index";
         }
     }
-    
-    public String edit(){
+
+    /**
+     * edit
+     *
+     * @return edit
+     */
+    public String edit() {
         return "edit";
     }
-    
-    public String view(Userdetails us){
-        userobj =us;
+
+    /**
+     * view details
+     *
+     * @param us
+     * @return edit
+     */
+    public String view(Userdetails us) {
+        userobj = us;
         return "edit";
     }
-   public String delete(Userdetails us){
+
+    /**
+     * Delete user details
+     *
+     * @param us
+     * @return Admin
+     */
+    public String delete(Userdetails us) {
         try {
             Connection conn = DBUtils.getConnection();
             System.out.println(us.getId());
@@ -145,40 +186,55 @@ public class UserController {
             }
         } catch (SQLException | NullPointerException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-           
+
         }
-        getData();  
+        getData();
         return "Admin";
     }
-   
-   public String addUser(){
-       return "Admin";
-   }
-   
-   public String saveUser(){
-       try  {
-           Connection conn = DBUtils.getConnection();
-           
-                String sql = "UPDATE users SET Name = ?, Username = ? , Password=?, Email=?, Date=? WHERE UId = ?";
-                PreparedStatement pstmt = conn.prepareStatement(sql);
-                pstmt.setString(1, userobj.getName());
-                pstmt.setString(2, userobj.getUserName());
-                pstmt.setString(3, userobj.getUserPassword());
-                pstmt.setString(4, userobj.getEmail());
-                pstmt.setString(5, userobj.getDate());
-                pstmt.setInt(6, userobj.getId());
-                pstmt.executeUpdate();
-            
-          } catch (SQLException ex) {
+
+    /**
+     * Add user
+     *
+     * @return Admin
+     */
+    public String addUser() {
+        return "Admin";
+    }
+
+    /**
+     * Save user
+     *
+     * @return Admin
+     */
+    public String saveUser() {
+        try {
+            Connection conn = DBUtils.getConnection();
+
+            String sql = "UPDATE users SET Name = ?, Username = ? , Password=?, Email=?, Date=? WHERE UId = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, userobj.getName());
+            pstmt.setString(2, userobj.getUserName());
+            pstmt.setString(3, userobj.getUserPassword());
+            pstmt.setString(4, userobj.getEmail());
+            pstmt.setString(5, userobj.getDate());
+            pstmt.setInt(6, userobj.getId());
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
         getData();
         return "Admin";
-   }
-   
-   public String insert(){
+    }
+
+    /**
+     * Insert user
+     *
+     * @return
+     */
+    public String insert() {
         try {
-         
+
             Connection conn = DBUtils.getConnection();
             String sql = "INSERT INTO users (Name, Email, Password, Username, Date) VALUES(?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -192,14 +248,17 @@ public class UserController {
         } catch (SQLException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        return "Admin";
-   }
-   
-   public String cancel(){
-       return "Admin";
-   }
-   
-  
-}
 
+        return "Admin";
+    }
+
+    /**
+     * Cancel
+     *
+     * @return Admin
+     */
+    public String cancel() {
+        return "Admin";
+    }
+
+}

@@ -22,55 +22,74 @@ import pojo.Data;
  *
  * @author c0689497
  */
-
 @Named
 @ApplicationScoped
 public class RecordController {
-     private List<Data> record;
+
+    private List<Data> record;
     private Data userobj;
-    
-    public RecordController(){
+
+    /**
+     * controller to get data from DB
+     */
+    public RecordController() {
         getDatafromDB();
     }
-    
-    private void getDatafromDB(){
-         try {
-             DataController db = new DataController();
-             int userid = db.getUserId();
-             record = new ArrayList<>();
-             Connection con = DBUtils.getConnection();
-             PreparedStatement pstmt = con.prepareCall("SELECT * FROM userdata WHERE UId=? ");
-             pstmt.setInt(1, userid);
-             ResultSet rs = pstmt.executeQuery();
-             while(rs.next()){
-                  Data getrecord = new Data(
-                       rs.getInt("TransId"),
-                       rs.getDouble("Balance"),
-                       rs.getString("Place"),
-                       rs.getDouble("Amount"),
-                       rs.getString("Tdate"),
-                       rs.getInt("UId")
-               );
+
+    /**
+     * Get data from users
+     */
+    private void getDatafromDB() {
+        try {
+            DataController db = new DataController();
+            int userid = db.getUserId();
+            record = new ArrayList<>();
+            Connection con = DBUtils.getConnection();
+            PreparedStatement pstmt = con.prepareCall("SELECT * FROM userdata WHERE UId=? ");
+            pstmt.setInt(1, userid);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Data getrecord = new Data(
+                        rs.getInt("TransId"),
+                        rs.getDouble("Balance"),
+                        rs.getString("Place"),
+                        rs.getDouble("Amount"),
+                        rs.getString("Tdate"),
+                        rs.getInt("UId")
+                );
                 record.add(getrecord);
-             }
-         } catch (SQLException ex) {
-             Logger.getLogger(RecordController.class.getName()).log(Level.SEVERE, null, ex);
-             record = new ArrayList<>();
-         }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RecordController.class.getName()).log(Level.SEVERE, null, ex);
+            record = new ArrayList<>();
+        }
     }
 
+    /**
+     * get record
+     *
+     * @return record
+     */
     public List<Data> getRecord() {
         return record;
     }
 
+    /**
+     * Get user object
+     *
+     * @return userobj
+     */
     public Data getUserobj() {
         return userobj;
     }
 
+    /**
+     * set user object
+     *
+     * @param userobj
+     */
     public void setUserobj(Data userobj) {
         this.userobj = userobj;
     }
-    
-    
-    
+
 }
