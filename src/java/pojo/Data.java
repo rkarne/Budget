@@ -5,11 +5,6 @@
  */
 package pojo;
 
-import java.sql.Date;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 
 
@@ -22,7 +17,6 @@ public class Data {
     private double bal;
     private String place;
     private double amount;
-
     private String date;
     private int UId;
     private String radio;

@@ -14,7 +14,6 @@ public class Datab {
     private double bal;
     private String place;
     private double amount;
-
     private String date;
     private String radio;
     private String user;

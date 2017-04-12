@@ -31,8 +31,7 @@ public class DataController {
 
     private List<Data> userdata;
     private Data userobj;
-    private List<Datab> usedata;
-    private Datab useobj;
+ 
     
        public DataController(Data userde){
            this.userobj = userde;
@@ -40,21 +39,17 @@ public class DataController {
        
     public DataController(){
      getData();
-     getDatab();
+
  }
-    
        private void getData(){
-
         userobj = new Data();
-        
-
-       //userobj = this;
         try {
             userdata = new ArrayList<>();
             Connection con = DBUtils.getConnection();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM userdata");
             
+            //ResultSet record = stmt.executeQuery("SELECT * FROM userdata where UId = ?");
             while(rs.next()){
                Data us = new Data(
                        rs.getInt("TransId"),
@@ -64,16 +59,15 @@ public class DataController {
                        rs.getString("Tdate"),
                        rs.getInt("UId")
                );
-                userdata.add(us);
+             userdata.add(us);
             }
             
+            
         } catch (SQLException ex) {
-
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
-
              userdata = new ArrayList<>();
-             usedata = new ArrayList<>();
         }
+        
    }
        public List<Data> getUserdata() {
         return userdata;
@@ -83,15 +77,6 @@ public class DataController {
         return userobj;
     }
 
-
-    public List<Datab> getUsedata() {
-        return usedata;
-    }
-
-    public Datab getUseobj() {
-        return useobj;
-    }
-    
     public String delete(Data d){
         try (Connection conn = DBUtils.getConnection()) {
             
@@ -108,25 +93,12 @@ public class DataController {
         return "Admin";
     }
     
-    public String add() {
-
-        //UserController us = new UserController();
-//        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXX");
-       // System.out.println(us.getUserName());
-        int userID=0;
+    public int getUerId(){
+        int userID= 0;
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-				.getExternalContext().getSession(false);
-        
+                    .getExternalContext().getSession(false);
         String uname =  session.getAttribute("username").toString();
-        double trans;
-        if ("+".equals(userobj.getRadio())){
-            trans = userobj.getAmount();
-        }
-        else{
-            trans = -(userobj.getAmount());
-        }
-        try {
-            double g = 0;
+         try {
             Connection conn = DBUtils.getConnection();
             String get = "SELECT UId from users where Username=?";
             PreparedStatement pstmtget = conn.prepareStatement(get);
@@ -135,8 +107,25 @@ public class DataController {
             while(rs.next()){
                 userID = rs.getInt("UId");
             }
-            
-         
+        } catch (SQLException ex) {
+            Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+      return userID;
+    }
+    
+    public String add() {
+        int userID=getUerId();
+        double g = 0;
+        double trans;
+        if ("+".equals(userobj.getRadio())){
+            trans = userobj.getAmount();
+        }
+        else{
+            trans = -(userobj.getAmount());
+        }
+        try {
+            Connection conn = DBUtils.getConnection();
             String h = ("SELECT Balance FROM userdata WHERE TransId=( SELECT max(TransId) FROM userdata) AND UId = ?");
             PreparedStatement stmt = conn.prepareStatement(h);
             stmt.setInt(1 ,userID);
@@ -163,46 +152,4 @@ public class DataController {
         return "Records";
         
     }
-    private void getDatab(){
-        useobj = new Datab();
-         try {
-             int userID=0;
-             HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-				.getExternalContext().getSession(false);
-        
-            String uname =  session.getAttribute("username").toString();
-            usedata = new ArrayList<>();
-            Connection conn = DBUtils.getConnection();
-            String get = "SELECT UId from users where Username=?";
-            PreparedStatement pstmtget = conn.prepareStatement(get);
-            pstmtget.setString(1, uname);
-            ResultSet rs = pstmtget.executeQuery();
-            while(rs.next()){
-                userID = rs.getInt("UId");
-            }
-             
-            
-            String l = ("SELECT * FROM userdata WHERE UId = ?");
-            PreparedStatement stmtt = conn.prepareStatement(l);
-            stmtt.setInt(1 ,userID);
-            ResultSet gr = stmtt.executeQuery();
-            while(gr.next()){
-               Datab us = new Datab(
-                       gr.getInt("TransId"),
-                       gr.getDouble("Balance"),
-                       gr.getString("Place"),
-                       gr.getDouble("Amount"),
-                       gr.getString("Tdate")
-               );
-                usedata.add(us);
-         }
-         } catch (SQLException ex) {
-
-            Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
-
-             
-             usedata = new ArrayList<>();
-        }
-    
-}
 }
