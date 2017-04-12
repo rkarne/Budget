@@ -40,7 +40,9 @@ public class Userdetails {
         this.email = email;
         this.date = date;
     }
-
+public Userdetails(){
+    
+}
     /**
      * setId
      *

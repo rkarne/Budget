@@ -22,41 +22,41 @@ import pojo.Data;
  * @author c0689497
  */
 public class AdminController {
-     private List<Data> data;
-     
-     public AdminController(){
-         getData();
-     }
-     
-     private void getData(){
-             try {
+
+    private List<Data> data;
+
+    public AdminController() {
+        getData();
+    }
+
+    private void getData() {
+        try {
             data = new ArrayList<>();
             int userid = getUerId();
             Connection con = DBUtils.getConnection();
             PreparedStatement pstmtget = con.prepareStatement("SELECT * FROM userdata where UId = ?");
             pstmtget.setInt(1, userid);
             ResultSet record = pstmtget.executeQuery();
-             while(record.next()){
-                  Data d = new Data(
-                       record.getInt("TransId"),
-                       record.getDouble("Balance"),
-                       record.getString("Place"),
-                       record.getDouble("Amount"),
-                       record.getString("Tdate"),
-                       record.getInt("UId")
-               );
+            while (record.next()) {
+                Data d = new Data(
+                        record.getInt("TransId"),
+                        record.getDouble("Balance"),
+                        record.getString("Place"),
+                        record.getDouble("Amount"),
+                        record.getString("Tdate"),
+                        record.getInt("UId")
+                );
                 data.add(d);
             }
-            
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
-             data = new ArrayList<>();
-        
-     }
-     }
+            data = new ArrayList<>();
+
+        }
+    }
 
     private int getUerId() {
-       return 0;
+        return 0;
     }
 }

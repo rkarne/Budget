@@ -1,196 +1,97 @@
-
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-    <meta charset="utf-8"></meta>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-   <title>Template Entry</title>
-    <link rel="icon" href="img/icon.png"></link>
-    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
-      <link href="css/templ.css" rel="stylesheet" ></link>
-    <style>
-    body {
-        padding-top: 70px;
-    }
-    </style>
+        <meta charset="utf-8"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <title>Template Entry</title>
+        <link rel="icon" href="img/icon.png"></link>
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+        <link href="css/templ.css" rel="stylesheet" ></link>
+        <style>
+            body {
+                padding-top: 70px;
+            }
+
+            .navbar-brand{
+                background-color: transparent;
+                font-size: 20px;
+                font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+                color: #fed136;
+            }
+        </style>
     </h:head>
     <h:body>
-       <h:form> 
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-           
+        <h:form> 
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
 
-            <div class="navbar-header">
-               
-                <a class="navbar-brand" href="index.xhtml">Home</a>
+                    <div class="nav navbar-nav">
+                        <a class="navbar-brand page-scroll" style="font-style: oblique; color: #fed136;"  >Budget Tool</a>
+                    </div>
+                    <div  id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <h:commandLink class="navbar-brand" action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
+                            </li> 
+                            <li>
+                                <h:commandLink class="navbar-brand" action="AnnualExpenditure"  >  Annual Expenditure </h:commandLink>&nbsp;&nbsp;
+                            </li>
+                            <li>
+                                <h:commandLink class="navbar-brand" action="MontlyExpenditure"  > Monthly Expenditure </h:commandLink>&nbsp;&nbsp;
+                            </li>
+                            <li>
+                                <h:commandLink class="navbar-brand" action="Records"  > Records </h:commandLink>&nbsp;&nbsp;
+                            </li>
+                            <li>
+                                <h:commandLink class="navbar-brand" action="#{userLogin.logout()}"  >  Logout </h:commandLink>
+                            </li>
+                        </ul>
+                    </div>
 
-            </div>
-  
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                 <li>
-                      <h:commandLink class="navbar-brand" action="index" style="background-color: black">Home</h:commandLink>
-                    </li>&nbsp;
-                    <li>
-                      
-                         <h:commandLink class="btn btn-secondary btn-lg active" action="AnnualExpenditure" style="background-color: black" >Annual Expenditure</h:commandLink>
-                    </li>&nbsp;
-                    <li>
-                         <h:commandLink class="btn btn-secondary btn-lg active" action="Records" style="background-color: black" >View Record</h:commandLink>
-                        
-                    </li> 
-                </ul>
-            </div>
-        </div>
-    </nav>    
- 
-    <div class="container1">
-    <p>#{userLogin.userName}</p>
-             <!-- <h:commandLink action="Records">  Records </h:commandLink>
-               <h:commandLink action="index">  Home </h:commandLink><br/>
+                </div>
+            </nav>    
 
-               <br/>-->
+            <div class="container1">
+                <p align="center">Hi #{userLogin.userName}</p>
 
-               <h:commandLink action="#{userLogin.logout()}">  Logout </h:commandLink><br/>
-               <br/>
+                <div id="admin">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Place:</label>
+                        <h:inputText  value="#{dataController.userobj.place}" class="form-control" id="inputEmail3" ></h:inputText>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label" >Amount:</label>
+                        <h:inputText value="#{dataController.userobj.amount}" class="form-control" id="inputPassword3" ></h:inputText>
+                    </div>
+                    <fieldset class="form-group row">
+                        <p>Transaction:  </p>
+                        <h:selectOneRadio  value="#{dataController.userobj.radio}">
+                            <f:selectItem itemValue="+" itemLabel="Deposit" />
+                            <f:selectItem itemValue="-" itemLabel="Withdraw" />           
+                        </h:selectOneRadio>
+                    </fieldset>
+                    <br/>
+                    <div class="form-group row">
+                        <label for="inputDate" class="col-sm-2 col-form-label">Date:</label>
+                        <h:inputText value="#{dataController.userobj.date}" class="form-control" id="inputDate" ></h:inputText>
+                    </div>
 
- 
-      <div id="admin">
-    <div class="form-group row">
-      <label for="inputEmail3" class="col-sm-2 col-form-label">Place:</label>
-          <h:inputText  value="#{dataController.userobj.place}" class="form-control" id="inputEmail3" ></h:inputText>
-    </div>
-    <div class="form-group row">
-      <label for="inputPassword3" class="col-sm-2 col-form-label" >Amount:</label>
-          <h:inputText value="#{dataController.userobj.amount}" class="form-control" id="inputPassword3" ></h:inputText>
-    </div>
-    <fieldset class="form-group row">
-       <p>Transaction:  </p>
-              <h:selectOneRadio  value="#{dataController.userobj.radio}">
-                  <f:selectItem itemValue="+" itemLabel="Deposit" />
-                  <f:selectItem itemValue="-" itemLabel="Withdraw" />           
-                </h:selectOneRadio>
-        </fieldset>
-     <br/>
-      <div class="form-group row">
-      <label for="inputDate" class="col-sm-2 col-form-label">Date:</label>
-          <h:inputText value="#{dataController.userobj.date}" class="form-control" id="inputDate" ></h:inputText>
-    </div>
- 
-    <div class="form-group row">
-      <div class="offset-sm-2 col-sm-10">
-          <h:commandButton  class="btn btn-primary"  value="Add Transaction" action="#{dataController.add()}" />
-      </div>
-</div>
-    </div>
- </div> 
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>  
-    </h:form>
+                    <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                            <h:commandButton  class="btn btn-primary"  value="Add Transaction" action="#{dataController.add()}" />
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <script src="js/jquery.js"></script>
+            <script src="js/bootstrap.min.js"></script>  
+        </h:form>
     </h:body>      
 </html>
-=======
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <h:head>
-      <meta charset="utf-8"></meta>
-<meta charset="utf-8"></meta>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-   <title>Template Entry</title>
-    <link rel="icon" href="img/icon.png"></link>
-    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
-    <link href="css/templ.css" rel="stylesheet"></link>
-           <style>
-    body {
-        padding-top: 70px;
-       
-    </style>
 
-  
-    </h:head>
-    <h:body>
-             
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-           
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.xhtml">Home</a>
-            </div>
-  
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
 
-                 <li>
-                       <a href="MontlyExpenditure.xhtml">Monthly Expenditure</a>
-
-                    </li>
-                    <li>
-                        <a href="AnnualExpenditure.xhtml">Annual Expenditure</a>
-                    </li>
-                    <li>
-                       <h:form>
-                        <h:commandLink action="Records">  View records </h:commandLink>
-                       </h:form>
-
-                    </li> 
-
-                </ul>
-            </div>
-      
-        </div>
-      
-    </nav>
-
-     <div class="container">
-
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                
-              <p>#{userLogin.userName}</p>
-              <h:form>
-                <label>Place where money was spent
-                    <h:inputText value="#{dataController.userobj.place}" />
-                </label>
-                <label>amount
-                    <h:inputText value="#{dataController.userobj.amount}" />
-                </label>
-
-                <h:selectOneRadio value="#{dataController.userobj.radio}">
-                    <f:selectItem itemValue="+" itemLabel="Deposit" />
-                    <f:selectItem itemValue="-" itemLabel="Withdraw" />           
-                </h:selectOneRadio><br><br><br></br></br></br>
-                <label>Date of transaction (YYYY-MM-DD)
-
-                    <h:inputText value="#{dataController.userobj.date}" />
-                </label>
-                <h:commandButton value="Add Transaction" action="#{dataController.add()}" />
-            </h:form>
-             
-            </div>
-        </div>
- 
-
-    </div>
-
-    <script src="js/jquery.js"></script>
-
-    <script src="js/bootstrap.min.js"></script>  
-   
-    </h:body>      
-</html>
 

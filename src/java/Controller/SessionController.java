@@ -13,16 +13,16 @@ import javax.servlet.http.HttpSession;
  * @author c0689497
  */
 public class SessionController {
-    
+
     public static HttpSession getSession() {
-		return (HttpSession) FacesContext.getCurrentInstance()
-				.getExternalContext().getSession(false);
-	}
-    
+        return (HttpSession) FacesContext.getCurrentInstance()
+                .getExternalContext().getSession(false);
+    }
+
     public static String getUserName() {
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-				.getExternalContext().getSession(false);
-		return session.getAttribute("username").toString();
-	}
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+                .getExternalContext().getSession(false);
+        return session.getAttribute("username").toString();
+    }
 
 }
