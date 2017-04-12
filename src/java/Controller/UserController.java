@@ -61,6 +61,7 @@ public class UserController {
         //userobj = this;
         try {
             users = new ArrayList<>();
+            users.clear();
             Connection con = DBUtils.getConnection();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM users");
@@ -74,6 +75,7 @@ public class UserController {
                         rs.getString("Email"),
                         rs.getString("Date")
                 );
+               
                 if (rs.getString("Username").equals("admin")) {
 
                 } else {
@@ -198,7 +200,8 @@ public class UserController {
      * @return Admin
      */
     public String addUser() {
-        return "Admin";
+       userobj = new Userdetails();
+        return "Adduser";
     }
 
     /**
@@ -234,7 +237,7 @@ public class UserController {
      */
     public String insert() {
         try {
-
+          
             Connection conn = DBUtils.getConnection();
             String sql = "INSERT INTO users (Name, Email, Password, Username, Date) VALUES(?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -244,11 +247,11 @@ public class UserController {
             pstmt.setString(4, userobj.getUserName());
             pstmt.setString(5, userobj.getDate());
             pstmt.executeUpdate();
+            users.add(userobj);
             getData();
         } catch (SQLException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return "Admin";
     }
 

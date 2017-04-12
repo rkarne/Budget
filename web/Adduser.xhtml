@@ -21,10 +21,10 @@
                     color: #fed136;
             }
       </style>
-    </h:head>  
-      <h:body> 
-           <h:form>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    </h:head>
+    <h:body>
+        <h:form>
+             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="nav navbar-nav">
                    <a class="navbar-brand page-scroll" style="font-style: oblique; color: #fed136;"  >Budget Tool</a>
@@ -66,7 +66,7 @@
                   
                   <p>Date : <h:inputText value="#{userController.userobj.date}" /></p>
                </div>
-             <h:commandButton  class="btn btn-success" action="#{userController.saveUser()}" value="Save"  />                
+              <h:commandButton  class="btn btn-success" action="#{userController.insert()}" value="Save"  />                
             <span>&nbsp;</span><span>&nbsp;</span>
             <h:commandButton class="btn btn-primary" action="#{userController.cancel()}"  value="Cancel"  />
        

@@ -1,4 +1,3 @@
-
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -16,6 +15,13 @@
     body {
         padding-top: 70px;
     }
+    
+     .navbar-brand{
+                background-color: transparent;
+                font-size: 20px;
+                font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+                    color: #fed136;
+            }
     </style>
     </h:head>
     <h:body>
@@ -23,42 +29,35 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
            
-
-            <div class="navbar-header">
-               
-                <a class="navbar-brand" href="index.xhtml">Home</a>
-
-            </div>
-  
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                 <li>
-                      <h:commandLink class="navbar-brand" action="index" style="background-color: black">Home</h:commandLink>
-                    </li>&nbsp;
-                    <li>
-                      
-                         <h:commandLink class="btn btn-secondary btn-lg active" action="AnnualExpenditure" style="background-color: black" >Annual Expenditure</h:commandLink>
-                    </li>&nbsp;
-                    <li>
-                         <h:commandLink class="btn btn-secondary btn-lg active" action="Records" style="background-color: black" >View Record</h:commandLink>
-                        
-                    </li> 
-                </ul>
-            </div>
+                <div class="nav navbar-nav">
+                        <a class="navbar-brand page-scroll" style="font-style: oblique; color: #fed136;"  >Budget Tool</a>
+                    </div>
+                    <div  id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                               <h:commandLink class="navbar-brand" action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
+                           </li> 
+                          <li>
+                           <h:commandLink class="navbar-brand" action="AnnualExpenditure"  >  Annual Expenditure </h:commandLink>&nbsp;&nbsp;
+                           </li>
+                            <li>
+                           <h:commandLink class="navbar-brand" action="MontlyExpenditure"  > Monthly Expenditure </h:commandLink>&nbsp;&nbsp;
+                           </li>
+                           <li>
+                           <h:commandLink class="navbar-brand" action="Records"  > Records </h:commandLink>&nbsp;&nbsp;
+                           </li>
+                            <li>
+                           <h:commandLink class="navbar-brand" action="#{userLogin.logout()}"  >  Logout </h:commandLink>
+                           </li>
+                        </ul>
+                    </div>
+           
         </div>
     </nav>    
  
     <div class="container1">
-    <p>#{userLogin.userName}</p>
-             <!-- <h:commandLink action="Records">  Records </h:commandLink>
-               <h:commandLink action="index">  Home </h:commandLink><br/>
+        <p align="center">Hi #{userLogin.userName}</p>
 
-               <br/>-->
-
-               <h:commandLink action="#{userLogin.logout()}">  Logout </h:commandLink><br/>
-               <br/>
-
- 
       <div id="admin">
     <div class="form-group row">
       <label for="inputEmail3" class="col-sm-2 col-form-label">Place:</label>
@@ -93,8 +92,8 @@
     </h:form>
     </h:body>      
 </html>
-=======
-<?xml version='1.0' encoding='UTF-8' ?>
+
+<!--<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -192,5 +191,5 @@
     <script src="js/bootstrap.min.js"></script>  
    
     </h:body>      
-</html>
+</html> -->
 

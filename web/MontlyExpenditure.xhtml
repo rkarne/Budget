@@ -20,7 +20,13 @@
     <style>
     body {
         padding-top: 70px;
-       
+    }
+        .navbar-brand{
+                background-color: transparent;
+                font-size: 20px;
+                font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+                    color: #fed136;
+            }
     </style>
 
    
@@ -32,31 +38,28 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
            
-            <div class="navbar-nav">
-                <h:commandLink class="navbar-brand" action="index" style="background-color: black" >Home</h:commandLink>
-             
-            </div>
-  
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    
-                    
-                    
-                    
-                    <li>
-                        <h:commandLink class="btn btn-secondary btn-lg active" action="Template" style="background-color: black" >Template Entry</h:commandLink>
-                  
-                    </li>
-                    <li>
-                        <h:commandLink class="btn btn-secondary btn-lg active" action="AnnualExpenditure" style="background-color: black" >Annual Expenditure</h:commandLink>
-                        
-                    </li>
-                    <li>
-                        <h:commandLink class="btn btn-secondary btn-lg active" action="Records" style="background-color: black" >View Records</h:commandLink>
-                        
-                    </li>
-                </ul>
-            </div>
+              <div class="nav navbar-nav">
+                        <a class="navbar-brand page-scroll" style="font-style: oblique; color: #fed136;"  >Budget Tool</a>
+                    </div>
+                    <div  id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                               <h:commandLink class="navbar-brand" action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
+                           </li> 
+                          <li>
+                           <h:commandLink class="navbar-brand" action="AnnualExpenditure"  >  Annual Expenditure </h:commandLink>&nbsp;&nbsp;
+                           </li>
+                            <li>
+                           <h:commandLink class="navbar-brand" action="Records"  > Records </h:commandLink>&nbsp;&nbsp;
+                           </li>
+                            <li>
+                           <h:commandLink class="navbar-brand" action="Template"  >  Template Entry </h:commandLink>&nbsp;&nbsp;
+                           </li>
+                            <li>
+                           <h:commandLink class="navbar-brand" action="#{userLogin.logout()}"  >  Logout </h:commandLink>
+                           </li>
+                        </ul>
+                    </div>
       
         </div>
       
@@ -64,7 +67,7 @@
 
 
     <div class="container">
-
+<p align="center">Hi #{userLogin.userName}</p>
         <div class="row">
             <div class="col-lg-12 text-center">
              

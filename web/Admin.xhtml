@@ -39,6 +39,13 @@
             .xyz:hover {
                 background-color: yellow ;
             }
+            
+            .navbar-brand{
+                background-color: transparent;
+                font-size: 20px;
+                font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+                    color: #fed136;
+            }
 
         </style>
     </h:head>
@@ -48,13 +55,18 @@
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="container">
                     <div class="nav navbar-nav">
-                           <h:commandLink class="navbar-brand" action="index" style="background-color: black" >Home</h:commandLink>
+                        <a class="navbar-brand page-scroll" style="font-style: oblique; color: #fed136;"  >Budget Tool</a>
                     </div>
 
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
+                    <div  id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                             <li>
+                                 <h:commandLink class="navbar-brand" action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
+                           </li> 
+                          <li>
+                           <h:commandLink class="navbar-brand" action="#{userLogin.logout()}"  >  Logout </h:commandLink>
+                           </li>
                           
-                           <h:commandLink class="navbar-brand" action="#{userLogin.logout()}"  style="background-color: black">  Logout </h:commandLink>
                         </ul>
                     </div>
 
@@ -62,7 +74,7 @@
 
             </nav><br/><br/><br/><br/>
 
-            <p>#{userLogin.userName}</p>
+            <p>Hi #{userLogin.userName}</p>
 
               
            <h:dataTable id="panel" border="1"
@@ -87,7 +99,7 @@
                 </h:column>
             </h:dataTable>
             <br/> <br/>
-            <h:commandButton id="dialogClickBtn" class="btn btn-primary btn-lg" value="Add User" onclick="initDialog(); return false;"></h:commandButton>  
+            <h:commandButton id="dialogClickBtn" class="btn btn-primary btn-lg" value="Add User" action="#{userController.addUser()}"></h:commandButton>  
         </h:form><br><br></br></br>
         <h:form>
             <h:dataTable id="panel" value="#{dataController.userdata}" var="p"
