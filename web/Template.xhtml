@@ -1,3 +1,99 @@
+
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+   <title>Template Entry</title>
+    <link rel="icon" href="img/icon.png"></link>
+    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+      <link href="css/templ.css" rel="stylesheet" ></link>
+    <style>
+    body {
+        padding-top: 70px;
+    }
+    </style>
+    </h:head>
+    <h:body>
+       <h:form> 
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+           
+
+            <div class="navbar-header">
+               
+                <a class="navbar-brand" href="index.xhtml">Home</a>
+
+            </div>
+  
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                 <li>
+                      <h:commandLink class="navbar-brand" action="index" style="background-color: black">Home</h:commandLink>
+                    </li>&nbsp;
+                    <li>
+                      
+                         <h:commandLink class="btn btn-secondary btn-lg active" action="AnnualExpenditure" style="background-color: black" >Annual Expenditure</h:commandLink>
+                    </li>&nbsp;
+                    <li>
+                         <h:commandLink class="btn btn-secondary btn-lg active" action="Records" style="background-color: black" >View Record</h:commandLink>
+                        
+                    </li> 
+                </ul>
+            </div>
+        </div>
+    </nav>    
+ 
+    <div class="container1">
+    <p>#{userLogin.userName}</p>
+             <!-- <h:commandLink action="Records">  Records </h:commandLink>
+               <h:commandLink action="index">  Home </h:commandLink><br/>
+
+               <br/>-->
+
+               <h:commandLink action="#{userLogin.logout()}">  Logout </h:commandLink><br/>
+               <br/>
+
+ 
+      <div id="admin">
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Place:</label>
+          <h:inputText  value="#{dataController.userobj.place}" class="form-control" id="inputEmail3" ></h:inputText>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label" >Amount:</label>
+          <h:inputText value="#{dataController.userobj.amount}" class="form-control" id="inputPassword3" ></h:inputText>
+    </div>
+    <fieldset class="form-group row">
+       <p>Transaction:  </p>
+              <h:selectOneRadio  value="#{dataController.userobj.radio}">
+                  <f:selectItem itemValue="+" itemLabel="Deposit" />
+                  <f:selectItem itemValue="-" itemLabel="Withdraw" />           
+                </h:selectOneRadio>
+        </fieldset>
+     <br/>
+      <div class="form-group row">
+      <label for="inputDate" class="col-sm-2 col-form-label">Date:</label>
+          <h:inputText value="#{dataController.userobj.date}" class="form-control" id="inputDate" ></h:inputText>
+    </div>
+ 
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+          <h:commandButton  class="btn btn-primary"  value="Add Transaction" action="#{dataController.add()}" />
+      </div>
+</div>
+    </div>
+ </div> 
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>  
+    </h:form>
+    </h:body>      
+</html>
+=======
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -97,3 +193,4 @@
    
     </h:body>      
 </html>
+
