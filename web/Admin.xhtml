@@ -24,9 +24,11 @@
      buttons: {
             Submit: function () {
                 $("#justAButton").click();
+              
             },
             Close: function () {
                 $(this).dialog("close");
+                
             }
      },
  });
@@ -119,7 +121,8 @@
                 <p>UserName: <h:inputText value="#{userLogin.userName}"  required="Please enter"/></p>
                 <p>Password: <h:inputText value="#{userLogin.userPassword}" required="Please enter"/></p>
                 <p>Date: <h:inputText value="#{userLogin.date}" required="Please enter"/></p>
-                <h:commandButton id="justAButton" action="#{userController.insert()}"  style="display:none"></h:commandButton>
+                <h:commandButton id="justAButton" action="#{userLogin.dataFrom()}"  style="display:none">
+                    </h:commandButton>
             </h:form>
         </h:panelGroup>
         

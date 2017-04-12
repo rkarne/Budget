@@ -178,6 +178,7 @@ public class UserController {
    
    public String insert(){
         try {
+         
             Connection conn = DBUtils.getConnection();
             String sql = "INSERT INTO users (Name, Email, Password, Username, Date) VALUES(?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -187,10 +188,11 @@ public class UserController {
             pstmt.setString(4, userobj.getUserName());
             pstmt.setString(5, userobj.getDate());
             pstmt.executeUpdate();
+            getData();
         } catch (SQLException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        getData();
+        
         return "Admin";
    }
    

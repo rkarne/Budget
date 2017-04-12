@@ -93,6 +93,12 @@ public class UserLogin  implements Serializable{
           return us.doLogin();       
     } 
       
+      public String dataFrom(){
+           Userdetails User = new Userdetails(-1, userName, userPassword, name, email, date);
+           UserController us = new UserController(User);
+          return us.insert();
+      }
+      
        public void logout() throws IOException{
         HttpSession session = SessionController.getSession();
 	session.invalidate();
