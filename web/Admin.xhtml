@@ -39,12 +39,12 @@
             .xyz:hover {
                 background-color: yellow ;
             }
-            
+
             .navbar-brand{
                 background-color: transparent;
                 font-size: 20px;
                 font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
-                    color: #fed136;
+                color: #fed136;
             }
 
         </style>
@@ -60,13 +60,13 @@
 
                     <div  id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                             <li>
-                                 <h:commandLink class="navbar-brand" action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
-                           </li> 
-                          <li>
-                           <h:commandLink class="navbar-brand" action="#{userLogin.logout()}"  >  Logout </h:commandLink>
-                           </li>
-                          
+                            <li>
+                                <h:commandLink class="navbar-brand" action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
+                            </li> 
+                            <li>
+                                <h:commandLink class="navbar-brand" action="#{userLogin.logout()}"  >  Logout </h:commandLink>
+                            </li>
+
                         </ul>
                     </div>
 
@@ -76,10 +76,10 @@
 
             <p>Hi #{userLogin.userName}</p>
 
-              
-           <h:dataTable id="panel" border="1"
-           cellspacing="1" cellpadding="10"  bgcolor="ghostwhite" value="#{userController.users}" var="p">
-            <h:column>
+
+            <h:dataTable id="panel" border="1"
+                         cellspacing="1" cellpadding="10"  bgcolor="ghostwhite" value="#{userController.users}" var="p">
+                <h:column>
 
 
                     <f:facet name="header">User ID</f:facet>
@@ -133,11 +133,11 @@
                     <h:commandButton class="btn btn-warning" value="Delete" action="#{dataController.delete(p)}" />
                 </h:column>
 
-        </h:dataTable>
-            </h:form>
-  
-       <h:panelGroup id="idOfDialogPlaceHolder"  style="display:none">
-          
+            </h:dataTable>
+        </h:form>
+
+        <h:panelGroup id="idOfDialogPlaceHolder"  style="display:none">
+
             <h:form prependId="false">     
                 <p>Name: <h:inputText value="#{userLogin.name}" required="Please enter"/></p>
                 <p>Email: <h:inputText value="#{userLogin.email}" required="Please enter"/></p>
@@ -145,7 +145,7 @@
                 <p>Password: <h:inputText value="#{userLogin.userPassword}" required="Please enter"/></p>
                 <p>Date: <h:inputText value="#{userLogin.date}" required="Please enter"/></p>
                 <h:commandButton id="justAButton" action="#{userLogin.dataFrom()}"  style="display:none">
-                    </h:commandButton>
+                </h:commandButton>
             </h:form>
         </h:panelGroup>
 

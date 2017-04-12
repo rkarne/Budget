@@ -5,96 +5,96 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <meta charset="utf-8"></meta>
-<meta charset="utf-8"></meta>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-    <meta name="description" content=""></meta>
-    <meta name="author" content=""></meta>
-    <title>Records Display</title>
-    <link rel="icon" href="img/icon.png"></link>
+        <meta charset="utf-8"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <meta name="description" content=""></meta>
+        <meta name="author" content=""></meta>
+        <title>Records Display</title>
+        <link rel="icon" href="img/icon.png"></link>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet"></link> 
-    <style>
-    body {
-        padding-top: 70px;
-    }
-    
-     .navbar-brand{
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link> 
+        <style>
+            body {
+                padding-top: 70px;
+            }
+
+            .navbar-brand{
                 background-color: transparent;
                 font-size: 20px;
                 font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
-                    color: #fed136;
+                color: #fed136;
             }
-    </style>
+        </style>
     </h:head>
     <h:body>
-    <h:form>
-        
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-               <div class="nav navbar-nav">
+        <h:form>
+
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="nav navbar-nav">
                         <a class="navbar-brand page-scroll" style="font-style: oblique; color: #fed136;"  >Budget Tool</a>
                     </div>
                     <div  id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                               <h:commandLink class="navbar-brand" action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
-                           </li> 
-                          <li>
-                           <h:commandLink class="navbar-brand" action="AnnualExpenditure"  >  Annual Expenditure </h:commandLink>&nbsp;&nbsp;
-                           </li>
+                                <h:commandLink class="navbar-brand" action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
+                            </li> 
                             <li>
-                           <h:commandLink class="navbar-brand" action="MontlyExpenditure"  > Monthly Expenditure </h:commandLink>&nbsp;&nbsp;
-                           </li>
+                                <h:commandLink class="navbar-brand" action="AnnualExpenditure"  >  Annual Expenditure </h:commandLink>&nbsp;&nbsp;
+                            </li>
                             <li>
-                           <h:commandLink class="navbar-brand" action="Template"  >  Template Entry </h:commandLink>&nbsp;&nbsp;
-                           </li>
+                                <h:commandLink class="navbar-brand" action="MontlyExpenditure"  > Monthly Expenditure </h:commandLink>&nbsp;&nbsp;
+                            </li>
                             <li>
-                           <h:commandLink class="navbar-brand" action="#{userLogin.logout()}"  >  Logout </h:commandLink>
-                           </li>
+                                <h:commandLink class="navbar-brand" action="Template"  >  Template Entry </h:commandLink>&nbsp;&nbsp;
+                            </li>
+                            <li>
+                                <h:commandLink class="navbar-brand" action="#{userLogin.logout()}"  >  Logout </h:commandLink>
+                            </li>
                         </ul>
                     </div>
-        </div>
-    </nav>
-    <div class="container">
-        <p align="center">Hi #{userLogin.userName}</p>
-        <div class="row">
-            <div class="col-lg-12 text-center">
-            
-           <h:dataTable  id = "panel"  border = "1"
-                         cellpadding = "10" cellspacing = "1" bgcolor="#F0E68C" value="#{dataController.userdata}" var="p">
+                </div>
+            </nav>
+            <div class="container">
+                <p align="center">Hi #{userLogin.userName}</p>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
 
-            <h:column>
-                <f:facet name="header">Transaction_ID</f:facet>
-                  #{p.id} 
-            </h:column>
-            <h:column>
-                <f:facet name="header">Balance</f:facet>
-                    #{p.bal}
-            </h:column>            
-            <h:column>
-                <f:facet name="header">Place</f:facet>
-                    #{p.place}
-            </h:column>
-            <h:column>
-                <f:facet name="header">amount</f:facet>
-                    #{p.amount}
-            </h:column>
-            <h:column>
-                <f:facet name="header">date</f:facet>
-                    #{p.date}
-            </h:column>
+                        <h:dataTable  id = "panel"  border = "1"
+                                      cellpadding = "10" cellspacing = "1" bgcolor="#F0E68C" value="#{dataController.userdata}" var="p">
 
-        </h:dataTable>    
+                            <h:column>
+                                <f:facet name="header">Transaction_ID</f:facet>
+                                    #{p.id} 
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Balance</f:facet>
+                                    #{p.bal}
+                            </h:column>            
+                            <h:column>
+                                <f:facet name="header">Place</f:facet>
+                                    #{p.place}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">amount</f:facet>
+                                    #{p.amount}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">date</f:facet>
+                                    #{p.date}
+                            </h:column>
+
+                        </h:dataTable>    
+                    </div>
+
+                </div>
             </div>
+        </h:form>
 
-        </div>
-    </div>
-    </h:form>
+        <script src="js/jquery.js"></script>
 
-    <script src="js/jquery.js"></script>
-
-    <script src="js/bootstrap.min.js"></script>  
+        <script src="js/bootstrap.min.js"></script>  
     </h:body>
 </html>
 

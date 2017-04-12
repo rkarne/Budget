@@ -75,7 +75,7 @@ public class UserController {
                         rs.getString("Email"),
                         rs.getString("Date")
                 );
-               
+
                 if (rs.getString("Username").equals("admin")) {
 
                 } else {
@@ -200,7 +200,7 @@ public class UserController {
      * @return Admin
      */
     public String addUser() {
-       userobj = new Userdetails();
+        userobj = new Userdetails();
         return "Adduser";
     }
 
@@ -237,7 +237,7 @@ public class UserController {
      */
     public String insert() {
         try {
-          
+
             Connection conn = DBUtils.getConnection();
             String sql = "INSERT INTO users (Name, Email, Password, Username, Date) VALUES(?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
