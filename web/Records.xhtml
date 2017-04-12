@@ -42,6 +42,9 @@
                     <li>
                           <h:commandLink class="btn btn-secondary btn-lg active" action="Template" style="background-color: black" >Annual Expenditure</h:commandLink>
                     </li>
+                  <li>
+                          <h:commandLink class="btn btn-secondary btn-lg active" action="#{userLogin.logout()}" style="background-color: black" >Logout</h:commandLink>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -51,7 +54,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
             <p>#{userLogin.userName}</p>  
-          <!--<h:commandLink action="Template">  Template </h:commandLink>-->
+
            <h:dataTable  id = "panel"  border = "1"
                          cellpadding = "10" cellspacing = "1" bgcolor="#F0E68C" value="#{dataController.userdata}" var="p">
             <h:column>

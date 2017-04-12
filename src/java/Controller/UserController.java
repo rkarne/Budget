@@ -6,6 +6,7 @@
 package Controller;
 
 import Connection.DBUtils;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
@@ -106,6 +108,7 @@ public class UserController {
            
         }
        if(dbuser == null || dbpass == null){
+          
             return "index"; 
        }
         if(dbuser.equals(userobj.getUserName()) && dbpass.equals(userobj.getUserPassword())){
@@ -115,10 +118,9 @@ public class UserController {
             if(dbuser.equals("admin") ){
                 return "Admin";
             }
-                 return "Template";
+           return "Template";
           } 
         else{
-            
           return "index";  
         }
     }
@@ -156,14 +158,17 @@ public class UserController {
    public String saveUser(){
        try  {
            Connection conn = DBUtils.getConnection();
-            if (userobj.getId() >= 0) {
-                String sql = "UPDATE users SET Name = ?, Username = ? WHERE UId = ?";
+           
+                String sql = "UPDATE users SET Name = ?, Username = ? , Password=?, Email=?, Date=? WHERE UId = ?";
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, userobj.getName());
                 pstmt.setString(2, userobj.getUserName());
-                pstmt.setInt(3, userobj.getId());
+                pstmt.setString(3, userobj.getUserPassword());
+                pstmt.setString(4, userobj.getEmail());
+                pstmt.setString(5, userobj.getDate());
+                pstmt.setInt(6, userobj.getId());
                 pstmt.executeUpdate();
-            }
+            
           } catch (SQLException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -171,8 +176,30 @@ public class UserController {
         return "Admin";
    }
    
+   public String insert(){
+        try {
+         
+            Connection conn = DBUtils.getConnection();
+            String sql = "INSERT INTO users (Name, Email, Password, Username, Date) VALUES(?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, userobj.getName());
+            pstmt.setString(2, userobj.getEmail());
+            pstmt.setString(3, userobj.getUserPassword());
+            pstmt.setString(4, userobj.getUserName());
+            pstmt.setString(5, userobj.getDate());
+            pstmt.executeUpdate();
+            getData();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return "Admin";
+   }
+   
    public String cancel(){
        return "Admin";
    }
+   
+  
 }
 

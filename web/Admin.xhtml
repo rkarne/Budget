@@ -8,6 +8,7 @@
         <link rel="icon" href="img/icon.png"></link>
         <meta charset="utf-8"></meta>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <!--Show table -->
         <link rel="stylesheet" href="css/bootstrap.min.css" ></link>
@@ -30,6 +31,7 @@
                         }
                     },
                 });
+
             }
 
         </script>
@@ -51,7 +53,8 @@
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                             <h:commandLink class="navbar-brand" action="Template" style="background-color: black" >Template</h:commandLink>
+                          
+                           <h:commandLink class="navbar-brand" action="#{userLogin.logout()}"  style="background-color: black">  Logout </h:commandLink>
                         </ul>
                     </div>
 
@@ -60,9 +63,12 @@
             </nav><br/><br/><br/><br/>
 
             <p>#{userLogin.userName}</p>
-            <h:dataTable id="panel" border="1"
-                         cellspacing="1" cellpadding="10"  bgcolor="ghostwhite" value="#{userController.users}" var="p">
-                <h:column>
+
+              
+           <h:dataTable id="panel" border="1"
+           cellspacing="1" cellpadding="10"  bgcolor="ghostwhite" value="#{userController.users}" var="p">
+            <h:column>
+
 
                     <f:facet name="header">User ID</f:facet>
                         #{p.id}
@@ -114,18 +120,20 @@
                 <h:column>
                     <h:commandButton class="btn btn-warning" value="Delete" action="#{dataController.delete(p)}" />
                 </h:column>
-            </h:dataTable>
-        </h:form>
 
-        <h:panelGroup id="idOfDialogPlaceHolder" style="display:none">
-            <h:form prependId="false">
-
-                <p>Name: <h:inputText value="#{userController.userobj.name}" required="Please enter"/></p>
-                <p>Email: <h:inputText value="#{userController.userobj.email}" required="Please enter"/></p>
-                <p>UserName: <h:inputText value="#{userController.userobj.userName}"  required="Please enter"/></p>
-                <p>Password: <h:inputText value="#{userController.userobj.userPassword}" required="Please enter"/></p>
-                <p>Date: <h:inputText value="#{userController.userobj.date}" required="Please enter"/></p>
-                <h:commandButton id="justAButton" onclick="alert('wow')"  style="display:none"></h:commandButton>
+        </h:dataTable>
+            </h:form>
+  
+       <h:panelGroup id="idOfDialogPlaceHolder"  style="display:none">
+          
+            <h:form prependId="false">     
+                <p>Name: <h:inputText value="#{userLogin.name}" required="Please enter"/></p>
+                <p>Email: <h:inputText value="#{userLogin.email}" required="Please enter"/></p>
+                <p>UserName: <h:inputText value="#{userLogin.userName}"  required="Please enter"/></p>
+                <p>Password: <h:inputText value="#{userLogin.userPassword}" required="Please enter"/></p>
+                <p>Date: <h:inputText value="#{userLogin.date}" required="Please enter"/></p>
+                <h:commandButton id="justAButton" action="#{userLogin.dataFrom()}"  style="display:none">
+                    </h:commandButton>
             </h:form>
         </h:panelGroup>
 

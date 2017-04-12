@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 package pojo;
-
-
-
-
+import Controller.SessionController;
 import Controller.UserController;
+import java.io.IOException;
 import java.io.Serializable;
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
@@ -27,14 +27,19 @@ import javax.servlet.http.HttpSession;
 public class UserLogin  implements Serializable{
     private String userName;
     private String userPassword;
-   
+    private String email;
+    private String name;
+    private String date;
     
     public UserLogin(){       
     }
 
-    public UserLogin(String user, String pass){
+    public UserLogin(String user, String pass, String email, String name, String date){
         this.userName = user;
         this.userPassword = pass;
+        this.email=email;
+        this.name = name;
+        this.date=date;
     }
     
     public String getUserName() {
@@ -54,40 +59,61 @@ public class UserLogin  implements Serializable{
         this.userPassword = userPassword;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
       public String validate() {
-         
           Userdetails currentUser = new Userdetails(-1, "", "", "", "", "");
           currentUser.setUserName(this.userName);
           currentUser.setUserPassword(this.userPassword);
           UserController us = new UserController(currentUser);
-           HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-				.getExternalContext().getSession(false);
-           session.setAttribute("username", userName);
-          return us.doLogin(); 
-          
-       /* try {
-            // String pass = HashCredentials.hashPassword(password);
-            Connection con = DBUtils.getConnection();
-            PreparedStatement pstm = con.prepareCall("SELECT * FROM users where Username=? and Password=?");
-            pstm.setString(1, userName);
-            pstm.setString(2, userPassword);
-            ResultSet rs = pstm.executeQuery();
-            while(rs.next()){
-                 uname = rs.getString("Username");
-                 upass = rs.getString("Password");
-                System.out.println("User: "+uname);
-                System.out.println("Password: "+upass);
-            }
-            if(uname.equals(userName) && upass.equals(upass)){
-                return "Template";
-            }
-           
-        } catch (SQLException ex) {
-            Logger.getLogger(UserLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-      return "index"; */
-        
-        
+          HttpSession session = SessionController.getSession();
+          session.setAttribute("username", userName);
+          return us.doLogin();       
     } 
-
+      
+      public String dataFrom(){
+           Userdetails User = new Userdetails(-1, userName, userPassword, name, email, date);
+           UserController us = new UserController(User);
+          return us.insert();
+      }
+      
+       public void logout() throws IOException{
+        HttpSession session = SessionController.getSession();
+	session.invalidate();
+       /* FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(UserLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } */
+       FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("logged out successfully"));
+        ExternalContext externalContext = context.getExternalContext();
+        externalContext.getFlash().setKeepMessages(true);
+        externalContext.invalidateSession();
+        externalContext.redirect("index.xhtml");
+   }
+      
 }
