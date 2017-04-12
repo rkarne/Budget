@@ -4,13 +4,17 @@
  * and open the template in the editor.
  */
 package Controller;
+
 import pojo.Datab;
 import Connection.DBUtils;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -36,60 +40,59 @@ public class DataController {
     private List<Datab> usedata;
     private Datab useobj;
     private List<Monthly> usdata;
-    private Monthly usobj;
+    private Monthly usobj = new Monthly();
     private List<Annual> udata;
-    private Annual uobj;
-    
-       public DataController(Data userde){
-           this.userobj = userde;
-       }
-       
-    public DataController(){
-     getData();
-     getDatab();
-     
- }
-    
-       private void getData(){
+    private Annual uobj = new Annual();
+
+    public DataController(Data userde) {
+        this.userobj = userde;
+    }
+
+    public DataController() {
+        getData();
+        getDatab();
+
+    }
+
+    private void getData() {
 
         userobj = new Data();
-        
 
-       //userobj = this;
+        //userobj = this;
         try {
             userdata = new ArrayList<>();
             Connection con = DBUtils.getConnection();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM userdata");
-            
-            while(rs.next()){
-               Data us = new Data(
-                       rs.getInt("TransId"),
-                       rs.getDouble("Balance"),
-                       rs.getString("Place"),
-                       rs.getDouble("Amount"),
-                       rs.getString("Tdate"),
-                       rs.getInt("UId")
-               );
+
+            while (rs.next()) {
+                Data us = new Data(
+                        rs.getInt("TransId"),
+                        rs.getDouble("Balance"),
+                        rs.getString("Place"),
+                        rs.getDouble("Amount"),
+                        rs.getString("Tdate"),
+                        rs.getInt("UId")
+                );
                 userdata.add(us);
             }
-            
+
         } catch (SQLException ex) {
 
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
 
-             userdata = new ArrayList<>();
-             usedata = new ArrayList<>();
+            userdata = new ArrayList<>();
+            usedata = new ArrayList<>();
         }
-   }
-       public List<Data> getUserdata() {
+    }
+
+    public List<Data> getUserdata() {
         return userdata;
     }
 
     public Data getUserobj() {
         return userobj;
     }
-
 
     public List<Datab> getUsedata() {
         return usedata;
@@ -98,6 +101,7 @@ public class DataController {
     public Datab getUseobj() {
         return useobj;
     }
+
     public List<Monthly> getUsdata() {
         return usdata;
     }
@@ -105,6 +109,7 @@ public class DataController {
     public Monthly getUsobj() {
         return usobj;
     }
+
     public List<Annual> getUdata() {
         return udata;
     }
@@ -112,10 +117,10 @@ public class DataController {
     public Annual getUobj() {
         return uobj;
     }
-    
-    public String delete(Data d){
+
+    public String delete(Data d) {
         try (Connection conn = DBUtils.getConnection()) {
-            
+
             if (d.getId() > 0) {
                 String sql = "DELETE FROM userdata WHERE TransId = ?";
                 PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -125,38 +130,37 @@ public class DataController {
         } catch (SQLException ex) {
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        getData();  
+        getData();
         return "Admin";
     }
-    
+
     public String add() {
-        int userID=getUserId();
+        int userID = getUserId();
         double g = 0;
         double trans;
-        if ("+".equals(userobj.getRadio())){
+        if ("+".equals(userobj.getRadio())) {
             trans = userobj.getAmount();
-        }
-        else{
+        } else {
             trans = -(userobj.getAmount());
         }
         try {
             Connection conn = DBUtils.getConnection();
             String h = ("SELECT Balance FROM userdata WHERE TransId=( SELECT max(TransId) FROM userdata) AND UId = ?");
             PreparedStatement stmt = conn.prepareStatement(h);
-            stmt.setInt(1 ,userID);
+            stmt.setInt(1, userID);
             ResultSet r = stmt.executeQuery();
-            
-            while(r.next()){
+
+            while (r.next()) {
                 g = r.getDouble("Balance");
             }
-            
+
             String sql = "INSERT INTO userdata (Balance, Place, Amount, Tdate, UId) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setDouble(1, (g +trans));
+            pstmt.setDouble(1, (g + trans));
             pstmt.setString(2, userobj.getPlace());
             pstmt.setDouble(3, userobj.getAmount());
             pstmt.setString(4, userobj.getDate());
-            pstmt.setInt(5,  userID);
+            pstmt.setInt(5, userID);
             pstmt.executeUpdate();
             getData();
 
@@ -167,139 +171,127 @@ public class DataController {
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "Records";
-        
+
     }
-    private void getDatab(){
+
+    private void getDatab() {
         useobj = new Datab();
-         try {
-             int userID=0;
-             HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-				.getExternalContext().getSession(false);
-        
-            String uname =  session.getAttribute("username").toString();
+        try {
+            int userID = 0;
+            HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+                    .getExternalContext().getSession(false);
+
+            String uname = session.getAttribute("username").toString();
             usedata = new ArrayList<>();
             Connection conn = DBUtils.getConnection();
             String get = "SELECT UId from users where Username=?";
             PreparedStatement pstmtget = conn.prepareStatement(get);
             pstmtget.setString(1, uname);
             ResultSet rs = pstmtget.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 userID = rs.getInt("UId");
             }
-             
-            
+
             String l = ("SELECT * FROM userdata WHERE UId = ?");
             PreparedStatement stmtt = conn.prepareStatement(l);
-            stmtt.setInt(1 ,userID);
+            stmtt.setInt(1, userID);
             ResultSet gr = stmtt.executeQuery();
-            while(gr.next()){
-               Datab us = new Datab(
-                       gr.getInt("TransId"),
-                       gr.getDouble("Balance"),
-                       gr.getString("Place"),
-                       gr.getDouble("Amount"),
-                       gr.getString("Tdate")
-               );
+            while (gr.next()) {
+                Datab us = new Datab(
+                        gr.getInt("TransId"),
+                        gr.getDouble("Balance"),
+                        gr.getString("Place"),
+                        gr.getDouble("Amount"),
+                        gr.getString("Tdate")
+                );
                 usedata.add(us);
-         }
-         } catch (SQLException ex) {
+            }
+        } catch (SQLException ex) {
 
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
 
-             
-             usedata = new ArrayList<>();
+            usedata = new ArrayList<>();
         }
     }
-    
 
-    public int getUserId(){
-        int userID=0;
+    public int getUserId() {
+        int userID = 0;
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-				.getExternalContext().getSession(false);
-        String uname =  session.getAttribute("username").toString();
-         try {
+                .getExternalContext().getSession(false);
+        String uname = session.getAttribute("username").toString();
+        try {
             Connection conn = DBUtils.getConnection();
             String get = "SELECT UId from users where Username=?";
             PreparedStatement pstmtget = conn.prepareStatement(get);
             pstmtget.setString(1, uname);
             ResultSet rs = pstmtget.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 userID = rs.getInt("UId");
             }
-         }
-           catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return userID;
     }
 
-    public String getMonthly() {
-        usobj = new Monthly();
-         try {
-              
-            Connection conn = DBUtils.getConnection();
-            String l = ("SELECT Balance, Place, Amount, Tdate from userdata where (CAST(? as DATE) >= CAST(Tdate as DATE) AND CAST(? as DATE) <= DATE_ADD(CAST(Tdate as DATE), INTERVAL 30 DAY)) AND UId = ?;");
-            PreparedStatement stmtt = conn.prepareStatement(l);
-            stmtt.setString(1 ,usobj.getUdate());
-            System.out.println("xxxxxxxxxxxxxxx");
-             
-             System.out.println(getUserId());
-            stmtt.setString(2 ,usobj.getUdate());
-            stmtt.setInt(3 ,getUserId());
-            ResultSet gr = stmtt.executeQuery();
-            while(gr.next()){
-               Monthly us = new Monthly();
-                       us.setBal(gr.getDouble("Balance"));
-                       
-                       us.setPlace(gr.getString("Place"));
-                       
-                       us.setAmount(gr.getDouble("Amount"));
-                       
-                       us.setDate(gr.getString("Tdate"));
-               
+    public String getMonthly() throws ParseException {
+        
+        try {
+            usdata = new ArrayList<>();
+            Connection con = DBUtils.getConnection();
+            String l = ("SELECT Balance, Place, Amount, Tdate from userdata WHERE Tdate BETWEEN  CAST(? AS DATE) AND DATE_ADD(CAST(Tdate as DATE), INTERVAL 30 DAY) AND UId = ? order by Tdate;");
+            PreparedStatement stmtt = con.prepareStatement(l);
+            stmtt.setString(1, usobj.getUdate());
+            stmtt.setInt(2, getUserId());
+
+            ResultSet rs = stmtt.executeQuery();
+            while (rs.next()) {
+                Monthly us = new Monthly(
+                        rs.getDouble("Balance"),
+                        rs.getString("Place"),
+                        rs.getDouble("Amount"),
+                        rs.getString("Tdate")
+                );
                 usdata.add(us);
-         }
-         } catch (SQLException ex) {
+            }
+        } catch (SQLException ex) {
 
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
 
-             
-             usdata = new ArrayList<>();
-    }
-         return "monthly";
-    
+            usdata = new ArrayList<>();
+        }
 
-}
+return "monthly";
+    }
+//work in progress//
 
     public String getAnnual() {
-        uobj = new Annual();
-         try {
-              
+        System.out.println(uobj.getUdate());
+        try {
+            udata = new ArrayList<>();
             Connection conn = DBUtils.getConnection();
-            String l = ("SELECT Balance, Place, Amount, Tdate from userdata where (CAST(? as DATE) >= CAST(Tdate as DATE) AND CAST(? as DATE) <= DATE_ADD(CAST(Tdate as DATE), INTERVAL 365 DAY)) AND UId = ?;");
+            String l = ("SELECT Balance, Place, Amount, Tdate from userdata WHERE Tdate BETWEEN  CAST(? as DATE) AND DATE_ADD(CAST(Tdate as DATE), INTERVAL 365 DAY) AND UId = ? order by Tdate;");
             PreparedStatement stmtt = conn.prepareStatement(l);
-            stmtt.setString(1 ,uobj.getUdate());
-             
-            stmtt.setString(2 ,uobj.getUdate());
-            stmtt.setInt(3 ,getUserId());
+            stmtt.setString(1, uobj.getUdate());
+            stmtt.setInt(2, getUserId());
             ResultSet gr = stmtt.executeQuery();
-            while(gr.next()){
-               Annual us = new Annual(
-                       gr.getDouble("Balance"),
-                       gr.getString("Place"),
-                       gr.getDouble("Amount"),
-                       gr.getString("Tdate")
-               );
+            while (gr.next()) {
+                Annual us = new Annual(
+                        gr.getDouble("Balance"),
+                        gr.getString("Place"),
+                        gr.getDouble("Amount"),
+                        gr.getString("Tdate")
+                );
                 udata.add(us);
-         }
-         } catch (SQLException ex) {
+                
+                
+            }
+        } catch (SQLException ex) {
 
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
 
-             
-             udata = new ArrayList<>();
-    }
-         return "annual";
+            udata = new ArrayList<>();
+        }
+        return "annual";
     }
 }
-

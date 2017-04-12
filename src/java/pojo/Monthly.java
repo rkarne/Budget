@@ -5,11 +5,19 @@
  */
 package pojo;
 
+import java.io.Serializable;
+import javax.annotation.ManagedBean;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+
 /**
  *
  * @author c0681010
  */
-public class Monthly {
+@Named
+@SessionScoped
+@ManagedBean
+public class Monthly  implements Serializable{
     private double bal;
     private String place;
     private double amount;
