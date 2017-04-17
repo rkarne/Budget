@@ -6,10 +6,17 @@
  */
 package pojo;
 
+import static com.sun.faces.facelets.tag.composite.ImplementationHandler.Name;
+import javax.annotation.ManagedBean;
+import javax.inject.Named;
+
 /**
  *
  * @author c0681010
  */
+@ManagedBean
+@Named
+
 public class Datab {
 
     private int id;

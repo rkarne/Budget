@@ -8,10 +8,13 @@ package Controller;
 import pojo.Datab;
 import Connection.DBUtils;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -20,7 +23,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
+import pojo.Annual;
 import pojo.Data;
+import pojo.Monthly;
 
 /**
  *
@@ -34,14 +39,36 @@ public class DataController {
     private Data userobj;
     private List<Datab> usedata;
     private Datab useobj;
+    private List<Monthly> usdata;
+    private Monthly usobj = new Monthly();
+    private List<Annual> udata;
+    private Annual uobj = new Annual();
 
+    public DataController(Data userde) {
+        this.userobj = userde;
+    }
+
+    public DataController() {
+        getData();
+        getDatab();
+
+    }
+
+    private void getData() {
+
+        userobj = new Data();
+
+        //userobj = this;
+
+
+    /*------ROJA-------
     public DataController(Data userde) {
         this.userobj = userde;
     }
 
     /**
      * refresh controller
-     */
+     
     public DataController() {
         getData();
         getDatab();
@@ -49,9 +76,11 @@ public class DataController {
 
     /**
      * get user Data
-     */
+    
     private void getData() {
-        userobj = new Data();
+        userobj = new Data(); 
+      ------ROJA-------------*/
+
         try {
             userdata = new ArrayList<>();
             Connection con = DBUtils.getConnection();
@@ -92,11 +121,13 @@ public class DataController {
         return userobj;
     }
 
+
     /**
      * set user data
      *
      * @return
      */
+
     public List<Datab> getUsedata() {
         return usedata;
     }
@@ -110,12 +141,31 @@ public class DataController {
         return useobj;
     }
 
+
+    public List<Monthly> getUsdata() {
+        return usdata;
+    }
+
+    public Monthly getUsobj() {
+        return usobj;
+    }
+
+    public List<Annual> getUdata() {
+        return udata;
+    }
+
+    public Annual getUobj() {
+        return uobj;
+    }
+
+
     /**
      * Delete the user from user data
      *
      * @param d
      * @return 'Admin'
      */
+
     public String delete(Data d) {
         try (Connection conn = DBUtils.getConnection()) {
 
@@ -131,6 +181,7 @@ public class DataController {
         getData();
         return "Admin";
     }
+
 
     /**
      * Add the user
@@ -177,14 +228,23 @@ public class DataController {
 
     }
 
+
     /**
      * get Data from users
      */
+
     private void getDatab() {
         useobj = new Datab();
         try {
             int userID = 0;
-            String uname = SessionController.getUserName();
+
+            HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+                    .getExternalContext().getSession(false);
+
+            String uname = session.getAttribute("username").toString();
+
+            /* uname = SessionController.getUserName(); */
+
             usedata = new ArrayList<>();
             Connection conn = DBUtils.getConnection();
             String get = "SELECT UId from users where Username=?";
@@ -214,14 +274,20 @@ public class DataController {
         }
     }
 
-    /**
+   /**
      * get user id
      *
      * @return userID
      */
     public int getUserId() {
         int userID = 0;
-        String uname = SessionController.getUserName();
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+                .getExternalContext().getSession(false);
+        String uname = session.getAttribute("username").toString();
+   
+   /* public int getUserId() {
+        int userID = 0;
+        String uname = SessionController.getUserName(); */
         try {
             Connection conn = DBUtils.getConnection();
             String get = "SELECT UId from users where Username=?";
@@ -237,4 +303,64 @@ public class DataController {
         return userID;
     }
 
+    public String getMonthly() throws ParseException {
+        
+        try {
+            usdata = new ArrayList<>();
+            Connection con = DBUtils.getConnection();
+            String l = ("SELECT Balance, Place, Amount, Tdate from userdata WHERE Tdate BETWEEN  CAST(? AS DATE) AND DATE_ADD(CAST(Tdate as DATE), INTERVAL 30 DAY) AND UId = ? order by Tdate;");
+            PreparedStatement stmtt = con.prepareStatement(l);
+            stmtt.setString(1, usobj.getUdate());
+            stmtt.setInt(2, getUserId());
+
+            ResultSet rs = stmtt.executeQuery();
+            while (rs.next()) {
+                Monthly us = new Monthly(
+                        rs.getDouble("Balance"),
+                        rs.getString("Place"),
+                        rs.getDouble("Amount"),
+                        rs.getString("Tdate")
+                );
+                usdata.add(us);
+            }
+        } catch (SQLException ex) {
+
+            Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
+
+            usdata = new ArrayList<>();
+        }
+
+return "monthly";
+    }
+//work in progress//
+
+    public String getAnnual() {
+        System.out.println(uobj.getUdate());
+        try {
+            udata = new ArrayList<>();
+            Connection conn = DBUtils.getConnection();
+            String l = ("SELECT Balance, Place, Amount, Tdate from userdata WHERE Tdate BETWEEN  CAST(? as DATE) AND DATE_ADD(CAST(Tdate as DATE), INTERVAL 365 DAY) AND UId = ? order by Tdate;");
+            PreparedStatement stmtt = conn.prepareStatement(l);
+            stmtt.setString(1, uobj.getUdate());
+            stmtt.setInt(2, getUserId());
+            ResultSet gr = stmtt.executeQuery();
+            while (gr.next()) {
+                Annual us = new Annual(
+                        gr.getDouble("Balance"),
+                        gr.getString("Place"),
+                        gr.getDouble("Amount"),
+                        gr.getString("Tdate")
+                );
+                udata.add(us);
+                
+                
+            }
+        } catch (SQLException ex) {
+
+            Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
+
+            udata = new ArrayList<>();
+        }
+        return "annual";
+    }
 }
