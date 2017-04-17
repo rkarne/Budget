@@ -10,15 +10,16 @@
         <title>Template Entry</title>
         <link rel="icon" href="img/icon.png"></link>
         <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+        <!-- Bootstrap Core CSS -->
+       
         <link href="css/templ.css" rel="stylesheet" ></link>
         <style>
             body {
                 padding-top: 70px;
             }
-
             .navbar-brand{
                 background-color: transparent;
-                font-size: 20px;
+                font-size: 17px;
                 font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
                 color: #fed136;
             }
@@ -51,27 +52,8 @@
                             </li>
                         </ul>
                     </div>
-
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                
-              <p>#{userLogin.userName}</p>
-              <h:commandLink action="Records">  Records </h:commandLink>
-               <h:commandLink action="index">  Home </h:commandLink><br/>
-               <h:commandLink action="MontlyExpenditure">  Monthly Expenditure </h:commandLink><br/>
-               <h:commandLink action="AnnualExpenditure">  Annual Expenditure </h:commandLink><br/>
-               <br/>
-              <h:form>
-                <label>Place where money was spent
-                    <h:inputText value="#{dataController.userobj.place}" />
-                </label>
-                <label>amount
-                    <h:inputText value="#{dataController.userobj.amount}" />
-                </label>
-
-                </div>
-
-
+                    </div>
+                </nav>   
             <div class="container1">
                 <p align="center">Hi #{userLogin.userName}</p>
 
@@ -106,9 +88,13 @@
             </div> 
             <script src="js/jquery.js"></script>
             <script src="js/bootstrap.min.js"></script>  
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 2000 //changes the speed
+    })
+    </script>
         </h:form>
     </h:body>      
 </html>
-
-
-
