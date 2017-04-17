@@ -15,7 +15,6 @@ import java.util.logging.Logger;
  *
  * @author rkarne
  */
-
 public class DBUtils {
 
     public static Connection getConnection() throws SQLException {

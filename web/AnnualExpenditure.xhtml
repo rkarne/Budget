@@ -4,68 +4,75 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-       <meta charset="utf-8"></meta>
-<meta charset="utf-8"></meta>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-    <meta name="description" content=""></meta>
-    <meta name="author" content=""></meta>
+        <meta charset="utf-8"></meta>
+        <meta charset="utf-8"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <meta name="description" content=""></meta>
+        <meta name="author" content=""></meta>
 
-    <title>Annual Expenditure</title>
-<link rel="icon" href="img/icon.png"></link>
+        <title>Annual Expenditure</title>
+        <link rel="icon" href="img/icon.png"></link>
 
-  
-    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
 
-   
-    <style>
-    body {
-        padding-top: 70px;
-       
-    </style>
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
 
-   
+
+        <style>
+            body {
+                padding-top: 70px;
+            }
+            .navbar-brand{
+                background-color: transparent;
+                font-size: 20px;
+                font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+                color: #fed136;
+            }
+        </style>
+
+
 
     </h:head>
     <h:body>
-           <h:form>
-        
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-           
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.xhtml">Home</a>
-            </div>
-  
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+        <h:form>
 
-                      <li>
-                        <a href="Template.xhtml">Template Entry</a>
-                    </li>
-                    <li>
-                        <a href="MontlyExpenditure.xhtml">Monthly Expenditure</a>
-                    </li>
-                  
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="nav navbar-nav">
+                        <a class="navbar-brand page-scroll" style="font-style: oblique; color: #fed136;"  >Budget Tool</a>
+                    </div>
+                    <div  id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <h:commandLink class="navbar-brand" action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
+                            </li> 
+                            <li>
+                                <h:commandLink class="navbar-brand" action="MontlyExpenditure"  >  Monthly Expenditure </h:commandLink>&nbsp;&nbsp;
+                            </li>
+                            <li>
+                                <h:commandLink class="navbar-brand" action="Records"  > Records </h:commandLink>&nbsp;&nbsp;
+                            </li>
+                            <li>
+                                <h:commandLink class="navbar-brand" action="Template"  >  Template Entry </h:commandLink>&nbsp;&nbsp;
+                            </li>
+                            <li>
+                                <h:commandLink class="navbar-brand" action="#{userLogin.logout()}"  >  Logout </h:commandLink>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-                    <li>
-                        <a href="Records.xhtml">View records</a>
-                    </li>
-                </ul>
-            </div>
-      
-        </div>
-      
-    </nav>
+            </nav>
 
 
-    <div class="container">
+            <div class="container">
+                <p align="center">Hi #{userLogin.userName}</p>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+
+
+                    </div>
+                </div>
 
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -75,18 +82,15 @@
              <br/><br/><br/>
              <h:commandButton value="Get Transactions for 365 days" action="#{dataController.getAnnual()}" />
              
+
             </div>
-        </div>
- 
-
-    </div>
-  
 
 
-    <script src="js/jquery.js"></script>
 
-    <script src="js/bootstrap.min.js"></script>  
-    </h:form>
+            <script src="js/jquery.js"></script>
+
+            <script src="js/bootstrap.min.js"></script>  
+        </h:form>
     </h:body>
 </html>
 

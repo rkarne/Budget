@@ -4,422 +4,249 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
+        <meta charset="utf-8"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 
-    <meta charset="utf-8"></meta>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-    <meta name="description" content=""></meta>
-    <meta name="author" content=""></meta>
+        <title>Budget Application</title>
+        <link rel="icon" href="img/icon.png"></link>
 
-    <title>Budget Application</title>
+        <!-- Bootstrap Core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
 
-    <link rel="icon" href="img/icon.png"></link>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
-
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"></link>
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'></link>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'></link>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'></link>
-    <link href="css/agency.min.css" rel="stylesheet"></link>
-
-    
-    <link rel="stylesheet" href="css/style.css"></link>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-    
-
-    
+        <!-- Custom Fonts -->
+        <link rel="stylesheet" href="css/main.css"></link> 
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="js/slide_show.js"></script>
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"></link>
+        <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'></link>
+        <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'></link>
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'></link>
+        <link href="css/agency.min.css" rel="stylesheet"></link>
+        <link rel="stylesheet" href="css/style.css"></link>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     </h:head>
     <h:body id="page-top" class="index">
-        
 
-    <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Budget Tool</a>
+        <!-- Navigation -->
+        <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="#page-top">Budget Tool</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#page-top">Home</a>
+                        </li>
+
+                        <li>
+                            <a class="page-scroll" href="#portfolio">Login</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#about">About Us</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#team">Team</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
             </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <!-- Head2Q er -->
+        <header>
+            <div class="container">
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#page-top">Home</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#portfolio">Login</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About Us</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#team">Team</a>
-                    </li>
-
-                    
-
-                  <!--  <li>
-                        <a class="page-scroll" href="#contact">Contact Us</a>
-                    </li> -->
-
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <!-- Head2Q er -->
-    
-    <header>
-        <div class="container">
-            <div class="intro-text">
-                <div class="intro-lead-in">Maintain budget,become more Richer!</div>
-                <div class="intro-heading"><br/><br/></div>
-                <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
-            </div>
-        </div>
-    </header>
-
-
-    
-    <!--Login Section -->
-
-    <section id="portfolio" class="bg-light-gray">
-        <div class="container">
-		<div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Login</h2>
-                    <h3 class="section-subheading text-muted">Maintain budget,become more Richer!</h3>
+                <div class="intro-text">
+                    <h:messages style="color: red; font-size: 25px"  id="messages" globalOnly="true" />
+                    <div class="intro-lead-in">Maintain budget,become more Richer!</div>
+                    <div class="intro-heading"><br/><br/></div>
+                    <a href="#about" class="page-scroll btn btn-xl">Tell Me More</a>
                 </div>
             </div>
-            <div class="row">
+        </header>
 
-             <!--   <div class="col-md-4 col-sm-6 portfolio-item">
+        <!--Login Section -->
 
-                            <div class="clearfix"></div>
-                            
-                            <div class="col-lg-12">
-                                <h:form> 
-			 <div class="form-group"> 
+        <section id="portfolio" class="bg-light-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">Login</h2>
+                        <h3 class="section-subheading text-muted">Maintain budget,become more Richer!</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="login-page">
+                        <div class="form">
+                            <form class="login-form">
 
-                             <p>Username:   <h:inputText  class="form class" value="{userLogin.userName}" required="required" id="username" validatorMessage="Please enter your username" /></p>                 
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="form-group">
+                                <h:form>
+                                    <h:inputText value="#{userLogin.userName}"  id="username" p:placeholder="Username"  />
+                                    <h:inputSecret value="#{userLogin.userPassword}" id="password" p:placeholder="Password" />
+                                    <h:commandButton style=" background: #fed136;" value="Sign In" action="#{userLogin.validate()}" class="btn btn-xl"></h:commandButton>
 
-                                    <p>Password:  <h:inputSecret  class="form class" value="{userLogin.userPassword}" required="required" id="password" validatorMessage="Please enter your password" /></p>
-
-                                
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                               
-                                <div id="success"></div>
-
-                                <h:commandButton value="Login" action="{userLogin.validate()}" class="btn btn-xl"></h:commandButton>
                                 </h:form>
-                            </div>
-							 
-                            <div class="clearfix"></div>					
-							
-                </div> -->
-<div class="login-page">
-  <div class="form">
-
-       
-   <!-- <form class="register-form">
-         <h:form>
-      <h:inputText  required="required"  value="#{userLogin.userName}"  id="username" validatorMessage="Please enter your username" p:placeholder="Username" />
-       <h:inputSecret  required="required" value="#{userLogin.userPassword}"  id="password" validatorMessage="Please enter your password" p:placeholder="Password"/>
-       <h:inputText  required="required"  value="#{userLogin.userName}"  id="email" validatorMessage="Please enter your email" p:placeholder="Email" />
-       <h:commandButton style=" background: #fed136;" value="Create"  class="btn btn-xl"></h:commandButton>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-       </h:form> 
-    </form>-->
-   <form class="login-form">
-        <h:form>
-            <h:inputText  required="required"  value="#{userLogin.userName}"  id="username" validatorMessage="Please enter your username" p:placeholder="Username" />
-       <h:inputSecret  required="required" value="#{userLogin.userPassword}"  id="password" validatorMessage="Please enter your password" p:placeholder="Password"/>
-       <h:commandButton style=" background: #fed136;" value="Sign In" action="#{userLogin.validate()}" class="btn btn-xl"></h:commandButton>
-    <!--  <p class="message">Not registered? <a href="#">Create an account</a></p> -->
-        </h:form>
-    </form> 
-  
-
-  </div>
-</div>
-
-                              
-            </div>
-        </div>
-    </section>
-  
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">About</h2>
-                    <h3 class="section-subheading text-muted">Maintain budget,become more Richer!</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="timeline">
-                        <li>
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/1.jpg" alt=""></img>
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>Tool</h4>
-                                    <h4 class="subheading">Free Budget Tool</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted"> When it comes to personal finance, it's best not to play the guessing game. Sometimes the easiest way to manage your monthly budget is to visualize it. With Quicken's budget calculator, it's easier than ever to manage your finances.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/2.jpg" alt=""></img>
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>Budget</h4>
-                                    <h4 class="subheading">Put Together a Budget</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted"> Take the time to add up your total monthly income all sources and list your regular monthly expenses to create a monthly budget. Categorize expenses in groups to make the process simpler. For example, include mortgage payments or rent as well as utilities when you list an amount for housing. Transportation includes not just your car payments but gas, insurance, registration and repairs as well. Quicken's Free Budget Calculator gives you a boost toward getting this done by doing all the math for you.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/4.jpg" alt=""></img>
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>Review</h4>
-                                    <h4 class="subheading">Where Your Money Goes</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted"> benefit of building a budget is that it forces you to track your spending and see in black and white (or in this case—color) where your money goes. This kind of expense-tracking exercise shows how even little costs add up.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/3.jpg" alt=""></img>
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>Goals</h4>
-                                    <h4 class="subheading">Realize Your Goals</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted"> Creating a budget forces you to reevaluate your goals and priorities. If you are not saving money for the things you plan to do, you aren't likely to do them. For example, rather than fantasize about buying a home or going back to school, include contributions to funding these goals in your monthly budget.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <h4>Be Part
-                                    <br/>Of Our
-                                    <br/>Tool!</h4>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section id="team" class="bg-light-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">Maintain budget,become more Richer!</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="img/team/1.jpg" class="img-responsive img-circle" alt=""></img>
-
-                        <h4>Roja jayashree</h4>
-                        <p class="text-muted">Lead programmer</p>
-
-                     <!--   <ul class="list-inline social-buttons">
-                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="https://www.linkedin.com/uas/login"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul> -->
-
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="img/team/2.jpg" class="img-responsive img-circle" alt=""></img>
-                        <h4>Ivor lobo</h4>
-
-                        <p class="text-muted">Database developer</p>
-                       
-
-                    <!--    <p class="text-muted">Lead designer</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="https://www.linkedin.com/uas/login"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul> -->
-
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="img/team/3.jpg" class="img-responsive img-circle" alt=""></img>
-                        <h4>Amandeep kaur</h4>
-
-                        <p class="text-muted">Website developer</p>
-                       
-
-                      <!--  <p class="text-muted">Lead Developer</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="https://www.linkedin.com/uas/login"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul> -->
-
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <p class="large text-muted"></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Clients Aside -->
-    
-    <!-- Contact Section -->
-
-    
-
-  <!--  <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">Maintain budget,become more Richer!</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group1">
-                                    <input type="text" class="form-control" placeholder="Your Name *" id="name" required="required" data-validation-required-message="Please enter your name."></input>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Your Email *" id="email" required="required" data-validation-required-message="Please enter your email address."></input>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="form-group">
-                                    <input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required="required" data-validation-required-message="Please enter your phone number."></input>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <textarea class="form-control" placeholder="Your Message *" id="message"  data-validation-required-message="Please enter a message."></textarea>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-lg-12 text-center">
-                                <div id="success"></div>
-                                <button type="submit" class="btn btn-xl">Send Message</button>
-                            </div>
+                            </form> 
                         </div>
-                    </form>
+                    </div>                    
                 </div>
             </div>
-        </div>
-    </section> -->
+        </section>
 
 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; Your Website 2016</span>
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">About</h2>
+                        <h3 class="section-subheading text-muted">Maintain budget,become more Richer!</h3>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="https://www.linkedin.com/uas/login"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="timeline">
+                            <li>
+                                <div class="timeline-image">
+                                    <img class="img-circle img-responsive" src="img/about/1.jpg" alt=""></img>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4>Tool</h4>
+                                        <h4 class="subheading">Free Budget Tool</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p class="text-muted"> When it comes to personal finance, it's best not to play the guessing game. Sometimes the easiest way to manage your monthly budget is to visualize it. With Quicken's budget calculator, it's easier than ever to manage your finances.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline-inverted">
+                                <div class="timeline-image">
+                                    <img class="img-circle img-responsive" src="img/about/2.jpg" alt=""></img>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4>Budget</h4>
+                                        <h4 class="subheading">Put Together a Budget</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p class="text-muted"> Take the time to add up your total monthly income all sources and list your regular monthly expenses to create a monthly budget. Categorize expenses in groups to make the process simpler. For example, include mortgage payments or rent as well as utilities when you list an amount for housing. Transportation includes not just your car payments but gas, insurance, registration and repairs as well. Quicken's Free Budget Calculator gives you a boost toward getting this done by doing all the math for you.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="timeline-image">
+                                    <img class="img-circle img-responsive" src="img/about/4.jpg" alt=""></img>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4>Review</h4>
+                                        <h4 class="subheading">Where Your Money Goes</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p class="text-muted"> benefit of building a budget is that it forces you to track your spending and see in black and white (or in this case—color) where your money goes. This kind of expense-tracking exercise shows how even little costs add up.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline-inverted">
+                                <div class="timeline-image">
+                                    <img class="img-circle img-responsive" src="img/about/3.jpg" alt=""></img>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4>Goals</h4>
+                                        <h4 class="subheading">Realize Your Goals</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p class="text-muted"> Creating a budget forces you to reevaluate your goals and priorities. If you are not saving money for the things you plan to do, you aren't likely to do them. For example, rather than fantasize about buying a home or going back to school, include contributions to funding these goals in your monthly budget.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline-inverted">
+                                <div class="timeline-image">
+                                    <h4>Be Part
+                                        <br/>Of Our
+                                        <br/>Tool!</h4>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-
-              <!--  <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li><a href="#"></a>
-                        </li>
-                        <li><a href="#"></a>
-                        </li>
-                    </ul>
-                </div> -->
-
             </div>
-        </div>
-    </footer>
+        </section>
 
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+        <!-- Team Section -->
+        <section id="team" class="bg-light-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">Our Amazing Team</h2>
+                        <h3 class="section-subheading text-muted">Maintain budget,become more Richer!</h3>
+                    </div>
+                </div>
+                <div id ="body">
+                    <img  class="img-circle" id="slide" src="img/team/1.jpg" alt="Roja Jayashree karne"></img><br/><br/>
+                    <h2 id="caption" style="text-align: center">Roja jayashree karne</h2> 
+                    <div id="slides"> 
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+                        <img src="img/team/1.jpg" alt="Roja Jayashree karne"></img>
+                        <img src="img/team/2.jpg" alt="Ivor Lobo"></img>
+                        <img src="img/team/3.jpg" alt="Amandeep kaur"></img>
+                    </div>
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <span class="copyright">Copyright &copy; Budget 2017</span>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-inline social-buttons">
+                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="https://www.linkedin.com/uas/login"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
 
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+                </div>
+            </div>
+        </footer>
 
-    <!-- Theme JavaScript -->
-    <script src="js/agency.min.js"></script>
-      </h:body>
+        <!-- jQuery -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>
+
+        <!-- Contact Form JavaScript -->
+        <script src="js/jqBootstrapValidation.js"></script>
+        <script src="js/contact_me.js"></script>
+
+        <!-- Theme JavaScript -->
+        <script src="js/agency.min.js"></script>
+
+    </h:body>
 </html>
+

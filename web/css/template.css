@@ -10,5 +10,8 @@ and open the template in the editor.
 
 #header{
     width: 100%;
-    height: 80px;
+    height: 100px;
+}
+.cmd{
+    margin-top: 1px;
 }

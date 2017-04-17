@@ -59,6 +59,28 @@ public class DataController {
         userobj = new Data();
 
         //userobj = this;
+
+
+    /*------ROJA-------
+    public DataController(Data userde) {
+        this.userobj = userde;
+    }
+
+    /**
+     * refresh controller
+     
+    public DataController() {
+        getData();
+        getDatab();
+    }
+
+    /**
+     * get user Data
+    
+    private void getData() {
+        userobj = new Data(); 
+      ------ROJA-------------*/
+
         try {
             userdata = new ArrayList<>();
             Connection con = DBUtils.getConnection();
@@ -90,17 +112,35 @@ public class DataController {
         return userdata;
     }
 
+    /**
+     * get user object
+     *
+     * @return
+     */
     public Data getUserobj() {
         return userobj;
     }
+
+
+    /**
+     * set user data
+     *
+     * @return
+     */
 
     public List<Datab> getUsedata() {
         return usedata;
     }
 
+    /**
+     * get user
+     *
+     * @return 'Admin'
+     */
     public Datab getUseobj() {
         return useobj;
     }
+
 
     public List<Monthly> getUsdata() {
         return usdata;
@@ -118,6 +158,14 @@ public class DataController {
         return uobj;
     }
 
+
+    /**
+     * Delete the user from user data
+     *
+     * @param d
+     * @return 'Admin'
+     */
+
     public String delete(Data d) {
         try (Connection conn = DBUtils.getConnection()) {
 
@@ -134,6 +182,12 @@ public class DataController {
         return "Admin";
     }
 
+
+    /**
+     * Add the user
+     *
+     * @return "Records"
+     */
     public String add() {
         int userID = getUserId();
         double g = 0;
@@ -174,14 +228,23 @@ public class DataController {
 
     }
 
+
+    /**
+     * get Data from users
+     */
+
     private void getDatab() {
         useobj = new Datab();
         try {
             int userID = 0;
+
             HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
                     .getExternalContext().getSession(false);
 
             String uname = session.getAttribute("username").toString();
+
+            /* uname = SessionController.getUserName(); */
+
             usedata = new ArrayList<>();
             Connection conn = DBUtils.getConnection();
             String get = "SELECT UId from users where Username=?";
@@ -191,7 +254,6 @@ public class DataController {
             while (rs.next()) {
                 userID = rs.getInt("UId");
             }
-
             String l = ("SELECT * FROM userdata WHERE UId = ?");
             PreparedStatement stmtt = conn.prepareStatement(l);
             stmtt.setInt(1, userID);
@@ -207,18 +269,25 @@ public class DataController {
                 usedata.add(us);
             }
         } catch (SQLException ex) {
-
             Logger.getLogger(DataController.class.getName()).log(Level.SEVERE, null, ex);
-
             usedata = new ArrayList<>();
         }
     }
 
+   /**
+     * get user id
+     *
+     * @return userID
+     */
     public int getUserId() {
         int userID = 0;
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
                 .getExternalContext().getSession(false);
         String uname = session.getAttribute("username").toString();
+   
+   /* public int getUserId() {
+        int userID = 0;
+        String uname = SessionController.getUserName(); */
         try {
             Connection conn = DBUtils.getConnection();
             String get = "SELECT UId from users where Username=?";
