@@ -16,13 +16,16 @@
             }
             .navbar-brand{
                 background-color: transparent;
-                font-size: 20px;
+                font-size: 17px;
                 font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
                 color: #fed136;
             }
+              p{
+                color: black;
+            }
         </style>
     </h:head>
-    <h:body>
+    <h:body  style="background-image: url('img/backpic.jpg');">
         <h:form>
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="container">
@@ -42,10 +45,10 @@
                 </div>
             </nav>
 
-            <p align="center">Hi #{userLogin.userName}</p>
+            <p align="center" style="color: white">Hi #{userLogin.userName}</p>
 
-            <div class ="form-group1">
-                <div id="bord1"> 
+            <div class ="form-group1" >
+                <div id="bord1" style="background-color: white"> 
 
                     <div class="form-group row">
                         <p>Name : <h:inputText value="#{userController.userobj.name}" /></p>
