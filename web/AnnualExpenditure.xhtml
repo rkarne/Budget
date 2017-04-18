@@ -1,8 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <meta charset="utf-8"></meta>
         <meta charset="utf-8"></meta>
@@ -24,7 +23,7 @@
             }
             .navbar-brand{
                 background-color: transparent;
-                font-size: 20px;
+                font-size: 17px;
                 font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
                 color: #fed136;
             }
@@ -33,7 +32,7 @@
 
 
     </h:head>
-    <h:body>
+    <h:body  style="background-image: url('img/backpic.jpg');">
         <h:form>
 
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -66,29 +65,25 @@
 
 
             <div class="container">
-                <p align="center">Hi #{userLogin.userName}</p>
+                <p align="center" style="color: white">Hi #{userLogin.userName}</p>
                 <div class="row">
                     <div class="col-lg-12 text-center">
 
 
                     </div>
                 </div>
-
+                </div>
+            
         <div class="row">
             <div class="col-lg-12 text-center">
-             <label>Start Date(YYYY-MM-DD)
+                <label style="color: white">Start Date(YYYY-MM-DD)
                  <h:inputText value="#{dataController.uobj.udate}"/>
              </label>
              <br/><br/><br/>
              <h:commandButton value="Get Transactions for 365 days" action="#{dataController.getAnnual()}" />
-             
-
             </div>
-
-
-
+            </div>
             <script src="js/jquery.js"></script>
-
             <script src="js/bootstrap.min.js"></script>  
         </h:form>
     </h:body>

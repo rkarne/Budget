@@ -42,15 +42,17 @@
 
             .navbar-brand{
                 background-color: transparent;
-                font-size: 20px;
+                font-size: 17px;
                 font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
                 color: #fed136;
             }
-
+            p{
+                color: white;
+            }
         </style>
     </h:head>
 
-    <h:body class="layout">
+    <h:body class="layout"  style="background-image: url('img/backpic.jpg');">
         <h:form>      
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="container">
@@ -77,7 +79,7 @@
             <p>Hi #{userLogin.userName}</p>
 
 
-            <h:dataTable id="panel" border="1"
+            <h:dataTable id="panel" border="1" style="background-color: white"
                          cellspacing="1" cellpadding="10"  bgcolor="ghostwhite" value="#{userController.users}" var="p">
                 <h:column>
 

@@ -21,13 +21,13 @@
 
             .navbar-brand{
                 background-color: transparent;
-                font-size: 20px;
+                font-size: 17px;
                 font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
                 color: #fed136;
             }
         </style>
     </h:head>
-    <h:body>
+    <h:body  style="background-image: url('img/backpic.jpg');">
         <h:form>
 
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -61,7 +61,7 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
 
-                        <h:dataTable  id = "panel"  border = "1"
+                        <h:dataTable  id = "panel"  border = "1"  style="background-color: white"
                                       cellpadding = "10" cellspacing = "1" bgcolor="#F0E68C" value="#{dataController.userdata}" var="p">
 
                             <h:column>
