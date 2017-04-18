@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+       <meta charset="utf-8"></meta>
+<meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
+
+    <title>Annual Expenditure</title>
+<link rel="icon" href="img/icon.png"></link>
+
+  
+    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+
+   
+    <style>
+    body {
+        padding-top: 70px;
+    }
+    .navbar-brand{
+                background-color: transparent;
+                font-size: 17px;
+                font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+                color: #fed136;
+            }
+    </style>
+
+   
+
+    </h:head>
+    <h:body  style="background-image: url('img/backpic.jpg');">
+           <h:form>
+        
+   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="nav navbar-nav">
+                        <a class="navbar-brand page-scroll" style="font-style: oblique; color: #fed136;"  >Budget Tool</a>
+                    </div>
+                    <div  id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <h:commandLink class="navbar-brand" action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
+                            </li> 
+                            <li>
+                                <h:commandLink class="navbar-brand" action="MontlyExpenditure"  >  Monthly Expenditure </h:commandLink>&nbsp;&nbsp;
+                            </li>
+                            <li>
+                                <h:commandLink class="navbar-brand" action="Records"  > Records </h:commandLink>&nbsp;&nbsp;
+                            </li>
+                            <li>
+                                <h:commandLink class="navbar-brand" action="Template"  >  Template Entry </h:commandLink>&nbsp;&nbsp;
+                            </li>
+                            <li>
+                                <h:commandLink class="navbar-brand" action="#{userLogin.logout()}"  >  Logout </h:commandLink>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </nav>
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+             <h:dataTable value="#{dataController.udata}" var="p" border="3" cellspacing="2" cellpadding="5"  style="background-color: white">
+            <h:column>
+                <f:facet name="header">Balance</f:facet>
+                  #{p.bal} 
+            </h:column>           
+            <h:column>
+                <f:facet name="header">Place</f:facet>
+                    #{p.place}
+            </h:column>
+            <h:column>
+                <f:facet name="header">amount</f:facet>
+                    #{p.amount}
+            </h:column>
+            <h:column>
+                <f:facet name="header">date</f:facet>
+                    #{p.date}
+            </h:column>
+            
+        </h:dataTable>
+             
+            </div>
+        </div>
+ 
+
+    </div>
+  
+
+
+    <script src="js/jquery.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>  
+    </h:form>
+    </h:body>
+</html>
+

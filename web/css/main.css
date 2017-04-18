@@ -1,0 +1,35 @@
+#body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 370px;
+    height: 350px;
+    margin: 0 auto;
+    padding: 55px;
+    padding-top: 14px;
+   /* background-color: black;
+   border: 3px solid blue;*/
+}
+h1, h2, ul, p {
+	margin: 0;
+	padding: 0;
+        
+}
+h1 {
+	padding-bottom: .25em;
+	color: blue;
+}
+h2 {
+	font-size: 120%;
+	padding: .5em 0;
+}
+img {
+	height: 250px;
+}
+#slides img {
+	display: none;
+   
+}
+ #caption{
+        font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-style: italic;
+
+}

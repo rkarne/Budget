@@ -1,0 +1,101 @@
+
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9-Apr-2017, 2:53:01 PM
+    Author     : c0682337
+*/
+/* design for the admin page*/
+
+.layout{
+   
+ margin-top:10px;
+ margin-left: 500px;
+ margin-right:auto;
+ margin-bottom: auto;
+ padding-left: auto;
+ padding-right: auto;
+
+}
+
+
+.form-group{
+    margin: -5px auto; 
+    margin-right:50px;
+    width:300px;
+    height:80px;
+ 
+}
+
+#bord{
+    border:5px orange inset;
+    padding-left: 10px;
+    padding-right:20px;
+    padding-bottom:20px;
+    padding-top: 50px;
+    margin-right: 50px;
+    margin-left: 1px;
+     
+}
+.form-group1{
+    margin: -5px auto; 
+    margin-right:50px;
+    width:300px;
+    height:80px;
+  
+
+}
+
+
+/*design of the template page*/
+#admin{
+    background:ghostwhite;
+    margin :0 auto;
+    width:400px;
+    height:500px;
+    border: 5px orange inset;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+    padding-left: 40px;
+    padding-right: 140px;
+    padding-bottom: 400px;
+    padding-top:50px;
+}
+.form-group .row{
+    width: 300px;
+}
+
+fieldset{
+    padding-right:2px;
+    margin-right: 100px;
+    height:50px;
+}
+container{
+    margin :0 auto;
+    width:400px;
+    height: 50px;
+    background-image: url("img/header-bg.jpg");
+}
+/*design for the edit page*/
+.form-group1{
+ 
+margin: 0 auto; 
+width:350px;
+height:50px;
+
+}
+
+
+#bord1{
+    border:5px orange inset;
+    padding-left: 20px;
+    padding-right:20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-right: 50px;
+}
