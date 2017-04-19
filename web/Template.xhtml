@@ -2,139 +2,119 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
     <h:head>
         <meta charset="utf-8"></meta>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-        <title>Template Entry</title>
+        <title>Budget Application</title>
         <link rel="icon" href="img/icon.png"></link>
-        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
-        <link href="css/templ.css" rel="stylesheet" ></link>
-        <style>
-            body {
-                padding-top: 70px;
-            }
-            .navbar-brand{
-                background-color: transparent;
-                font-size: 17px;
-                font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
-                color: #fed136;
-            }
-            
-            
-        </style>
-        
-        
-        
-        
-      <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-  .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-      width: 70%;
-      margin: auto;
-  }
-  </style>
-        <style>
- 
-    </style>
-    <script>
-         $('.item').carousel({
-        interval: 5000 //changes the speed
-    })
-        </script>
-        
-    </h:head>
-    <h:body style="background-image: url('img/backpic.jpg');">
-        <h:form> 
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                <div class="container">
+        <!-- Bootstrap Core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+        <!-- social icons -->
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
+        <!--header style -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"></link>
+        <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'></link>
+        <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'></link>
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'></link>
 
-                    <div class="nav navbar-nav">
-                        <a class="navbar-brand page-scroll" style="font-style: oblique; color: #fed136;"  >Budget Tool</a>
-                    </div>
-                    <div  id="bs-example-navbar-collapse-1">
+        <link href="css/templ.css" rel="stylesheet" ></link>
+        <!-- style for whole page -->
+        <link href="css/agency.min.css" rel="stylesheet"></link>
+        <style>
+            .copyright{
+                color: white;
+            }
+            
+
+        </style>
+    </h:head>
+    <h:body  id="page-top" style="background-image: url('img/backpic.jpg');">
+        <nav id="mainNav" style="background-color: black" class="navbar navbar-default navbar-custom navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="index">Budget Tool</a>
+                    
+                </div>
+                
+                <h:form>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        
                         <ul class="nav navbar-nav navbar-right">
+                            
                             <li>
-                                <h:commandLink class="navbar-brand" action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
+                                <h:commandLink   action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
                             </li> 
-                            <li>
-                                <h:commandLink class="navbar-brand" action="AnnualExpenditure"  >  Annual Expenditure </h:commandLink>&nbsp;&nbsp;
+                            <li >
+                                <h:commandLink  action="AnnualExpenditure"  >  Annual Expenditure </h:commandLink>&nbsp;&nbsp;
                             </li>
-                            <li>
-                                <h:commandLink class="navbar-brand" action="MontlyExpenditure"  > Monthly Expenditure </h:commandLink>&nbsp;&nbsp;
+                            <li >
+                                <h:commandLink action="MontlyExpenditure"  > Monthly Expenditure </h:commandLink>&nbsp;&nbsp;
                             </li>
-                            <li>
-                                <h:commandLink class="navbar-brand" action="Records"  > Records </h:commandLink>&nbsp;&nbsp;
+                            <li >
+                                <h:commandLink  action="Records"  > Records </h:commandLink>&nbsp;&nbsp;
                             </li>
-                            <li>
-                                <h:commandLink class="navbar-brand" action="#{userLogin.logout()}"  >  Logout </h:commandLink>
+                            <li >
+                                <h:commandLink action="#{userLogin.logout()}"  >  Logout </h:commandLink>
                             </li>
                         </ul>
                     </div>
-                    </div>
-                </nav>
-            
-            
-            <p align="center" style="color: white">Hi #{userLogin.userName}</p>
-
-
-
-            
-            
-            
-            
-    <br/>        
-            <div class="container1">
-                
-
-                <div id="admin">
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Place:</label>
-                        <h:inputText  value="#{dataController.userobj.place}" class="form-control" id="inputEmail3" ></h:inputText>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label" >Amount:</label>
-                        <h:inputText value="#{dataController.userobj.amount}" class="form-control" id="inputPassword3" ></h:inputText>
-                    </div>
-                    <fieldset class="form-group row">
-                        <p>Transaction:  </p>
-                        <h:selectOneRadio  value="#{dataController.userobj.radio}">
-                            <f:selectItem itemValue="+" itemLabel="Deposit" />
-                            <f:selectItem itemValue="-" itemLabel="Withdraw" />           
-                        </h:selectOneRadio>
-                    </fieldset>
-                    <br/>
-                    <div class="form-group row">
-                        <label for="inputDate" class="col-sm-2 col-form-label">Date:</label>
-                        <h:inputText value="#{dataController.userobj.date}" class="form-control" id="inputDate" ></h:inputText>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-10">
-                            <h:commandButton  class="btn btn-primary"  value="Add Transaction" action="#{dataController.add()}" />
-                        </div>
+                </h:form>      
+            </div>
+        </nav><br/> <br/><br/><br/><br/><br/><br/>
+        <h:form > 
+            <p:growl id="msgs" showDetail="true" />
+            <h:panelGrid columns="4" cellpadding="20" style="background-color: white">
+                <p:graphicImage value="img/about/1.jpg" />
+                <h:outputText
+                    value="Take the time to add up your total monthlyincome all sources and list your regular monthly expenses tocreate a monthly budget. 
+                    Categorize expenses in groups to make the process simpler. For example, include mortgage payments or rent as well as utilities when
+                    you list an amount for housing. Transportation includes not just your car payments but gas, insurance, registration and repairs as well. 
+                    Quicken's Free Budget Calculator gives you a boost toward getting this done by doing all the math for you" />
+            </h:panelGrid>
+        </h:form>
+        <br/>
+        <div class="container" >
+            <p  style="color: white; font-size: 25px">Hi&nbsp; #{userLogin.userName}</p>
+        </div >
+        <div class="container1" >
+            <div id="admin">
+                <h:form>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Place:</label>
+                    <h:inputText  value="#{dataController.userobj.place}" class="form-control" id="inputEmail3" ></h:inputText>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label" >Amount:</label>
+                    <h:inputText value="#{dataController.userobj.amount}" class="form-control" id="inputPassword3" ></h:inputText>
+                </div>
+                <fieldset class="form-group row">
+                    <p>Transaction:  </p>
+                    <h:selectOneRadio  value="#{dataController.userobj.radio}">
+                        <f:selectItem itemValue="+" itemLabel="Deposit" /> 
+                         <f:selectItem itemValue="-" itemLabel="Withdraw" />           
+                    </h:selectOneRadio>
+                </fieldset>
+                <br/>
+                <div class="form-group row">
+                    <label for="inputDate" class="col-sm-2 col-form-label">Date:</label>
+                    <h:inputText value="#{dataController.userobj.date}" class="form-control" id="inputDate" ></h:inputText>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-2 col-sm-10">
+                        <h:commandButton  class="btn btn-primary"  value="Add Transaction" action="#{dataController.add()}" />
                     </div>
                 </div>
-            </div> 
-            <script src="js/jquery.js"></script>
-            <script src="js/bootstrap.min.js"></script>  
-        </h:form>
-        
-      
-        
-        
-        
-        
- 
-        
-        
-        
-          <footer>
-            <div class="container">
+                </h:form>
+            </div>
+        </div><br/><br/><br/><br/>
+        <footer style="background-color: black; position: absolute; width: 100%;">
+            <div class="container" >
                 <div class="row">
                     <div class="col-md-4">
                         <span class="copyright">Copyright &copy; Budget 2017</span>
@@ -149,14 +129,14 @@
                             </li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </footer>
-        
-        
-    </h:body>      
+        <!-- jQuery -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Theme JavaScript -->
+        <script src="js/agency.min.js"></script>
+    </h:body>
 </html>
-
-
-
