@@ -1,91 +1,124 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
     <h:head>
-        <meta charset="utf-8"></meta>
         <meta charset="utf-8"></meta>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-        <meta name="description" content=""></meta>
-        <meta name="author" content=""></meta>
-
-        <title>Annual Expenditure</title>
+        <title>Budget Application</title>
         <link rel="icon" href="img/icon.png"></link>
-
-
-        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
-
-
+        <!-- Bootstrap Core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+        <!-- social icons -->
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
+        <!--header style -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"></link>
+        <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'></link>
+        <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'></link>
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'></link>
+        <link href="css/templ.css" rel="stylesheet" ></link>
+        <!-- style for whole page -->
+        <link href="css/agency.min.css" rel="stylesheet"></link>
         <style>
-            body {
-                padding-top: 70px;
-            }
-            .navbar-brand{
-                background-color: transparent;
-                font-size: 17px;
-                font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
-                color: #fed136;
-            }
+            .copyright{
+                color: white;
+            }      
         </style>
-
-
-
     </h:head>
-    <h:body  style="background-image: url('img/backpic.jpg');">
-        <h:form>
-
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                <div class="container">
-                    <div class="nav navbar-nav">
-                        <a class="navbar-brand page-scroll" style="font-style: oblique; color: #fed136;"  >Budget Tool</a>
-                    </div>
-                    <div  id="bs-example-navbar-collapse-1">
+    <h:body  id="page-top" style="background-image: url('img/backpic.jpg');">
+        <nav id="mainNav" style="background-color: black" class="navbar navbar-default navbar-custom navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="index">Budget Tool</a>
+                </div>
+                <h:form>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <h:commandLink class="navbar-brand" action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
+                                <h:commandLink   action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
                             </li> 
-                            <li>
-                                <h:commandLink class="navbar-brand" action="MontlyExpenditure"  >  Monthly Expenditure </h:commandLink>&nbsp;&nbsp;
+                            <li >
+                                <h:commandLink  action="Template"  >  Template Entry </h:commandLink>&nbsp;&nbsp;
                             </li>
-                            <li>
-                                <h:commandLink class="navbar-brand" action="Records"  > Records </h:commandLink>&nbsp;&nbsp;
+                            <li >
+                                <h:commandLink action="MontlyExpenditure"  > Monthly Expenditure </h:commandLink>&nbsp;&nbsp;
                             </li>
-                            <li>
-                                <h:commandLink class="navbar-brand" action="Template"  >  Template Entry </h:commandLink>&nbsp;&nbsp;
+                            <li >
+                                <h:commandLink  action="Records"  > Records </h:commandLink>&nbsp;&nbsp;
                             </li>
-                            <li>
-                                <h:commandLink class="navbar-brand" action="#{userLogin.logout()}"  >  Logout </h:commandLink>
+                            <li >
+                                <h:commandLink action="#{userLogin.logout()}"  >  Logout </h:commandLink>
+                            </li>
+                        </ul>
+                    </div>
+                </h:form>      
+            </div>
+        </nav><br/> <br/><br/><br/><br/><br/><br/>
+        <p:lightBox   >  
+    <h:outputLink value="img/about/1.jpg" title="Budget Calculation" >  
+        <h:graphicImage value="img/about/1.jpg" id="imgbudget1" style="height: 400px; width: 395px" />  
+    </h:outputLink>
+ 
+    <h:outputLink value="img/about/2.jpg" title="Money Saving">  
+        <h:graphicImage value="img/about/2.jpg" id="imgbudget2" style="height: 400px; width: 395px" />  
+    </h:outputLink>
+ 
+    <h:outputLink value="img/about/3.jpg" title="Budget view">  
+       <h:graphicImage value="img/about/3.jpg" id="imgbudget3" style="height: 400px; width: 395px" />
+    </h:outputLink>
+ 
+    <h:outputLink value="img/about/4.jpg" title="Budget Overview">  
+        <h:graphicImage value="img/about/4.jpg" id="imgbudget4" style="height: 400px; width: 395px" />  
+    </h:outputLink>
+</p:lightBox> <br/>
+        <div class="container" >
+            <p  style="color: white; font-size: 25px">Hi&nbsp; #{userLogin.userName}</p>
+        </div >
+        <div class="container1" >
+            <div id="admin1">
+                <h:form>
+                <div class="row">
+            <div class="col-lg-12 text-center">
+                <label>Start Date(YYYY-MM-DD)
+                 <h:inputText value="#{dataController.uobj.udate}"/>
+             </label>
+             <br/><br/><br/>
+             <h:commandButton class="btn btn-primary" value="Get Transactions for 365 days" action="#{dataController.getAnnual()}" />
+            </div>
+            </div>
+                </h:form>
+            </div>
+        </div><br/><br/><br/><br/>
+        <footer style="background-color: black; ">
+            <div class="container" >
+                <div class="row">
+                    <div class="col-md-4">
+                        <span class="copyright">Copyright &copy; Budget 2017</span>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-inline social-buttons">
+                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="https://www.linkedin.com/uas/login"><i class="fa fa-linkedin"></i></a>
                             </li>
                         </ul>
                     </div>
                 </div>
-
-            </nav>
-
-
-            <div class="container">
-                <p align="center" style="color: white">Hi #{userLogin.userName}</p>
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-
-
-                    </div>
-                </div>
-                </div>
-            
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <label style="color: white">Start Date(YYYY-MM-DD)
-                 <h:inputText value="#{dataController.uobj.udate}"/>
-             </label>
-             <br/><br/><br/>
-             <h:commandButton value="Get Transactions for 365 days" action="#{dataController.getAnnual()}" />
             </div>
-            </div>
-            <script src="js/jquery.js"></script>
-            <script src="js/bootstrap.min.js"></script>  
-        </h:form>
+        </footer>
+        <!-- jQuery -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Theme JavaScript -->
+        <script src="js/agency.min.js"></script>
     </h:body>
 </html>
-
