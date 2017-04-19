@@ -31,6 +31,10 @@
                 height: 400px;
 
             }
+            p{
+                color: white;
+                font-size: 25px;
+            }
 
         </style>
     </h:head>
@@ -53,7 +57,7 @@
                                 <h:commandLink  action="AnnualExpenditure"  >  Annual Expenditure </h:commandLink>&nbsp;&nbsp;
                             </li>
                             <li >
-                                <h:commandLink action="MontlyExpenditure"  > Monthly Expenditure </h:commandLink>&nbsp;&nbsp;
+                                <h:commandLink action="Template"  > Template Entry </h:commandLink>&nbsp;&nbsp;
                             </li>
                             <li >
                                 <h:commandLink  action="Records"  > Records </h:commandLink>&nbsp;&nbsp;
@@ -66,63 +70,8 @@
                 </h:form>      
             </div>
         </nav><br/> <br/><br/><br/><br/><br/><br/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <p:tabView>
-            <p:tab title="Budget Calculations">
-                <h:panelGrid columns="2" >
-                    <p:graphicImage value="img/about/3.jpg" />
-                    <h:outputText value="When it comes to personal finance, it's best not to play the guessing game. Sometimes the easiest way to 
-                                  manage your monthly budget is to visualize it. With Quicken's budget calculator, it's easier than ever to manage 
-                                  your finances." />
-                </h:panelGrid>
-            </p:tab>
-            <p:tab title="Money Saving">
-                <h:panelGrid columns="2" >
-                    <p:graphicImage value="img/about/4.jpg" />
-                    <h:outputText value="Benefit of building a budget is that it forces you to track your spending and see in black and white 
-                                  (or in this case—color) where your money goes. This kind of expense-tracking exercise shows how even little costs 
-                                  add up." />
-                </h:panelGrid>
-            </p:tab>
-            <p:tab title="Realize Your Goals">
-                <h:panelGrid columns="2" >
-                    <p:graphicImage value="img/about/2.jpg" />
-                    <h:outputText value="Creating a budget forces you to reevaluate your goals and priorities. If you are not saving money for 
-                                  the things you plan to do, you aren't likely to do them. For example, rather than fantasize about buying a
-                                  home or going back to school, include contributions to funding these goals in your monthly budget." />
-                </h:panelGrid>
-            </p:tab>
-        </p:tabView><br/><br/><br/>
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div class="container" >
-            <p  style="color: white; font-size: 25px">Hi&nbsp; #{userLogin.userName}</p>
+            <p>Hi&nbsp; #{userLogin.userName}</p>
         </div >
         <div class="container1" >
             <div id="admin1">
@@ -133,14 +82,73 @@
                                 <h:inputText value="#{dataController.usobj.udate}"/>
                             </label>
                             <br/><br/><br/>
-                            <h:commandButton value="Get Transactions for 30 days" action="#{dataController.getMonthly()}" />
+                            <h:commandButton class="btn btn-primary" value="Get Transactions for 30 days" action="#{dataController.getMonthly()}" />
                         </div>
                     </div>
                 </h:form>
             </div>
         </div><br/><br/><br/><br/>
-
-
+        
+        <p><i>Understand Budget Applications</i></p><br/>
+        <p:tabView>
+            <p:tab title="Budget Calculations With Tool">
+                <h:panelGrid columns="2" >
+                    <p:graphicImage value="img/about/3.jpg" />
+                    <h:outputText value="When it comes to personal finance, it's best not to play the guessing game. Sometimes the easiest way to 
+                                  manage your monthly budget is to visualize it. With Quicken's budget calculator, it's easier than ever to manage 
+                                  your finances." />
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Money Saving And Plan Expenditure">
+                <h:panelGrid columns="2" >
+                    <p:graphicImage value="img/about/4.jpg" />
+                    <h:outputText value="Benefit of building a budget is that it forces you to track your spending and see in black and white 
+                                  (or in this case—color) where your money goes. This kind of expense-tracking exercise shows how even little costs 
+                                  add up." />
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Realize Your Goals And Targets">
+                <h:panelGrid columns="2" >
+                    <p:graphicImage value="img/about/2.jpg" />
+                    <h:outputText value="Creating a budget forces you to reevaluate your goals and priorities. If you are not saving money for 
+                                  the things you plan to do, you aren't likely to do them. For example, rather than fantasize about buying a
+                                  home or going back to school, include contributions to funding these goals in your monthly budget." />
+                </h:panelGrid>
+            </p:tab>
+        </p:tabView>
+        <br/><br/><br/>
+        <p><i>What, Why and How To Maintain Budget ?</i></p><br/>
+ <p:tabView>
+            <p:tab title="why is it important">
+                <h:panelGrid columns="2" >
+                    <p:graphicImage value="img/about/51.png"  />
+                    <h:outputText value="It is typically created using a spreadsheet, and it provides a concrete, organized, 
+                                  and easily understood breakdown of how much money you have coming in and how much you are letting go.  
+                                  It’s an invaluable tool to help you prioritize your spending and manage your money—no matter 
+                                  how much or how little you have" />
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Budget Forecasting and Planning">
+                <h:panelGrid columns="2" >
+                    <p:graphicImage value="img/about/61.png" />
+                    <h:outputText value="Once you create your first budget, begin to use it and get a good feel for how it can keep 
+                                  your finances on track, you may want to map out your spending plan or budget for 
+                                  6 months to a year down the road. By doing this you can easily forecast which months your finances may 
+                                  be tight and which ones you'll have extra money. You can then look for ways to even out the highs and lows 
+                                  in your finances so that things can be more manageable and pleasant." />
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Reasons You Need a Budget">
+                <h:panelGrid columns="2" >
+                    <p:graphicImage value="img/about/71.png" />
+                    <h:outputText value="To set and reach financial goals. To spend according to your priorities. To build wealth. 
+                                  To plan for retirement. For peace of mind. Final thoughts. Creating and following a budget involves 
+                                  self-discipline and sacrifice, but will help you develop wise spending habits to better manage your 
+                                  finances now and into the future. Keep your budget current by updating it regularly to reflect changes 
+                                  in your situation, such as a raise, marriage, or new home." />
+                </h:panelGrid>
+            </p:tab>
+        </p:tabView>
         <footer style="background-color: black; ">
             <div class="container" >
                 <div class="row">

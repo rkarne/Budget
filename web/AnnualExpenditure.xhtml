@@ -2,14 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.prime.com.tr/ui">
-    <h:head>
+    <h:head>s
         <meta charset="utf-8"></meta>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <title>Budget Application</title>
-        <link rel="icon" href="img/icon.png"></link>
+       <link rel="icon" href="img/icon.png"></link>
         <!-- Bootstrap Core CSS -->
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
         <!-- social icons -->
@@ -26,6 +25,15 @@
             .copyright{
                 color: white;
             }      
+            
+            .image{
+                height: 400px;
+                width: 390px;
+                
+            }
+            p{
+                color: white;
+            }
         </style>
     </h:head>
     <h:body  id="page-top" style="background-image: url('img/backpic.jpg');">
@@ -60,26 +68,10 @@
                 </h:form>      
             </div>
         </nav><br/> <br/><br/><br/><br/><br/><br/>
-        <p:lightBox   >  
-    <h:outputLink value="img/about/1.jpg" title="Budget Calculation" >  
-        <h:graphicImage value="img/about/1.jpg" id="imgbudget1" style="height: 400px; width: 395px" />  
-    </h:outputLink>
- 
-    <h:outputLink value="img/about/2.jpg" title="Money Saving">  
-        <h:graphicImage value="img/about/2.jpg" id="imgbudget2" style="height: 400px; width: 395px" />  
-    </h:outputLink>
- 
-    <h:outputLink value="img/about/3.jpg" title="Budget view">  
-       <h:graphicImage value="img/about/3.jpg" id="imgbudget3" style="height: 400px; width: 395px" />
-    </h:outputLink>
- 
-    <h:outputLink value="img/about/4.jpg" title="Budget Overview">  
-        <h:graphicImage value="img/about/4.jpg" id="imgbudget4" style="height: 400px; width: 395px" />  
-    </h:outputLink>
-</p:lightBox> <br/>
+        
         <div class="container" >
-            <p  style="color: white; font-size: 25px">Hi&nbsp; #{userLogin.userName}</p>
-        </div >
+            <p  style=" font-size: 25px">Hi&nbsp; #{userLogin.userName}</p>
+        </div ><br/>
         <div class="container1" >
             <div id="admin1">
                 <h:form>
@@ -95,6 +87,26 @@
                 </h:form>
             </div>
         </div><br/><br/><br/><br/>
+        <br/><br/><br/>
+        <p><i>click on image</i></p>
+        <p:lightBox style="margin-left: 10px; margin-right: 10px"  >  
+    <h:outputLink value="img/about/1.jpg" title="Budget Calculation" >  
+        <h:graphicImage value="img/about/1.jpg" class="image" id="imgbudget1"  />  
+    </h:outputLink>
+ 
+    <h:outputLink value="img/about/2.jpg" title="Money Saving">  
+        <h:graphicImage value="img/about/2.jpg" class="image" id="imgbudget2"  />  
+    </h:outputLink>
+ 
+    <h:outputLink value="img/about/3.jpg" title="Budget view">  
+       <h:graphicImage value="img/about/3.jpg" class="image" id="imgbudget3"  />
+    </h:outputLink>
+ 
+    <h:outputLink value="img/about/4.jpg" title="Budget Overview">  
+        <h:graphicImage value="img/about/4.jpg" class="image" id="imgbudget4"  />  
+    </h:outputLink>
+</p:lightBox> 
+        
         <footer style="background-color: black; ">
             <div class="container" >
                 <div class="row">

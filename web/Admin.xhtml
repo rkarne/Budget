@@ -2,85 +2,88 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
     <h:head>
-        <title>Admin Panel</title>
-        <link rel="icon" href="img/icon.png"></link>
         <meta charset="utf-8"></meta>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <title>Budget Application</title>
+        <link rel="icon" href="img/icon.png"></link>
+        <!-- Bootstrap Core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+        <!-- social icons -->
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
+        <!--header style -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"></link>
+        <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'></link>
+        <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'></link>
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'></link>
+        <link href="css/templ.css" rel="stylesheet" ></link>
+        <!-- style for whole page -->
+        <link href="css/agency.min.css" rel="stylesheet"></link>
         <!--Show table -->
-        <link rel="stylesheet" href="css/bootstrap.min.css" ></link>
+      
         <!-- Popup dialog -->
         <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
         <script language="javascript" src="scripts.js"></script>
         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" /> 
-        <link href="css/templ.css" rel="stylesheet" />
-        <script>
-            function initDialog() {
-                $("#idOfDialogPlaceHolder").dialog({
-                    modal: true,
-                    buttons: {
-                        Submit: function () {
-                            $("#justAButton").click();
-                        },
-                        Close: function () {
-                            $(this).dialog("close");
-                        }
-                    },
-                });
-
-            }
-
-        </script>
         <style>
-            .xyz:hover {
-                background-color: yellow ;
-            }
-
-            .navbar-brand{
-                background-color: transparent;
-                font-size: 17px;
-                font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
-                color: #fed136;
-            }
-            p{
+             .copyright{
                 color: white;
+            }   
+
+            p{
+                color: white; 
+                font-size: 25px
             }
+            table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #fffae6}
         </style>
     </h:head>
 
-    <h:body class="layout"  style="background-image: url('img/backpic.jpg');">
-        <h:form>      
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                <div class="container">
-                    <div class="nav navbar-nav">
-                        <a class="navbar-brand page-scroll" style="font-style: oblique; color: #fed136;"  >Budget Tool</a>
-                    </div>
-
-                    <div  id="bs-example-navbar-collapse-1">
+   <h:body  id="page-top" style="background-image: url('img/backpic.jpg');">
+        <nav id="mainNav" style="background-color: black" class="navbar navbar-default navbar-custom navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="index">Budget Tool</a>
+                </div>
+                <h:form>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <h:commandLink class="navbar-brand" action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
+                                <h:commandLink   action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
                             </li> 
-                            <li>
-                                <h:commandLink class="navbar-brand" action="#{userLogin.logout()}"  >  Logout </h:commandLink>
+                           
+                            <li >
+                                <h:commandLink action="#{userLogin.logout()}"  >  Logout </h:commandLink>
                             </li>
-
                         </ul>
                     </div>
+                </h:form>      
+            </div>
+        </nav><br/> <br/><br/><br/><br/><br/><br/>
 
-                </div>
+             <div class="container" >
+            <p >Hi&nbsp; #{userLogin.userName}</p><br/><br/>
 
-            </nav><br/><br/><br/><br/>
-
-            <p>Hi #{userLogin.userName}</p>
-
-
-            <h:dataTable id="panel" border="1" style="background-color: white"
-                         cellspacing="1" cellpadding="10"  bgcolor="ghostwhite" value="#{userController.users}" var="p">
+<h:form>
+    <p><i>Users Accounts</i></p>
+            <h:dataTable id="panel" border="10" style="background-color: white"
+                           value="#{userController.users}" var="p">
                 <h:column>
 
 
@@ -100,13 +103,14 @@
                     <h:commandButton class="btn btn-warning" value="Delete" action="#{userController.delete(p)}" />
                 </h:column>
             </h:dataTable>
-            <br/> <br/>
+            <br/> <br/> <br/><br/>
             <h:commandButton id="dialogClickBtn" class="btn btn-primary btn-lg" value="Add User" action="#{userController.addUser()}"></h:commandButton>  
-        </h:form><br><br></br></br>
+        </h:form><br><br></br></br> <br/><br/>
         <h:form>
+            <p><i>Users Records</i></p>
             <h:dataTable id="panel" value="#{dataController.userdata}" var="p"
-                         border="1"
-                         cellspacing="1" cellpadding="10"  style="background-color: white">
+                         border="10"
+                           style="background-color: white">
                 <h:column>
                     <f:facet name="header">Transaction ID</f:facet>
                         #{p.id} 
@@ -137,21 +141,35 @@
 
             </h:dataTable>
         </h:form>
+             </div> <br/><br/><br/> <br/><br/>   
+      <footer style="background-color: black; ">
+            <div class="container" >
+                <div class="row">
+                    <div class="col-md-4">
+                        <span class="copyright">Copyright &copy; Budget 2017</span>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-inline social-buttons">
+                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="https://www.linkedin.com/uas/login"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- jQuery -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Theme JavaScript -->
+        <script src="js/agency.min.js"></script>
 
-        <h:panelGroup id="idOfDialogPlaceHolder"  style="display:none">
+        <script src="js/jquery.js"></script>
 
-            <h:form prependId="false">     
-                <p>Name: <h:inputText value="#{userLogin.name}" required="Please enter"/></p>
-                <p>Email: <h:inputText value="#{userLogin.email}" required="Please enter"/></p>
-                <p>UserName: <h:inputText value="#{userLogin.userName}"  required="Please enter"/></p>
-                <p>Password: <h:inputText value="#{userLogin.userPassword}" required="Please enter"/></p>
-                <p>Date: <h:inputText value="#{userLogin.date}" required="Please enter"/></p>
-                <h:commandButton id="justAButton" action="#{userLogin.dataFrom()}"  style="display:none">
-                </h:commandButton>
-            </h:form>
-        </h:panelGroup>
-
-
+        <script src="js/bootstrap.min.js"></script> 
     </h:body>
 </html>
-

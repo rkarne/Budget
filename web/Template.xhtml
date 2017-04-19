@@ -67,17 +67,7 @@
                 </h:form>      
             </div>
         </nav><br/> <br/><br/><br/><br/><br/><br/>
-        <h:form > 
-            <p:growl id="msgs" showDetail="true" />
-            <h:panelGrid columns="4" cellpadding="20" style="background-color: white">
-                <p:graphicImage value="img/about/1.jpg" />
-                <h:outputText
-                    value="Take the time to add up your total monthlyincome all sources and list your regular monthly expenses tocreate a monthly budget. 
-                    Categorize expenses in groups to make the process simpler. For example, include mortgage payments or rent as well as utilities when
-                    you list an amount for housing. Transportation includes not just your car payments but gas, insurance, registration and repairs as well. 
-                    Quicken's Free Budget Calculator gives you a boost toward getting this done by doing all the math for you" />
-            </h:panelGrid>
-        </h:form>
+        
         <br/>
         <div class="container" >
             <p  style="color: white; font-size: 25px">Hi&nbsp; #{userLogin.userName}</p>
@@ -112,7 +102,33 @@
                 </div>
                 </h:form>
             </div>
-        </div><br/><br/><br/><br/>
+        </div>
+        <br/><br/><br/>
+        <h:form > 
+            <p:growl id="msgs" showDetail="true" />
+            <h:panelGrid columns="2" cellpadding="20" style="background-color: white">
+                <p:graphicImage value="img/about/1.jpg" />
+                <h:outputText
+                    value="Take the time to add up your total monthlyincome all sources and list your regular monthly expenses tocreate a monthly budget. 
+                    Categorize expenses in groups to make the process simpler. For example, include mortgage payments or rent as well as utilities when
+                    you list an amount for housing. Transportation includes not just your car payments but gas, insurance, registration and repairs as well. 
+                    Quicken's Free Budget Calculator gives you a boost toward getting this done by doing all the math for you" />
+            </h:panelGrid>
+            <h:panelGrid columns="2" cellpadding="20" style="background-color: white">
+                <p:graphicImage value="img/about/3.jpg" />
+                <h:outputText
+                    value="Benefit of building a budget is that it forces you to track your spending and see in black and white 
+                    (or in this case—color) where your money goes. This kind of expense-tracking exercise shows how even 
+                    little costs add up." />
+            </h:panelGrid>
+            <h:panelGrid columns="2" cellpadding="20" style="background-color: white">
+                <p:graphicImage value="img/about/4.jpg" />
+                <h:outputText
+                    value="Creating a budget forces you to reevaluate your goals and priorities. If you are not saving money for the 
+                    things you plan to do, you aren't likely to do them. For example, rather than fantasize about buying a home or going 
+                    back to school, include contributions to funding these goals in your monthly budget." />
+            </h:panelGrid>
+        </h:form>  
         <footer style="background-color: black; position: absolute; width: 100%;">
             <div class="container" >
                 <div class="row">

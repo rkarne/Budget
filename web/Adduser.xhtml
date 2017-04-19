@@ -1,55 +1,76 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
     <h:head>
-        <title>Edit User</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="css/bootstrap.min.css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <meta charset="utf-8"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <title>Budget Application</title>
+        <link rel="icon" href="img/icon.png"></link>
+        <!-- Bootstrap Core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+        <!-- social icons -->
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
+        <!--header style -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"></link>
+        <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'></link>
+        <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'></link>
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'></link>
         <link href="css/templ.css" rel="stylesheet" ></link>
+        <!-- style for whole page -->
+        <link href="css/agency.min.css" rel="stylesheet"></link>
+           <link href="css/templ.css" rel="stylesheet" ></link>
         <style>
-            body{
-                padding-top: 70px;
-            }
-            .navbar-brand{
-                background-color: transparent;
-                font-size: 17px;
-                font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
-                color: #fed136;
-            }
-              p{
-                color: black;
-            }
+            .copyright{
+                color: white;
+            }   
+
+input {
+  float: right;
+  clear: both;
+}
+
+
         </style>
     </h:head>
-    <h:body  style="background-image: url('img/backpic.jpg');">
-        <h:form>
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                <div class="container">
-                    <div class="nav navbar-nav">
-                        <a class="navbar-brand page-scroll" style="font-style: oblique; color: #fed136;"  >Budget Tool</a>
-                    </div>
-                    <div  id="bs-example-navbar-collapse-1">
+    <h:body  id="page-top" style="background-image: url('img/backpic.jpg');">
+        <nav id="mainNav" style="background-color: black" class="navbar navbar-default navbar-custom navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="index">Budget Tool</a>
+                </div>
+                <h:form>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <h:commandLink class="navbar-brand" action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
+                                <h:commandLink   action="index"  >  Home </h:commandLink> &nbsp;&nbsp;
                             </li> 
-                            <li>
-                                <h:commandLink class="navbar-brand" action="#{userLogin.logout()}"  >  Logout </h:commandLink>
+                        
+                            <li >
+                                <h:commandLink action="#{userLogin.logout()}"  >  Logout </h:commandLink>
                             </li>
                         </ul>
                     </div>
-                </div>
-            </nav>
-
-            <p align="center" style="color: white">Hi #{userLogin.userName}</p>
-
-            <div class ="form-group1" >
-                <div id="bord1" style="background-color: white"> 
-
+                </h:form>      
+            </div>
+        </nav><br/> <br/><br/><br/><br/><br/><br/>
+        <div class="container ">
+    <p style="color: white;  font-size: 25px" >Hi #{userLogin.userName}</p><br/><br/><br/><br/><br/>
+    
+        <div class="modal-body row">
+  <div class="col-md-6">
+    <img src="img/about/8.png"/>
+  </div>
+  <div class="col-md-6" >
+    
+            <div id="admin" style="background-color: white"> 
+                   <h:form>
                     <div class="form-group row">
                         <p>Name : <h:inputText value="#{userController.userobj.name}" /></p>
                     </div>
@@ -69,13 +90,47 @@
 
                         <p>Date : <h:inputText value="#{userController.userobj.date}" /></p>
                     </div>
-                    <h:commandButton  class="btn btn-success" action="#{userController.insert()}" value="Save"  />                
-                    <span>&nbsp;</span><span>&nbsp;</span>
+                       <div class="form-group row ">
+                    <h:commandButton  class="btn btn-success" action="#{userController.insert()}" value="Save"  />  <br/>  <br/>            
+                   
                     <h:commandButton class="btn btn-primary" action="#{userController.cancel()}"  value="Cancel"  />
+                     </div>
+                  </h:form>
 
+            </div><br/><br/><br/>
+  </div>
+</div>
+    </div>
+        
+      <footer style="background-color: black; ">
+            <div class="container" >
+                <div class="row">
+                    <div class="col-md-4">
+                        <span class="copyright">Copyright &copy; Budget 2017</span>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-inline social-buttons">
+                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="https://www.linkedin.com/uas/login"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </h:form>
+        </footer>
+        <!-- jQuery -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Theme JavaScript -->
+        <script src="js/agency.min.js"></script>
+
+        <script src="js/jquery.js"></script>
+
+        <script src="js/bootstrap.min.js"></script> 
     </h:body>
 </html>
 
