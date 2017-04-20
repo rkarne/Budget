@@ -6,6 +6,8 @@
 package pojo;
 
 import javax.inject.Named;
+import javax.json.Json;
+import javax.json.JsonObject;
 
 /**
  *
@@ -150,5 +152,13 @@ public Userdetails(){
     public void setDate(String date) {
         this.date = date;
     }
-
+ public JsonObject convertToJson() {
+        return Json.createObjectBuilder()
+                .add("id", id)
+                .add("title", email)
+                .add("name", name)
+                .add("username",userName.toString())
+                .build();
+    }
+    
 }
