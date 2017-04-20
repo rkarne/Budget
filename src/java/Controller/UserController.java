@@ -236,6 +236,8 @@ public class UserController {
      * @return
      */
     public String insert() {
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+                .getExternalContext().getSession(false);
         try {
 
             Connection conn = DBUtils.getConnection();
@@ -251,6 +253,15 @@ public class UserController {
             getData();
         } catch (SQLException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if( (session.getAttribute("Username") == null) || session.getAttribute("Username").equals("") ){
+            UserLogin u= new UserLogin();
+            try {
+                u.logout();
+            } catch (IOException ex) {
+                Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return "index";
         }
         return "Admin";
     }
