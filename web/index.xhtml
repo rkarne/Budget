@@ -26,6 +26,8 @@
         <link href="css/agency.min.css" rel="stylesheet"></link>
         <link rel="stylesheet" href="css/style.css"></link>
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <!--Client side validation -->
+
     </h:head>
     <h:body id="page-top" class="index"  >
 
@@ -96,11 +98,13 @@
                         <div class="form">
                             <form class="login-form">
 
-                                <h:form>
+                                <h:form id="validation" >
                                     <h:inputText value="#{userLogin.userName}"  id="username" p:placeholder="Username"  />
+                                    <p id="user" class="help-block text-danger"></p>
                                     <h:inputSecret value="#{userLogin.userPassword}" id="password" p:placeholder="Password" />
-                                    <h:commandButton style=" background: #fed136;" value="Sign In" action="#{userLogin.validate()}" class="btn btn-xl"></h:commandButton><br/>
-                                    <h:link value = "Create User Account Here" outcome= "#{userController.addUser()}" />
+                                    <p  id="pass" class="help-block text-danger"></p>
+                                    <h:commandButton  style=" background: #fed136;" value="Sign In" action="#{userLogin.validate()}" class="btn btn-xl"></h:commandButton><br/>
+                                    <u><h:link value = "Create User Account Here" outcome= "#{userController.addUser()}" /></u>
                                 </h:form>
                             </form> 
                         </div>
@@ -220,73 +224,57 @@
                 </div>
             </div>
         </section>
-        
-        
+
+
         <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">Maintain budget,become more Richer!</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">Contact Us</h2>
+                        <h3 class="section-subheading text-muted">Maintain budget,become more Richer!</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group1">
+                                        <p style="color: white">Roja Jayashree</p>
+                                        <p style="color: white">Ivor</p>
+                                        <p style="color: white">Aman Deep</p>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <p style="color: white">Lambton Colleg arts and Technology</p>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <p style="color: white">Sarnia, ON, Canada</p>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <p style="color: white">
+                                            Budgeting, planning and forecasting (BP and F) is a three-step process for determining and detailing an organization's long- and short-term financial goals. The process is usually managed by an organization's finance department under the Chief Financial Officer's (CFO's) guidance.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                                <div class="col-lg-12 text-center">
+                                    <div id="success"></div>
+                                    <h:form>
+                                        <h:commandButton action="map.html" value="FIND US"  class="btn btn-xl"></h:commandButton>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group1">
-                                    <p style="color: white">Roja Jayashree</p>
-                                    <p style="color: white">Ivor</p>
-                                    <p style="color: white">Aman Deep</p>
-                                </div>
-                                <div class="form-group">
-                                   
-                                    <p style="color: white">Lambton Colleg arts and Technology</p>
-                                </div>
-                                <div class="form-group">
-                                    
-                                    <p style="color: white">Sarnia, ON, Canada</p>
-                                </div>
-                                
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <p style="color: white">
-                                        Budgeting, planning and forecasting (BP and F) is a three-step process for determining and detailing an organization's long- and short-term financial goals. The process is usually managed by an organization's finance department under the Chief Financial Officer's (CFO's) guidance.
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <div class="clearfix"></div>
-                            <div class="col-lg-12 text-center">
-                                <div id="success"></div>
-                                <h:form>
-                                    <h:commandButton action="map.html" value="FIND US"  class="btn btn-xl"></h:commandButton>
-                                </h:form>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section> 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        </section>       
         <footer>
             <div class="container">
                 <div class="row">

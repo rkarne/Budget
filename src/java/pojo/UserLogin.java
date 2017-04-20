@@ -188,5 +188,18 @@ public class UserLogin implements Serializable {
         externalContext.invalidateSession();
         externalContext.redirect("index.xhtml");
     }
+    
+    
+     public void success() throws IOException {
+        HttpSession session = SessionController.getSession();
+        session.invalidate();
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Created User successfully.. Try Login !"));
+        ExternalContext externalContext = context.getExternalContext();
+        externalContext.getFlash().setKeepMessages(true);
+        externalContext.invalidateSession();
+        externalContext.redirect("index.xhtml");
+    }
+    
 
 }

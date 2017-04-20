@@ -134,7 +134,6 @@ public class UserController {
 
         }
         if (dbuser == null || dbpass == null) {
-
             return "index";
         }
         if (dbuser.equals(userobj.getUserName()) && dbpass.equals(userobj.getUserPassword())) {
@@ -257,7 +256,7 @@ public class UserController {
         if( (session.getAttribute("Username") == null) || session.getAttribute("Username").equals("") ){
             UserLogin u= new UserLogin();
             try {
-                u.logout();
+                u.success();
             } catch (IOException ex) {
                 Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
             }
