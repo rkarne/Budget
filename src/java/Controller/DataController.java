@@ -33,6 +33,7 @@ import pojo.Monthly;
  */
 @Named
 @ApplicationScoped
+
 public class DataController {
 
     private List<Data> userdata;
