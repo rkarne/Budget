@@ -6,12 +6,6 @@
  */
 package pojo;
 
-import java.sql.Date;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 /**
  *
  * @author c0681010
